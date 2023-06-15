@@ -3,9 +3,10 @@ import "./Header.scss";
 import logo from "../../assets/images/logo3.png";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const navigate = useNavigate();
     return (
         <header>
             <div className="container py-2">
@@ -14,7 +15,7 @@ const Header = () => {
                         <BiMenuAltLeft />
                     </button>
                     <div className="header-left p-0">
-                        <button className="logo-button p-0 clean-button">
+                        <button onClick={() => navigate("/")} className="logo-button p-0 clean-button">
                             <img src={logo} alt="logo" />
                         </button>
                         <ul className='header-menu desktop m-0 ps-4'>
