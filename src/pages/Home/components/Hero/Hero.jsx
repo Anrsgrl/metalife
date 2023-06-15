@@ -7,11 +7,11 @@ const Hero = () => {
         <div className="hero container py-5">
             <div className="hero-content">
                 <div className="hero-text">
-                    <h1>Metalife</h1>
-                    <p>Can you wish best of dreams</p>
-                    <button class="button-50 mt-3">Get started to learn</button>
+                    <h1 data-aos="fade-right">Metalife</h1>
+                    <p data-aos="fade-right">Can you wish best of dreams</p>
+                    <button data-aos="fade-right" class="button-50 mt-3">Get started to learn</button>
                 </div>
-                <div className="hero-vector">
+                <div data-aos="fade-left" className="hero-vector">
                     <img className='w-100' src={vector} alt="vector" />
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { AiOutlinePlayCircle } from "react-icons/ai";
 const Lesson = (props) => {
     const { image, title, p } = props;
     return (
-        <div className="col-9 col-md-5 col-lg-3 me-0 me-md-4 mb-4 p-0 lesson">
+        <div data-aos="fade-up" className="col-9 col-md-5 col-lg-3 me-0 me-md-4 mb-4 p-0 lesson">
             <img src={image} alt="design" />
             <div className="lesson-text px-2">
                 <h3>{title}</h3>
