@@ -1,0 +1,17 @@
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin cleanButton {
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+}
