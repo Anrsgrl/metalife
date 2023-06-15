@@ -15,6 +15,20 @@ header {
         .header-left {
             @include flexCenter;
 
+            .header-menu {
+                @include flexCenter;
+                gap: 10px;
+
+                .active {
+                    color: $main-color !important;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+
             .logo-button {
                 width: 75px;
                 height: 75px;
@@ -40,12 +54,28 @@ header {
             }
 
             .desktop-buttons {
+                select {
+                    @include cleanButton;
+                    color: black;
+                    margin-right: 8px;
+
+                    option {
+                        background-color: black;
+                        color: white;
+                    }
+                }
+
+                .sign-in {
+                    border-left: 1px solid #bebebe;
+                }
+
                 .sign-up {
                     border: 1px solid black;
                     border-radius: 6px;
 
                     &:hover {
-                        background-color: black;
+                        background-color: $main-color;
+                        border: 1px solid transparent;
                         color: white;
                     }
                 }
