@@ -19,6 +19,9 @@
         border-radius: 4px;
         text-align: center;
         overflow: hidden;
+        @include flexBetween;
+        flex-direction: column;
+        min-height: 428px;
 
         &:hover {
             box-shadow: #fff 0 0 0 0, #000 0 0 0 0;
@@ -32,6 +35,7 @@
         .lesson-footer {
             background-color: #eee;
             cursor: pointer;
+            width: 100%;
 
             button {
                 color: $main-color;
