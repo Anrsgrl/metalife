@@ -12,6 +12,13 @@
         justify-content: space-around;
     }
 
+    .show-more {
+        font-size: 1.5rem;
+        @include flexCenter;
+        width: 100%;
+        color: $main-color;
+    }
+
     .lesson {
         text-align: center;
         box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
