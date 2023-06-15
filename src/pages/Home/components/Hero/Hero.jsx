@@ -13,7 +13,7 @@ const Hero = () => {
                     <p data-aos="fade-right">Can you wish best of dreams</p>
                     <button onClick={() => navigate("/lessons")} data-aos="fade-right" class="button-50 mt-3">Get started to learn</button>
                 </div>
-                <div data-aos="fade-left" className="hero-vector">
+                <div className="hero-vector">
                     <img className='w-100' src={vector} alt="vector" />
                 </div>
             </div>
