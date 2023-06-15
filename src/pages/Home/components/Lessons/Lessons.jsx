@@ -11,7 +11,8 @@ import LessonsMobile from './LessonsMobile';
 import { VscDebugStart } from "react-icons/vsc";
 import { useNavigate } from 'react-router-dom';
 
-const Lessons = () => {
+const Lessons = (props) => {
+    const { show } = props;
     const navigate = useNavigate();
     return (
         <div className="lessons text-center pt-3 container">
@@ -27,7 +28,7 @@ const Lessons = () => {
                 </div>
             </div>
             <LessonsMobile />
-            <button data-aos="fade-up" onClick={() => navigate("lessons")} className='show-more clean-button'>Show more <VscDebugStart /></button>
+            {show && <button data-aos="fade-up" onClick={() => navigate("lessons")} className='show-more clean-button'>Show more <VscDebugStart /></button>}
         </div>
     )
 }
