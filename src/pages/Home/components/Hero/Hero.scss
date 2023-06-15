@@ -36,6 +36,10 @@
                 padding: 12px 40px;
                 text-align: center;
 
+                &:hover {
+                    box-shadow: #fff 0 0 0 0, #000 0 0 0 0;
+                }
+
                 &:active {
                     box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
                     outline: 0;

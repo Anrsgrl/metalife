@@ -1,0 +1,69 @@
+@import "../../../../vendors/mixins";
+@import "../../../../vendors/variables";
+
+.lessons {
+    .lessons-desktop {
+        @media(max-width: 767px) {
+            display: none;
+        }
+    }
+
+    .row {
+        justify-content: space-around;
+    }
+
+    .lesson {
+        text-align: center;
+        box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+        border: 1px solid #000;
+        border-radius: 4px;
+        text-align: center;
+        overflow: hidden;
+
+        &:hover {
+            box-shadow: #fff 0 0 0 0, #000 0 0 0 0;
+        }
+
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .lesson-footer {
+            background-color: #eee;
+            cursor: pointer;
+
+            button {
+                color: $main-color;
+                width: 100%;
+                gap: 5px;
+                @include flexCenter;
+            }
+        }
+    }
+}
+
+.lessons-mobile {
+    @media(min-width: 767px) {
+        display: none;
+    }
+
+    .swiper-slide {
+        @include flexCenter;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        &::after {
+            font-size: 20px;
+        }
+    }
+
+    .swiper-button-next {
+        right: 0;
+    }
+
+    .swiper-button-prev {
+        left: 0;
+    }
+}

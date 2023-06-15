@@ -12,7 +12,7 @@ const Hero = () => {
                     <button class="button-50 mt-3">Get started to learn</button>
                 </div>
                 <div className="hero-vector">
-                    <img src={vector} alt="vector" />
+                    <img className='w-100' src={vector} alt="vector" />
                 </div>
             </div>
         </div>
