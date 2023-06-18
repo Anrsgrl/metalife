@@ -2,9 +2,6 @@
 @import "../../../../vendors/variables";
 
 .partners {
-    h2 {
-        text-align: center
-    }
 
     .swiper-slide {
         @include flexCenter;

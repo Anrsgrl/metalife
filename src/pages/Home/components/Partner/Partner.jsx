@@ -8,8 +8,8 @@ import partner3 from "../../../../assets/images/partner-mogan.jpg";
 
 const Partner = () => {
     return (
-        <div className="container partners py-3">
-            <h2 data-aos="fade-up" className='py-2'>Partners</h2>
+        <div className="container partners pb-3 pt-5">
+            <h2 data-aos="fade-up" className='section-heading py-2'>Partners</h2>
             <Swiper
                 modules={[A11y, Autoplay]}
                 spaceBetween={50}

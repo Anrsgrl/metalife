@@ -36,13 +36,15 @@
             flex-wrap: wrap;
 
             .application-btn {
-                @include flexCenter;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
                 background-color: white;
                 border: 1px solid #000;
                 border-radius: 4px;
                 box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
                 box-sizing: border-box;
-                color: black;
+                color: $main-color;
                 cursor: pointer;
                 display: inline-block;
                 font-size: 14px;
