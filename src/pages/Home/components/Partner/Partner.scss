@@ -1,0 +1,40 @@
+@import "../../../../vendors/mixins";
+@import "../../../../vendors/variables";
+
+.partners {
+    h2 {
+        text-align: center
+    }
+
+    .swiper-slide {
+        @include flexCenter;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        &::after {
+            font-size: 20px;
+        }
+    }
+
+    .swiper-button-next {
+        right: 0;
+    }
+
+    .swiper-button-prev {
+        left: 0;
+    }
+
+    .partner-image {
+        width: 150px;
+        height: 150px;
+        cursor: grab;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+}
