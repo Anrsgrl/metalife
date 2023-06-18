@@ -7,11 +7,35 @@ footer {
     .footer-content {
         padding: 30px 0;
         border-top: 2px solid rgba(255, 255, 255, 0.08);
+        color: white;
         @include flexBetween;
 
         @media(max-width: 767px) {
+            text-align: center;
             flex-direction: column;
             gap: 10px;
+            font-size: 14px;
+        }
+
+        .footer-location {
+            @media(max-width: 767px) {
+                width: 100%;
+
+                iframe {
+                    width: 100%;
+                }
+            }
+        }
+
+        ul {
+            padding: 0;
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: $main-color;
+                }
+            }
         }
 
         span {
