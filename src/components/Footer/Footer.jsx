@@ -17,7 +17,8 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="footer-location">
-                        <iframe title='location' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24308.49673281931!2d49.83440194999999!3d40.396397099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d79869956a3%3A0x9f949d3fb038a1f0!2zTmVzaW1pLCBCYWvDvCwgQmFrw7w!5e0!3m2!1str!2saz!4v1687095853021!5m2!1str!2saz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
+                        <iframe title='location' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24308.49673281931!2d49.83440194999999!3d40.396397099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d79869956a3%3A0x9f949d3fb038a1f0!2zTmVzaW1pLCBCYWvDvCwgQmFrw7w!5e0!3m2!1str!2saz!4v1687095853021!5m2!1str!2saz"
+                            allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                     </div>
                 </div>
                 <div className="footer-content px-2">

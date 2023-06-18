@@ -16,7 +16,7 @@ const Lessons = (props) => {
     const navigate = useNavigate();
     return (
         <div className="lessons text-center pt-3 container">
-            <h2 data-aos="fade-up" className='py-4'>Get started Lessons</h2>
+            <h2 data-aos="fade-up" className='section-heading py-4'>Get started Lessons</h2>
             <div className="lessons-desktop">
                 <div className="row">
                     <Lesson title="Fullstack developer" p="Html, Css, Javascript, React, MongoDB, Java and ExpressJS" image={fullstack} />
