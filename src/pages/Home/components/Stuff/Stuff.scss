@@ -50,6 +50,7 @@
 
                 .stuff-buttons {
                     @include flexCenter;
+                    flex-wrap: wrap;
 
                     button {
                         padding: 2px;
