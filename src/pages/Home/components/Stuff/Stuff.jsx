@@ -8,7 +8,7 @@ const Stuff = () => {
     return (
         <div className="stuff container py-5">
             <div className="stuff-content row">
-                <h2 className='text-center py-3'>Our team</h2>
+                <h2 data-aos="fade-up" className='text-center py-3'>Our team</h2>
                 <StuffItem
                     name="Nazir"
                     position="CEO"
