@@ -7,6 +7,7 @@ import { VscAccount } from "react-icons/vsc";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import Nav from '../Nav/Nav';
 
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
 
     return (
         <header>
-            <div className="container py-2">
+            <div className="container px-0 py-2">
                 <div className="header-content">
                     <button onClick={() => openHamburger()} className="hamburger mobile clean-button p-0">
                         <BiMenuAltLeft />
@@ -105,6 +106,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            <Nav />
         </header>
     )
 }

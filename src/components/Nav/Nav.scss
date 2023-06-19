@@ -1,0 +1,37 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+.navv {
+    .search-bar {
+        width: 100%;
+        @include flexCenter;
+        position: relative;
+
+        input {
+            outline: 0;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        button {
+            background-color: transparent;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: 0;
+            outline: 0;
+            height: 100%;
+            z-index: 99;
+        }
+    }
+
+    ul {
+        @include flexBetween;
+        flex-wrap: wrap;
+
+        a {
+            padding-left: 5px;
+            text-decoration: none;
+        }
+    }
+}
