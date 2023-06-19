@@ -26,7 +26,6 @@ const Header = () => {
         document.body.style.overflow = 'unset';
     }
 
-
     return (
         <header className='px-2'>
             <div className="container px-0 py-2">
