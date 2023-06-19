@@ -41,7 +41,7 @@
                 justify-content: center;
                 background-color: white;
                 border: 0;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
                 border-radius: 4px;
                 box-sizing: border-box;
                 color: $main-color;
@@ -52,10 +52,6 @@
                 line-height: 20px;
                 padding: 12px 40px;
                 text-align: center;
-
-                &:hover {
-                    box-shadow: #fff 0 0 0 0, #000 0 0 0 0;
-                }
 
                 &:active {
                     box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;

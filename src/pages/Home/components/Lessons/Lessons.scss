@@ -21,19 +21,16 @@
 
     .lesson {
         text-align: center;
-        border: 0;
+        border: 1px solid $main-color;
+        border-radius: 9px;
         cursor: pointer;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         border-radius: 4px;
         text-align: center;
         overflow: hidden;
         @include flexBetween;
         flex-direction: column;
         height: 500px;
-
-        &:hover {
-            box-shadow: #fff 0 0 0 0, #000 0 0 0 0;
-        }
 
         img {
             width: 328px;
