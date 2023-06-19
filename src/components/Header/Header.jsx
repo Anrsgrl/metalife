@@ -37,18 +37,6 @@ const Header = () => {
                         <button onClick={() => navigate("/")} className="logo-button p-0 clean-button">
                             <img src={logo} alt="logo" />
                         </button>
-                        <ul className='header-menu desktop m-0 ps-4'>
-                            <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/lessons">Lessons</NavLink></li>
-                            <li className='dropdownn'>
-                                Website Order
-                                <ul className='dropdown-menuu'>
-                                    <NavLink to="order">Order now</NavLink>
-                                    <NavLink to="portfolio">Portfolio</NavLink>
-                                </ul>
-                            </li>
-                            <li><NavLink to="/contact">Contact</NavLink></li>
-                        </ul>
                         <div className="hamburger-nav">
                             <AnimatePresence>
                                 {hamburger &&
@@ -85,6 +73,18 @@ const Header = () => {
                             </AnimatePresence>
                         </div>
                     </div>
+                    <ul className='header-menu desktop m-0 ps-4'>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/lessons">Lessons</NavLink></li>
+                        <li className='dropdownn'>
+                            Website Order
+                            <ul className='dropdown-menuu'>
+                                <NavLink to="order">Order now</NavLink>
+                                <NavLink to="portfolio">Portfolio</NavLink>
+                            </ul>
+                        </li>
+                        <li><NavLink to="/contact">Contact</NavLink></li>
+                    </ul>
                     <div className="header-profile">
                         <button className="account mobile clean-button p-0">
                             <VscAccount />

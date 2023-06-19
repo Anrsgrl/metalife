@@ -1,11 +1,11 @@
 import React from 'react';
 import "./Lessons.scss";
-import design from "../../../../assets/images/design.png";
-import backend from "../../../../assets/images/backend.png";
-import frontend from "../../../../assets/images/frontend.png";
-import fullstack from "../../../../assets/images/fullstack.png";
-import ui from "../../../../assets/images/ui.png";
-import d from "../../../../assets/images/3d.png";
+import design from "../../../../assets/images/design.svg";
+import backend from "../../../../assets/images/backend.svg";
+import frontend from "../../../../assets/images/frontend.svg";
+import fullstack from "../../../../assets/images/fullstack.svg";
+import ui from "../../../../assets/images/designer.svg";
+import d from "../../../../assets/images/3d.svg";
 import Lesson from '../../../../components/Lesson/Lesson';
 import LessonsMobile from './LessonsMobile';
 import { VscDebugStart } from "react-icons/vsc";

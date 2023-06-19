@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Hero.scss";
-import vector from "../../../../assets/images/vector.png";
+import vector from "../../../../assets/images/vectorr.svg";
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {

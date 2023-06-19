@@ -40,9 +40,9 @@
                 align-items: center;
                 justify-content: center;
                 background-color: white;
-                border: 1px solid #000;
+                border: 0;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
                 border-radius: 4px;
-                box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
                 box-sizing: border-box;
                 color: $main-color;
                 cursor: pointer;

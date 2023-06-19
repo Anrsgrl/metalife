@@ -12,22 +12,22 @@ header {
             }
         }
 
+        .header-menu {
+            @include flexCenter;
+            gap: 15px;
+
+            .active {
+                color: $main-color !important;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
         .header-left {
             @include flexCenter;
-
-            .header-menu {
-                @include flexCenter;
-                gap: 15px;
-
-                .active {
-                    color: $main-color !important;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: black;
-                }
-            }
 
             .logo-button {
                 width: 75px;
