@@ -28,7 +28,7 @@ const Header = () => {
 
 
     return (
-        <header>
+        <header className='px-2'>
             <div className="container px-0 py-2">
                 <div className="header-content">
                     <button onClick={() => openHamburger()} className="hamburger mobile clean-button p-0">
