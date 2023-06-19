@@ -33,5 +33,11 @@
             padding-left: 5px;
             text-decoration: none;
         }
+
+        li:nth-child(5) {
+            @media(max-width: 362px) {
+                display: none;
+            }
+        }
     }
 }

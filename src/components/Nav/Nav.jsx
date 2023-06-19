@@ -16,13 +16,13 @@ const Nav = () => {
                 <li><Link to="/">#scss</Link></li>
                 <li><Link to="/">#javascript</Link></li>
                 <li><Link to="/">#react</Link></li>
-                <li><Link to="/">#java</Link></li>
-                <li><Link to="/">#mongodb</Link></li>
-                <li><Link to="/">#expressjs</Link></li>
-                <li><Link to="/">#figma</Link></li>
-                <li><Link to="/">#adobexd</Link></li>
-                <li><Link to="/">#autodesk</Link></li>
-                <li><Link to="/">#turbocad</Link></li>
+                <li className='mini-desktop'><Link to="/">#java</Link></li>
+                <li className='mini-desktop'><Link to="/">#mongodb</Link></li>
+                <li className='mini-desktop'><Link to="/">#expressjs</Link></li>
+                <li className='desktop'><Link to="/">#figma</Link></li>
+                <li className='desktop'><Link to="/">#adobexd</Link></li>
+                <li className='desktop'><Link to="/">#autodesk</Link></li>
+                <li className='desktop'><Link to="/">#turbocad</Link></li>
             </ul>
         </div>
     )
