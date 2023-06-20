@@ -67,6 +67,8 @@ const Header = () => {
                                                     </ul>
                                                 </li>
                                                 <li><NavLink to="/contact" onClick={() => closeHamburger()}>Contact</NavLink></li>
+                                                <li><NavLink to="/sign-in" onClick={() => closeHamburger()}>Sign In</NavLink></li>
+                                                <li><NavLink to="/sign-up" onClick={() => closeHamburger()}>Sign Up</NavLink></li>
                                             </ul>
                                         </div>
                                     </motion.aside>}
