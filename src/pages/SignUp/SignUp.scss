@@ -1,0 +1,72 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+.sign-field {
+    width: 100%;
+    min-height: 80vh;
+    @include flexCenter;
+
+    @media(max-width: 576px) {
+        min-height: fit-content;
+    }
+
+    .sign-inputs {
+        outline: 0;
+        border: 1px solid #bebebe;
+        border-radius: 4px;
+        font-size: 15px;
+        height: 44px;
+        padding: 9px 14px;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .form-element {
+        position: relative;
+    }
+
+    .tel-info:hover,
+    .tel-info:focus~.tel-modal {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .tel-modal {
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: -55px;
+        right: 0;
+        font-size: 12px;
+        width: 150px;
+        background-color: $main-color;
+        color: white;
+        border-radius: 4px;
+        padding: 5px 3px;
+    }
+
+    .btn-show {
+        position: absolute;
+        padding: 0;
+        color: $main-color;
+        right: 25px;
+        top: 12%;
+        z-index: 99;
+    }
+
+    .sign-buttons {
+        @include flexBetween;
+
+        @media(max-width: 576px) {
+            flex-direction: column;
+            align-items: start;
+            gap: 15px;
+        }
+
+        a {
+            font-size: 14px;
+            color: $main-color;
+        }
+    }
+}
