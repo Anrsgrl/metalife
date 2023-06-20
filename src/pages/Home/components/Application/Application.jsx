@@ -10,8 +10,8 @@ const Application = () => {
                 <div className="application-text text-center py-3">
                     <h3 data-aos="fade-right" className='px-1'>You can get our mobile application</h3>
                     <div className="application-buttons">
-                        <button data-aos="fade-right" className='application-btn m-2'><AiFillAndroid />Android</button>
-                        <button data-aos="fade-right" className='application-btn m-2'><AiFillApple />IOS</button>
+                        <button data-aos="fade-right" className='btn-white m-2'><AiFillAndroid />Android</button>
+                        <button data-aos="fade-right" className='btn-white m-2'><AiFillApple />IOS</button>
                     </div>
                 </div>
                 <div data-aos="fade-left" className="application-image">

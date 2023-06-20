@@ -95,10 +95,10 @@ const Header = () => {
                                 <option value="aze">AZE</option>
                                 <option value="ru">RU</option>
                             </select>
-                            <button className="sign-in px-3 clean-button">
+                            <button onClick={() => navigate("/sign-in")} className="sign-in px-3 clean-button">
                                 Sign in
                             </button>
-                            <button className="clean-button sign-up p-2">
+                            <button onClick={() => navigate("/sign-up")} className="clean-button sign-up p-2">
                                 Sign up
                             </button>
                         </div>

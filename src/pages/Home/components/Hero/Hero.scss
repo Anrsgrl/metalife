@@ -20,27 +20,6 @@
             p {
                 font-size: 2rem;
             }
-
-            .button-50 {
-                background-color: $main-color;
-                border: 0;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-                border-radius: 4px;
-                box-sizing: border-box;
-                color: #fff;
-                cursor: pointer;
-                display: inline-block;
-                font-size: 14px;
-                font-weight: 400;
-                line-height: 20px;
-                padding: 12px 40px;
-                text-align: center;
-
-                &:active {
-                    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
-                    outline: 0;
-                }
-            }
         }
     }
 }
