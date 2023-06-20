@@ -46,13 +46,11 @@ const Stuff = () => {
                     name="Qeybulla"
                     position="Backend Dev"
                     image={boy}
-                    github="https://github.com/aynura12"
                 />
                 <StuffItem
                     name="Fuad Beybutov"
                     position="Designer"
                     image={boy}
-                    github="https://github.com/aynura12"
                 />
             </div>
         </div>
