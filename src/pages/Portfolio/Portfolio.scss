@@ -1,0 +1,33 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+.portfolio {
+    .portfolio-website {
+        position: relative;
+
+        img {
+            @include imageCover;
+        }
+
+        .website-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: black;
+            flex-direction: column;
+
+            h4 {
+                font-weight: 600;
+            }
+
+            a {
+                color: $main-color ;
+                text-decoration: none;
+            }
+
+        }
+    }
+
+}
