@@ -18,7 +18,7 @@ const Nav = () => {
     window.addEventListener('scroll', changeColor);
     return (
         <div className="navv p-0 container">
-            <div className={fixed ? "fixed-search-bar search-bar" : "search-bar"}>
+            <div className={fixed ? "fixed-search-bar search-bar" : "relative-search-bar search-bar"}>
                 <input type="text" placeholder='Search...' name="" id="" className='ps-2 pe-4' />
                 <button type="submit"><BiSearchAlt /></button>
             </div>

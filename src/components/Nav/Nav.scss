@@ -7,19 +7,37 @@
         top: 0;
         left: 0;
         z-index: 999;
+
+        button {
+            top: 20%;
+        }
+
+        input {
+            padding: 10px;
+        }
+    }
+
+    .relative-search-bar {
+        position: relative;
+
+        button {
+            top: 11%;
+        }
+
+        input {
+            padding: 6px !important;
+        }
     }
 
     .search-bar {
         width: 100%;
         @include flexCenter;
-        position: relative;
 
         input {
             outline: 0;
             width: 100%;
             font-size: 13px;
             font-style: italic;
-            padding: 6px;
             border-radius: 6px;
             border: 1px solid #bebebe;
         }
@@ -28,7 +46,6 @@
             background-color: transparent;
             position: absolute;
             right: 0;
-            top: 11%;
             border: 0;
             outline: 0;
             z-index: 99;
