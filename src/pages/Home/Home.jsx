@@ -16,9 +16,9 @@ const Home = () => {
         <>
             <Hero />
             <Lessons show={true} />
-            <Application />
             <Stuff />
             <Partner />
+            <Application />
         </>
     )
 }
