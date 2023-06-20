@@ -4,10 +4,17 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import signUp from "../../assets/images/sign3.svg";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const SignUp = () => {
     const [showPass, setShowPass] = useState(false)
     const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "auto",
+        });
+    }, []);
     return (
         <div className="sign-field py-4 container">
             <div className="row">

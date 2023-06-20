@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import login from "../../assets/images/login.svg";
 import forget from "../../assets/images/forgot-pass.svg";
+import { useEffect } from 'react';
 
 const SignIn = () => {
     const [showPass, setShowPass] = useState(false);
     const [forgot, setForgot] = useState(false);
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "auto",
+        });
+    }, []);
     return (
         <div className="sign-field py-4 container">
             {!forgot ? (
