@@ -8,12 +8,16 @@ import LessonsPage from './pages/LessonsPage/LessonsPage';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import Portfolio from './pages/Portfolio/Portfolio';
+import DragButton from './components/DragButton/DragButton';
+import { useRef } from 'react';
 
 function App() {
+  const main = useRef();
   return (
     <>
       <Header />
-      <main>
+      <main ref={main}>
+        <DragButton main={main} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
