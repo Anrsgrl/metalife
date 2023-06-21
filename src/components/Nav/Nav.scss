@@ -1,33 +1,34 @@
 @import "../../vendors/mixins";
 @import "../../vendors/variables";
 
-.navv {
-    .search-bar {
+.search-bar {
+    width: 100%;
+    position: relative;
+    @include flexCenter;
+
+    input {
+        outline: 0;
         width: 100%;
-        position: relative;
-        @include flexCenter;
-
-        input {
-            outline: 0;
-            width: 100%;
-            font-size: 13px;
-            font-style: italic;
-            border-radius: 6px;
-            padding: 6px;
-            border: 1px solid #bebebe;
-        }
-
-        button {
-            background-color: transparent;
-            position: absolute;
-            top: 11%;
-            right: 0;
-            border: 0;
-            outline: 0;
-            z-index: 99;
-            border-left: 1px solid #bebebe;
-        }
+        font-size: 13px;
+        font-style: italic;
+        border-radius: 6px;
+        padding: 6px;
+        border: 1px solid #bebebe;
     }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        top: 11%;
+        right: 0;
+        border: 0;
+        outline: 0;
+        z-index: 99;
+        border-left: 1px solid #bebebe;
+    }
+}
+
+.navv {
 
     ul {
         @include flexBetween;

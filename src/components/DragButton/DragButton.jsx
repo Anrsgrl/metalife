@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import "./DragButton.scss";
+import "./DragElements.scss";
 import { AnimatePresence, motion } from 'framer-motion';
 import { BiSearchAlt2 } from "react-icons/bi";
+import DragMenu from '../DragMenu/DragMenu';
 
 const DragButton = ({ main }) => {
     const [visible, setVisible] = useState(false);
@@ -13,19 +14,31 @@ const DragButton = ({ main }) => {
         }
     };
     window.addEventListener('scroll', changeVisible)
+
+    const [dragMenu, setDragMenu] = useState(false);
+    const openDragMenu = () => {
+        setDragMenu(true)
+        document.body.style.overflow = 'hidden';
+    }
+    const closeDragMenu = () => {
+        setDragMenu(false)
+        document.body.style.overflow = 'unset';
+    }
     return (
         <AnimatePresence>
             <motion.button
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1, y: 200 }}
+                animate={{ opacity: 1, y: 200, x: 200 }}
                 exit={{ opacity: 0 }}
                 drag
                 dragElastic={false}
                 dragConstraints={main}
-                transition={{ duration: 2 }}
+                transition={{ duration: 1 }}
+                onClick={() => openDragMenu()}
                 className={visible ? "drag-button" : "close-drag-button"}>
                 <BiSearchAlt2 />
             </motion.button>
+            <DragMenu dragMenu={dragMenu} closeDragMenu={closeDragMenu} />
         </AnimatePresence>
     )
 }
