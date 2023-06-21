@@ -31,6 +31,7 @@ const DragButton = ({ main }) => {
                 dragElastic={false}
                 dragConstraints={main}
                 onClick={() => openDragMenu()}
+                key={visible}
                 className={visible ? "drag-button" : "close-drag-button"}>
                 <BiSearchAlt2 />
             </motion.button>

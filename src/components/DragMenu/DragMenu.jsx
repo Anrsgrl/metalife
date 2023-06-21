@@ -15,7 +15,7 @@ const DragMenu = ({ dragMenu, closeDragMenu }) => {
                 </div>
                 <ul className='p-0 mt-2'>
                     {hashtags.map((hashtag) => (
-                        <li className='pt-2'><Link to="/">#{hashtag}</Link></li>
+                        <li key={hashtag} className='pt-2'><Link to="/">#{hashtag}</Link></li>
                     ))}
                 </ul>
             </div>

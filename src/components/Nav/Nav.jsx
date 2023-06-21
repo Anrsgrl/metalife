@@ -13,7 +13,7 @@ const Nav = () => {
             </div>
             <ul className='px-0 pt-1 m-0 hashtags'>
                 {hashtags.map((hashtag) => (
-                    <li><Link className='text-muted' to="/">#{hashtag}</Link></li>
+                    <li key={hashtag}><Link className='text-muted' to="/">#{hashtag}</Link></li>
                 ))}
             </ul>
         </div>
