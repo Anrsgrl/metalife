@@ -1,16 +1,11 @@
 import React from 'react';
 import "./Lessons.scss";
-import design from "../../../../assets/images/design.svg";
-import backend from "../../../../assets/images/backend.svg";
-import frontend from "../../../../assets/images/frontend.svg";
-import fullstack from "../../../../assets/images/fullstack.svg";
-import ui from "../../../../assets/images/designer.svg";
-import d from "../../../../assets/images/3d.svg";
 import Lesson from '../../../../components/Lesson/Lesson';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { lessonList } from './LessonList';
 
 const LessonsMobile = () => {
     return (
@@ -21,24 +16,11 @@ const LessonsMobile = () => {
                 slidesPerView={1}
                 navigation
             >
-                <SwiperSlide>
-                    <Lesson title="Fullstack developer" p="Html, Css, Javascript, React, MongoDB, Java and ExpressJS" image={fullstack} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Lesson title="Frontend developer" p="Html, Css, Javascript and React" image={frontend} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Lesson title="Backend developer" p=" MongoDB, Java and ExpressJS" image={backend} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Lesson title="UI/UIX Designer" p="Figma and AdobeXD" image={ui} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Lesson title="Interior Designer" p="Autodesk, SketchUp Pro and TurboCAD" image={design} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Lesson title="3D Modelling" p="Blender and Cinema4D" image={d} />
-                </SwiperSlide>
+                {lessonList.slice(0, 6).map((item) => (
+                    <SwiperSlide key={item.id}>
+                        <Lesson key={item.id} title={item.title} p={item.describe} image={item.image} />
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
     )
