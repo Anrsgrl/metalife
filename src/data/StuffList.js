@@ -1,5 +1,5 @@
-import boy from "../../../../assets/images/boy.png";
-import girl from "../../../../assets/images/girl.png";
+import boy from "../assets/images/boy.png";
+import girl from "../assets/images/girl.png";
 
 
 export const stuffList = [

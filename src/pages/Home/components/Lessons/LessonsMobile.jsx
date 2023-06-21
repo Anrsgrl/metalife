@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { lessonList } from './LessonList';
+import { lessonList } from '../../../../data/LessonList';
 
 const LessonsMobile = () => {
     return (

@@ -1,7 +1,7 @@
+import React from 'react';
 import { BiSearchAlt } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import React from 'react';
-import { hashtags } from '../Nav/Hashtags';
+import { hashtags } from '../../data/Hashtags';
 import { Link } from 'react-router-dom';
 
 const DragMenu = ({ dragMenu, closeDragMenu }) => {

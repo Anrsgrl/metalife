@@ -4,7 +4,7 @@ import Lesson from '../../../../components/Lesson/Lesson';
 import LessonsMobile from './LessonsMobile';
 import { VscDebugStart } from "react-icons/vsc";
 import { useNavigate } from 'react-router-dom';
-import { lessonList } from './LessonList';
+import { lessonList } from '../../../../data/LessonList';
 
 const Lessons = (props) => {
     const { show } = props;

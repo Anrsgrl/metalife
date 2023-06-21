@@ -1,7 +1,7 @@
 import React from 'react';
 import { BiSearchAlt } from "react-icons/bi";
 import "./Nav.scss";
-import { hashtags } from './Hashtags';
+import { hashtags } from '../../data/Hashtags';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {

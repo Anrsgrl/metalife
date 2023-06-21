@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Stuff.scss";
 import StuffItem from './StuffItem';
-import { stuffList } from './StuffList';
+import { stuffList } from '../../../../data/StuffList';
 
 const Stuff = () => {
     return (

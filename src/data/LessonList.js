@@ -1,9 +1,9 @@
-import fullstack from "../../../../assets/images/fullstack.svg";
-import frontend from "../../../../assets/images/frontend.svg";
-import backend from "../../../../assets/images/backend.svg";
-import ui from "../../../../assets/images/designer.svg";
-import design from "../../../../assets/images/design.svg";
-import d from "../../../../assets/images/3d.svg";
+import fullstack from "../assets/images/fullstack.svg";
+import frontend from "../assets/images/frontend.svg";
+import backend from "../assets/images/backend.svg";
+import ui from "../assets/images/designer.svg";
+import design from "../assets/images/design.svg";
+import d from "../assets/images/3d.svg";
 
 
 export const lessonList = [
