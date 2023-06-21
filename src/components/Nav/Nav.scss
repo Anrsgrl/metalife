@@ -2,35 +2,9 @@
 @import "../../vendors/variables";
 
 .navv {
-    .fixed-search-bar {
-        position: fixed !important;
-        top: 0;
-        left: 0;
-        z-index: 999;
-
-        button {
-            top: 20%;
-        }
-
-        input {
-            padding: 10px;
-        }
-    }
-
-    .relative-search-bar {
-        position: relative;
-
-        button {
-            top: 11%;
-        }
-
-        input {
-            padding: 6px !important;
-        }
-    }
-
     .search-bar {
         width: 100%;
+        position: relative;
         @include flexCenter;
 
         input {
@@ -39,12 +13,14 @@
             font-size: 13px;
             font-style: italic;
             border-radius: 6px;
+            padding: 6px;
             border: 1px solid #bebebe;
         }
 
         button {
             background-color: transparent;
             position: absolute;
+            top: 11%;
             right: 0;
             border: 0;
             outline: 0;
