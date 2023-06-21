@@ -28,7 +28,7 @@ const DragButton = ({ main }) => {
         <AnimatePresence>
             <motion.button
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1, x: 250 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 drag
                 dragElastic={false}
