@@ -27,13 +27,9 @@ const DragButton = ({ main }) => {
     return (
         <AnimatePresence>
             <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 drag
                 dragElastic={false}
                 dragConstraints={main}
-                transition={{ duration: 1 }}
                 onClick={() => openDragMenu()}
                 className={visible ? "drag-button" : "close-drag-button"}>
                 <BiSearchAlt2 />
