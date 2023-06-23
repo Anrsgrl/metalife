@@ -11,7 +11,7 @@ const Lessons = (props) => {
     const navigate = useNavigate();
     return (
         <div className="lessons text-center pt-3 container">
-            <h2 data-aos="fade-up" className='section-heading py-4'>Get started Lessons</h2>
+            <h2 data-aos="fade-up" className='section-heading py-4'>Öyrənməyə başla</h2>
             <div className="lessons-desktop">
                 <div className="row">
                     {lessonList.slice(0, 6).map((item) => (
@@ -20,7 +20,7 @@ const Lessons = (props) => {
                 </div>
             </div>
             <LessonsMobile />
-            {show && <button data-aos="fade-up" onClick={() => navigate("lessons")} className='show-more clean-button'>Show more <VscDebugStart /></button>}
+            {show && <button data-aos="fade-up" onClick={() => navigate("lessons")} className='show-more clean-button'>Daha çox göstər <VscDebugStart /></button>}
         </div>
     )
 }

@@ -7,7 +7,7 @@ const Stuff = () => {
     return (
         <div className="stuff container pt-3 pb-5">
             <div className="stuff-content row">
-                <h2 data-aos="fade-up" className='section-heading py-3'>Our team</h2>
+                <h2 data-aos="fade-up" className='section-heading py-3'>Komandamız</h2>
                 {stuffList.map((item) => (
                     <StuffItem
                         key={item.id}

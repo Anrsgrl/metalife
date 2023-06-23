@@ -8,11 +8,11 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-content px-2">
                     <div className="footer-contact">
-                        <h3>Contact Informations</h3>
+                        <h3>Əlaqə məlumatları</h3>
                         <ul>
-                            <li>Telephone: <a href='tel:+994503765058'>+994503765058</a></li>
+                            <li>Telefon: <a href='tel:+994503765058'>+994503765058</a></li>
                             <li>Whatsapp: <a href='tel:+994775050138'>+994775050138</a></li>
-                            <li>Mail: <a href='mailto:info@metalife.az'>info@metalife.az</a></li>
+                            <li>E-poçt: <a href='mailto:info@metalife.az'>info@metalife.az</a></li>
                             <li>Baki, Nəsimi, Məhəmməd Füzuli, 73, 28</li>
                         </ul>
                     </div>
@@ -22,7 +22,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-content px-2">
-                    <span>Copyright 2023 © All Right Reserved</span>
+                    <span>Copyright 2023 © Bütün Hüquqlar Qorunur</span>
                     <div className="contact-icons">
                         <button className='clean-button' onClick={() => window.open('https://www.instagram.com/metalife_official_/')}><AiFillFacebook /></button>
                         <button className='clean-button' onClick={() => window.open('https://www.instagram.com/metalife_official_/')}><AiFillInstagram /></button>

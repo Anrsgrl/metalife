@@ -10,11 +10,11 @@ const Hero = () => {
             <div className="hero-content">
                 <div className="hero-text">
                     <h1 data-aos="fade-right">Metalife</h1>
-                    <p data-aos="fade-right">Can you wish best of dreams</p>
-                    <button onClick={() => navigate("/lessons")} data-aos="fade-right" className="btn-blue mt-3">Get started to learn</button>
+                    <p data-aos="fade-right">Xəyalların ən yaxşısını arzu edə bilərsənmi?</p>
+                    <button onClick={() => navigate("/lessons")} data-aos="fade-right" className="btn-blue mt-3">Öyrənməyə başla</button>
                 </div>
-                <div className="hero-vector">
-                    <img className='w-100' src={vector} alt="vector" />
+                <div className="hero-vector skeleton-loading">
+                    <img data-aos="fade" className='w-100' src={vector} alt="vector" />
                 </div>
             </div>
         </div>

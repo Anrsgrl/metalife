@@ -6,31 +6,31 @@ export const stuffList = [
     {
         id: "1",
         name: "Nazir Nadirov",
-        position: "Founder, Director",
+        position: "Qurucu, Direktor",
         image: boy,
     },
     {
         id: "2",
         name: "Elvin Namazov",
-        position: "Marketing Manager",
+        position: "Marketinq meneceri",
         image: boy,
     },
     {
         id: "3",
         name: "Seymur Seferov",
-        position: "Human Resource",
+        position: "İnsan Resursları",
         image: boy,
     },
     {
         id: "4",
-        name: "Anar Asgarli",
+        name: "Anar Esgerli",
         position: "Frontend Developer",
         image: boy,
         github: "https://github.com/Anrsgrl",
     },
     {
         id: "5",
-        name: "Lala Asgarova",
+        name: "Lala Esgerova",
         position: "Frontend Developer",
         image: girl,
         github: "https://github.com/lolaaskerova",
@@ -38,7 +38,7 @@ export const stuffList = [
     {
         id: "6",
         name: "Aynura Qaniyeva",
-        position: "Frontend Dev Teacher",
+        position: "Frontend Müəlliməsi",
         image: girl,
         github: "https://github.com/aynura12",
     },
@@ -51,7 +51,7 @@ export const stuffList = [
     {
         id: "8",
         name: "Fuad Beybutov",
-        position: "Designer",
+        position: "Dizayner",
         image: boy,
     },
 ]

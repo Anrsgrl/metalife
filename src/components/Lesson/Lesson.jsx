@@ -13,7 +13,7 @@ const Lesson = (props) => {
                 </p>
             </div>
             <div className="lesson-footer">
-                <button className='clean-button p-3'>Watch lesson <AiOutlinePlayCircle /></button>
+                <button className='clean-button p-3'>Dərsi izlə <AiOutlinePlayCircle /></button>
             </div>
         </div>
     )

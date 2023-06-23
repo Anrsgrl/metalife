@@ -8,7 +8,7 @@ const Nav = () => {
     return (
         <div className="navv p-0 container">
             <div className="search-bar">
-                <input type="text" placeholder='Search...' name="" id="" className='ps-2 pe-4' />
+                <input type="text" placeholder='Axtarış...' name="" id="" className='ps-2 pe-4' />
                 <button type="submit"><BiSearchAlt /></button>
             </div>
             <ul className='px-0 pt-1 m-0 hashtags'>

@@ -50,25 +50,25 @@ const Header = () => {
                                         <button className='close-button clean-button' onClick={() => closeHamburger()}><AiOutlineCloseCircle /></button>
                                         <div className="aside-content">
                                             <select name="sort-list" id="sort-list">
-                                                <option value="en">EN</option>
                                                 <option value="aze">AZE</option>
+                                                <option value="en">EN</option>
                                                 <option value="ru">RU</option>
                                             </select>
                                             <ul className='aside-ul pt-2'>
-                                                <li><NavLink to="/" onClick={() => closeHamburger()}>Home</NavLink></li>
-                                                <li><NavLink to="/lessons" onClick={() => closeHamburger()}>Lessons</NavLink></li>
+                                                <li><NavLink to="/" onClick={() => closeHamburger()}>Ana səhifə</NavLink></li>
+                                                <li><NavLink to="/lessons" onClick={() => closeHamburger()}>Dərslər</NavLink></li>
                                                 <li>
                                                     <button onClick={() => setDropdown(!dropdown)} className='pb-1 clean-button open-dropdown p-0'>
-                                                        Website Order <span className={dropdown && "rotate-arrow"}><MdKeyboardArrowDown /></span>
+                                                        Sayt Sifarişi <span className={dropdown && "rotate-arrow"}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdown ? 'aside-dropdown-open' : 'aside-dropdown'}>
-                                                        <NavLink onClick={() => closeHamburger()} to="order">Order now</NavLink>
-                                                        <NavLink onClick={() => closeHamburger()} to="portfolio">Portfolio</NavLink>
+                                                        <NavLink onClick={() => closeHamburger()} to="order">Sifariş et</NavLink>
+                                                        <NavLink onClick={() => closeHamburger()} to="portfolio">İşlərimiz</NavLink>
                                                     </ul>
                                                 </li>
-                                                <li><NavLink to="/contact" onClick={() => closeHamburger()}>Contact</NavLink></li>
-                                                <li><NavLink to="/sign-in" onClick={() => closeHamburger()}>Sign In</NavLink></li>
-                                                <li><NavLink to="/sign-up" onClick={() => closeHamburger()}>Sign Up</NavLink></li>
+                                                <li><NavLink to="/contact" onClick={() => closeHamburger()}>Əlaqə</NavLink></li>
+                                                <li><NavLink to="/sign-in" onClick={() => closeHamburger()}>Giriş</NavLink></li>
+                                                <li><NavLink to="/sign-up" onClick={() => closeHamburger()}>Qeydiyyat</NavLink></li>
                                             </ul>
                                         </div>
                                     </motion.aside>}
@@ -76,16 +76,16 @@ const Header = () => {
                         </div>
                     </div>
                     <ul className='header-menu desktop m-0 ps-4'>
-                        <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/lessons">Lessons</NavLink></li>
+                        <li><NavLink to="/">Ana səhifə</NavLink></li>
+                        <li><NavLink to="/lessons">Dərslər</NavLink></li>
                         <li className='dropdownn'>
-                            Website Order
+                            Sayt Sifarişi
                             <ul className='dropdown-menuu'>
-                                <NavLink to="order">Order now</NavLink>
-                                <NavLink to="portfolio">Portfolio</NavLink>
+                                <NavLink to="order">Sifariş et</NavLink>
+                                <NavLink to="portfolio">İşlərimiz</NavLink>
                             </ul>
                         </li>
-                        <li><NavLink to="/contact">Contact</NavLink></li>
+                        <li><NavLink to="/contact">Əlaqə</NavLink></li>
                     </ul>
                     <div className="header-profile">
                         <button className="account mobile clean-button p-0">
@@ -93,15 +93,15 @@ const Header = () => {
                         </button>
                         <div className="desktop-buttons desktop">
                             <select name="sort-list" id="sort-list">
-                                <option value="en">EN</option>
                                 <option value="aze">AZE</option>
+                                <option value="en">EN</option>
                                 <option value="ru">RU</option>
                             </select>
                             <button onClick={() => navigate("/sign-in")} className="sign-in px-3 clean-button">
-                                Sign in
+                                Giriş
                             </button>
                             <button onClick={() => navigate("/sign-up")} className="clean-button sign-up p-2">
-                                Sign up
+                                Qeydiyyat
                             </button>
                         </div>
                     </div>

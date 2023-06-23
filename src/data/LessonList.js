@@ -27,19 +27,19 @@ export const lessonList = [
     },
     {
         id: "4",
-        title: "UI/UIX Designer",
+        title: "UI/UIX Dizayner",
         describe: "Figma and AdobeXD",
         image: ui,
     },
     {
         id: "5",
-        title: "Interior Designer",
+        title: "Interyer Dizayner",
         describe: "Autodesk, SketchUp Pro and TurboCAD",
         image: design,
     },
     {
         id: "6",
-        title: "3D Modelling",
+        title: "3D Modelləmə",
         describe: "Blender and Cinema4D",
         image: d,
     },
