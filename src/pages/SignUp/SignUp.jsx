@@ -40,7 +40,7 @@ const SignUp = () => {
                                     onChange={(e) => setTel(e.target.value)}
                                 ></InputMask>
                                 <button type="button" className='clean-button tel-info btn-show'><AiOutlineInfoCircle /></button>
-                                <div className="tel-modal">You need to write this part correctly in order for us to contact you.</div> </div>
+                                <div className="tel-modal">It is necessary for us to send you a verification code when you lose your password.</div> </div>
                             <div className="form-element col-12">
                                 <input type={showPass ? "text" : "password"} placeholder='Password' name="password" className='pe-5 sign-inputs' required />
                                 <button onClick={() => setShowPass(!showPass)} type='button' className='clean-button btn-show'>{showPass ? (<FaRegEyeSlash />) : (<FaRegEye />)}</button>
