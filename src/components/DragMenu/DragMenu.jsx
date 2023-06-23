@@ -10,7 +10,7 @@ const DragMenu = ({ dragMenu, closeDragMenu }) => {
             <div className="drag-menu-content container p-5">
                 <button type="button" className='mb-4 p-1 close-button' onClick={() => closeDragMenu()}><AiOutlineClose /></button>
                 <div className="search-bar">
-                    <input type="text" placeholder='Search...' name="" id="" className='ps-2 pe-4' />
+                    <input type="text" placeholder='Search...' name="search" className='ps-2 pe-4' />
                     <button type="submit"><BiSearchAlt /></button>
                 </div>
                 <ul className='p-0 mt-2'>

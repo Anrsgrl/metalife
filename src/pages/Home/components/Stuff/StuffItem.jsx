@@ -4,7 +4,7 @@ import { AiFillLinkedin, AiFillInstagram, AiFillTwitterSquare, AiFillGithub, AiF
 const StuffItem = (props) => {
     const { image, name, position, instagram, linkedin, twitter, github, behance } = props;
     return (
-        <div data-aos="fade-up" className="stuff-item m-2">
+        <div data-aos="fade-up" className="stuff-item skeleton-loader m-2">
             <div className="stuff-image">
                 <img src={image} alt="boy" />
             </div>
