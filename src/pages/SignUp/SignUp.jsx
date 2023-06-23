@@ -5,9 +5,11 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import signUp from "../../assets/images/sign3.svg";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import InputMask from 'react-input-mask'
 
 const SignUp = () => {
     const [showPass, setShowPass] = useState(false)
+    const [tel, setTel] = useState()
     const navigate = useNavigate();
     useEffect(() => {
         window.scrollTo({
@@ -29,9 +31,16 @@ const SignUp = () => {
                             <div className="form-element col-12 col-md-6"><input type="text" placeholder='Surname' name="surname" className='sign-inputs' required /></div>
                             <div className="form-element col-12"><input type="text" placeholder='Username' name="username" className='sign-inputs' required /></div>
                             <div className="form-element col-12"><input type="email" placeholder='Email' name="email" className='sign-inputs' required /></div>
-                            <div className="form-element col-12"><input type="tel" placeholder='Number (XX-XXX-XX-XX)' className='pe-5 sign-inputs' name="phone"
-                                pattern="[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                                required /> <button type="button" className='clean-button tel-info btn-show'><AiOutlineInfoCircle /></button> <div className="tel-modal">Between the numbers in the phone number - it is mandatory to use</div> </div>
+                            <div className="form-element col-12">
+                                <InputMask
+                                    className='sign-inputs'
+                                    mask="+999\-99-999-99-99"
+                                    placeholder="+XXX-XX-XXX-XX-XX"
+                                    value={tel}
+                                    onChange={(e) => setTel(e.target.value)}
+                                ></InputMask>
+                                <button type="button" className='clean-button tel-info btn-show'><AiOutlineInfoCircle /></button>
+                                <div className="tel-modal">You need to write this part correctly in order for us to contact you.</div> </div>
                             <div className="form-element col-12">
                                 <input type={showPass ? "text" : "password"} placeholder='Password' name="password" className='pe-5 sign-inputs' required />
                                 <button onClick={() => setShowPass(!showPass)} type='button' className='clean-button btn-show'>{showPass ? (<FaRegEyeSlash />) : (<FaRegEye />)}</button>
