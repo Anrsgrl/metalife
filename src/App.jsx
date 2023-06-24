@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn/SignIn';
 import Portfolio from './pages/Portfolio/Portfolio';
 import DragButton from './components/DragButton/DragButton';
 import { useRef } from 'react';
+import Order from './pages/Order/Order';
 
 function App() {
   const main = useRef();
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
         </Routes>
