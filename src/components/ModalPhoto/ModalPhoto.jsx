@@ -4,7 +4,7 @@ import ModalImage from "react-modal-image";
 const ModalPhoto = (props) => {
     const { image, alt } = props;
     return (
-        <div data-aos="fade-up">
+        <div data-aos="fade">
             <ModalImage
                 alt={alt}
                 small={image}
