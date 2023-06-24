@@ -12,7 +12,7 @@ const OrderPrice = () => {
             <form action="">
                 <div className="row">
                     <div className="form-element col-12">
-                        <textarea placeholder='Necə bir sayt istəyirsiniz?' className='sign-text-area' name="" id="" cols="30" rows="10"></textarea>
+                        <textarea placeholder='Necə bir sayt istəyirsiniz?' className='sign-text-area' name="describe" cols="30" rows="10"></textarea>
                     </div>
                     <div className="form-element col-12 col-md-6"><input type="text" placeholder='Adınız' name="name" className='sign-inputs' required /></div>
                     <div className="form-element col-12 col-md-6"><input type="text" placeholder='Şirkətin adı' name="company" className='sign-inputs' required /></div>
