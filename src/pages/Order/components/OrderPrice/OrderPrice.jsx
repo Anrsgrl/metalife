@@ -1,5 +1,4 @@
 import React from 'react';
-import "./OrderPrice.scss";
 import InputMask from 'react-input-mask'
 import { useState } from 'react';
 import { TfiReload } from "react-icons/tfi";

@@ -3,8 +3,34 @@
 
 .portfolio {
     .portfolio-website {
-        img {
-            @include imageCover;
+        .portfolio-website-content {
+            border: 2px solid $main-color;
+            border-radius: 9px;
+
+            img {
+                width: 100%;
+                object-fit: contain;
+            }
+
+            .logo-part {
+                @include flexCenter;
+                flex-direction: column;
+            }
         }
+
     }
+}
+
+.__react_modal_image__modal_content {
+    background-color: rgba(255, 255, 255, 0.473);
+}
+
+.__react_modal_image__modal_content img {
+    background-color: transparent !important;
+    width: fit-content !important;
+    height: fit-content !important;
+}
+
+.__react_modal_image__header {
+    background-color: transparent !important;
 }
