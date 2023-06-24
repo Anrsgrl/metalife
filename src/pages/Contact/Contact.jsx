@@ -9,7 +9,7 @@ const Contact = () => {
     }, []);
     return (
         <div className="contact container py-5">
-            <form action="">
+            <form className='py-4' action="">
                 <h3 className='py-2'>Əlaqə</h3>
                 <div className="row">
                     <div className="form-element col-12 col-md-6"><input type="text" placeholder='Ad' name="name" className='sign-inputs' required /></div>
