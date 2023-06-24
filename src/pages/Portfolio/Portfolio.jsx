@@ -15,7 +15,7 @@ const Portfolio = () => {
         <div className="portfolio py-5 container">
             <div className="row">
                 {PortfolioItems.map((imageList) => (
-                    <PortfolioItem logo={imageList.logo} desktop={imageList.desktop} mobile={imageList.mobile} live={imageList.live} alt={imageList.name} />
+                    <PortfolioItem key={imageList.id} logo={imageList.logo} desktop={imageList.desktop} mobile={imageList.mobile} live={imageList.live} alt={imageList.name} />
                 ))}
             </div>
         </div>
