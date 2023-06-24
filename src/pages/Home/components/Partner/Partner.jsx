@@ -2,9 +2,9 @@ import React from 'react';
 import "./Partner.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Autoplay } from 'swiper';
-import partner1 from "../../../../assets/images/partner-farajov.jpg"
-import partner2 from "../../../../assets/images/partner-caspian.jpg";
-import partner3 from "../../../../assets/images/partner-mogan.jpg";
+import partner1 from "../../../../assets/images/partner-farajov.png"
+import partner2 from "../../../../assets/images/partner-caspian.png";
+import partner3 from "../../../../assets/images/partner-mogan.png";
 
 const Partner = () => {
     return (
