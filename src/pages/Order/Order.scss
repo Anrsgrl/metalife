@@ -1,0 +1,35 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+.order-info {
+    .orders-reverse {
+        flex-direction: row-reverse !important;
+    }
+
+    .single-order-info {
+        @include flexCenter;
+        flex-direction: column;
+        text-align: center;
+        opacity: 0.9;
+        cursor: pointer;
+        height: 250px;
+
+        @media (max-width: 768px) {
+            border-bottom: 1px solid #bebebe;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        svg {
+            fill: $main-color;
+            width: 30%;
+            height: 100%;
+        }
+
+        h4 {
+            color: $main-color;
+        }
+    }
+}
