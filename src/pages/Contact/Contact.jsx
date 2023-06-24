@@ -1,14 +1,6 @@
-import React, { useState } from 'react';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { useEffect } from 'react';
-import InputMask from 'react-input-mask'
-
 const Contact = () => {
-    const [showPass, setShowPass] = useState(false)
-    const [tel, setTel] = useState()
-    const navigate = useNavigate();
     useEffect(() => {
         window.scrollTo({
             top: 0,
