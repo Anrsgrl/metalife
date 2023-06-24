@@ -1,4 +1,5 @@
 import React from 'react';
+import "./OrderInfo.scss";
 import { MdSupportAgent, MdSearch, MdImportantDevices, MdHttps, MdSettingsEthernet, MdEmail } from "react-icons/md";
 import SingleOrderInfo from './SingleOrderInfo';
 

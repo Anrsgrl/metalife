@@ -1,10 +1,13 @@
 import React from 'react';
-import "./Order.scss";
 import OrderInfo from './components/OrderInfo/OrderInfo';
+import OrderPrice from './components/OrderPrice/OrderPrice';
 
 const Order = () => {
     return (
-        <OrderInfo />
+        <div className="order">
+            <OrderInfo />
+            <OrderPrice />
+        </div>
     )
 }
 

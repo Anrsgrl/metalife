@@ -36,7 +36,7 @@ const SignUp = () => {
                                     className='sign-inputs'
                                     mask="+999\-99-999-99-99"
                                     placeholder="+XXX-XX-XXX-XX-XX"
-                                    value={tel}
+                                    value={tel || ''}
                                     onChange={(e) => setTel(e.target.value)}
                                 ></InputMask>
                                 <button type="button" className='clean-button tel-info btn-show'><AiOutlineInfoCircle /></button>
