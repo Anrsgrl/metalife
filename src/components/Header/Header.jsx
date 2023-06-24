@@ -30,7 +30,7 @@ const Header = () => {
         <header className='px-2'>
             <div className="container px-0 py-2">
                 <div className="header-content">
-                    <button onClick={() => openHamburger()} className="hamburger mobile clean-button p-0">
+                    <button type='button' onClick={() => openHamburger()} className="hamburger mobile clean-button p-0">
                         <BiMenuAltLeft />
                     </button>
                     <div className="header-left p-0">
@@ -59,7 +59,7 @@ const Header = () => {
                                                 <li><NavLink to="/lessons" onClick={() => closeHamburger()}>Dərslər</NavLink></li>
                                                 <li>
                                                     <button onClick={() => setDropdown(!dropdown)} className='pb-1 clean-button open-dropdown p-0'>
-                                                        Sayt Sifarişi <span className={dropdown && "rotate-arrow"}><MdKeyboardArrowDown /></span>
+                                                        Sayt Sifarişi <span className={dropdown ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdown ? 'aside-dropdown-open' : 'aside-dropdown'}>
                                                         <NavLink onClick={() => closeHamburger()} to="order">Sifariş et</NavLink>
