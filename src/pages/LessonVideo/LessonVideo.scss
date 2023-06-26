@@ -81,3 +81,7 @@
         object-fit: contain;
     }
 }
+
+iframe:fullscreen {
+    width: 100% !important;
+}
