@@ -1,0 +1,39 @@
+@import "../../../../vendors/mixins";
+@import "../../../../vendors/variables";
+
+.single-lesson-blogs {
+    .lesson-blogs {
+        display: -webkit-box;
+        gap: 15px;
+        overflow-x: auto;
+    }
+
+    h3 {
+        border-bottom: 1px solid #bebebe;
+    }
+}
+
+
+/* width */
+.lesson-blogs::-webkit-scrollbar {
+    height: 5px;
+
+    @media(max-width: 576px) {
+        height: 2px;
+    }
+}
+
+/* Track */
+.lesson-blogs::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.lesson-blogs::-webkit-scrollbar-thumb {
+    background: #4a4ab547;
+}
+
+/* Handle on hover */
+.lesson-blogs::-webkit-scrollbar-thumb:hover {
+    background: #4a4ab579;
+}

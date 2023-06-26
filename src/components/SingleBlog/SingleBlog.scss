@@ -1,0 +1,38 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+.single-blog {
+    overflow: hidden;
+    text-decoration: none;
+    height: 250px;
+    width: 250px;
+    display: flex;
+
+    .blog-content {
+        border: 1px solid $main-color;
+        border-radius: 9px;
+        background-color: white;
+        color: black;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+
+        .blog-top {
+            height: 100%
+        }
+
+        img {
+            @include imageCover;
+            max-height: 160px;
+        }
+
+        .hashtags {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+}

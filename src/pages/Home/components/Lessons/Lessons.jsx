@@ -15,7 +15,7 @@ const Lessons = (props) => {
             <div className="lessons-desktop">
                 <div className="row">
                     {lessonList.slice(0, 6).map((item) => (
-                        <Lesson key={item.id} title={item.title} p={item.describe} image={item.image} />
+                        <Lesson key={item.id} title={item.title} p={item.shortDescribe} image={item.image} path={item.path} />
                     ))}
                 </div>
             </div>

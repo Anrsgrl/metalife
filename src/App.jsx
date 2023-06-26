@@ -12,6 +12,7 @@ import DragButton from './components/DragButton/DragButton';
 import { useRef } from 'react';
 import Order from './pages/Order/Order';
 import Contact from './pages/Contact/Contact';
+import SingleLesson from './pages/SingleLesson/SingleLesson';
 
 function App() {
   const main = useRef();
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
+          <Route path="/lessons/:lessonPath" element={<SingleLesson />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/order" element={<Order />} />
           <Route path="/sign-up" element={<SignUp />} />

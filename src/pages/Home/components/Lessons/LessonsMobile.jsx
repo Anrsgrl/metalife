@@ -18,7 +18,7 @@ const LessonsMobile = () => {
             >
                 {lessonList.slice(0, 6).map((item) => (
                     <SwiperSlide key={item.id}>
-                        <Lesson key={item.id} title={item.title} p={item.describe} image={item.image} />
+                        <Lesson key={item.id} title={item.title} p={item.shortDescribe} image={item.image} path={item.path} />
                     </SwiperSlide>
                 ))}
             </Swiper>

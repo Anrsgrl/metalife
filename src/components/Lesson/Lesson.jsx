@@ -1,8 +1,10 @@
 import React from 'react';
-import { AiOutlinePlayCircle } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 const Lesson = (props) => {
-    const { image, title, p } = props;
+    const { image, title, p, path } = props;
+    const navigate = useNavigate()
     return (
         <div data-aos="fade-up" className="col-9 col-md-5 col-lg-3 skeleton-loader me-0 me-md-4 mb-4 p-0 lesson">
             <img src={image} alt="design" />
@@ -13,7 +15,7 @@ const Lesson = (props) => {
                 </p>
             </div>
             <div className="lesson-footer">
-                <button className='clean-button p-3'>Dərsi izlə <AiOutlinePlayCircle /></button>
+                <button onClick={() => navigate(`/lessons/${path}`)} className='clean-button p-3'>Daha çox <AiOutlineRight /></button>
             </div>
         </div>
     )

@@ -156,3 +156,12 @@ ul {
     background-position-x: -200%;
   }
 }
+
+.hashtags {
+  a {
+    text-decoration: none;
+    color: rgba(33, 37, 41, 0.75);
+    font-style: italic;
+    font-size: 13px;
+  }
+}
