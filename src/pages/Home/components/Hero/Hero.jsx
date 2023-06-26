@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Hero.scss";
-import vector from "../../../../assets/images/vector6.svg";
+import vector from "../../../../assets/images/hero-vector.svg";
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
@@ -14,7 +14,7 @@ const Hero = () => {
                     <button onClick={() => navigate("/lessons")} data-aos="fade-right" className="btn-blue mt-3">Öyrənməyə başla</button>
                 </div>
                 <div className="hero-vector skeleton-loading">
-                    <img data-aos="fade" className='w-100' src={vector} alt="vector" />
+                    <img data-aos="fade-left" className='w-100' src={vector} alt="vector" />
                 </div>
             </div>
         </div>
