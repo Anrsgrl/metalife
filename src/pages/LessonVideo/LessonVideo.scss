@@ -84,6 +84,6 @@
 
 iframe:fullscreen {
     height: calc(100vh - 4px) !important;
-    width: calc(100vw - 4px) !important;
+    width: 80% !important;
     object-fit: cover;
 }
