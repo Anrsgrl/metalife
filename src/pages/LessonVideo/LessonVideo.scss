@@ -83,5 +83,7 @@
 }
 
 iframe:fullscreen {
-    width: 100% !important;
+    height: calc(100vh - 4px) !important;
+    width: calc(100vw - 4px) !important;
+    object-fit: cover;
 }
