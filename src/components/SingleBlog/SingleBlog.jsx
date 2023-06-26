@@ -1,11 +1,12 @@
 import React from 'react';
 import "./SingleBlog.scss";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SingleBlog = (props) => {
     const { image, title } = props;
+    const navigate = useNavigate()
     return (
-        <Link to={"/blog/demo"} className="single-blog">
+        <button type='button' onClick={() => navigate("/blogs")} className="clean-button single-blog">
             <div className="blog-content">
                 <div className="blog-top">
                     <img src={image} alt="blog" />
@@ -17,7 +18,7 @@ const SingleBlog = (props) => {
                     <Link to="/blog/https">#https</Link>
                 </div>
             </div>
-        </Link>
+        </button>
     )
 }
 

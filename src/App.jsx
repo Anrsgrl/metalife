@@ -13,6 +13,7 @@ import { useRef } from 'react';
 import Order from './pages/Order/Order';
 import Contact from './pages/Contact/Contact';
 import SingleLesson from './pages/SingleLesson/SingleLesson';
+import LessonVideo from './pages/LessonVideo/LessonVideo';
 
 function App() {
   const main = useRef();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
           <Route path="/lessons/:lessonPath" element={<SingleLesson />} />
+          <Route path="/lessons/:lessonPath/videos" element={<LessonVideo />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/order" element={<Order />} />
           <Route path="/sign-up" element={<SignUp />} />

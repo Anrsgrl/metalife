@@ -20,7 +20,7 @@ const Lessons = (props) => {
                 </div>
             </div>
             <LessonsMobile />
-            {show && <button data-aos="fade-up" onClick={() => navigate("lessons")} className='show-more clean-button'>Daha çox göstər <VscDebugStart /></button>}
+            {show && <button data-aos="fade-up" onClick={() => navigate("/lessons")} className='show-more clean-button'>Daha çox göstər <VscDebugStart /></button>}
         </div>
     )
 }

@@ -7,6 +7,7 @@ import SingleLessonBlogs from './components/SingleLessonBlogs/SingleLessonBlogs'
 
 const SingleLesson = () => {
     const { lessonPath } = useParams();
+    // console.log(lessonPath)
     const lesson = lessonList.find((lesson) => lesson.path === lessonPath);
     const { image, describe, title } = lesson;
     const navigate = useNavigate()
@@ -33,7 +34,7 @@ const SingleLesson = () => {
                     </p>
                     <div className="single-lesson-buttons">
                         <button type="button" className='btn-blue'>Dərsi al</button>
-                        <button type="button" className='btn-white'>Pulsuz dərsləri izlə</button>
+                        <button onClick={() => navigate(`/lessons/${lessonPath}/videos`)} type="button" className='btn-white'>Pulsuz dərsləri izlə</button>
                     </div>
                 </div>
             </div>
