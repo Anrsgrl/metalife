@@ -4,6 +4,14 @@
 .single-lesson {
     text-align: left;
 
+    .back {
+        svg {
+            width: 25px;
+            height: 25px;
+            color: $main-color;
+        }
+    }
+
     h2 {
         font-size: 35px;
         font-weight: 700;
