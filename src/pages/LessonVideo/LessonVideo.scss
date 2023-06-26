@@ -3,8 +3,6 @@
 
 
 .lesson-videos {
-    min-height: 55vh;
-
     h3 {
         color: $main-color;
         font-weight: 600;
@@ -19,7 +17,7 @@
 
         @media(max-width: 768px) {
             width: 100% !important;
-            height: 170px !important;
+            height: 235px !important;
         }
     }
 
@@ -82,7 +80,7 @@
         object-fit: contain;
 
         @media(max-width: 768px) {
-            height: 168px !important;
+            height: 233px !important;
         }
     }
 }
