@@ -14,6 +14,8 @@ import Order from './pages/Order/Order';
 import Contact from './pages/Contact/Contact';
 import SingleLesson from './pages/SingleLesson/SingleLesson';
 import LessonVideo from './pages/LessonVideo/LessonVideo';
+import User from './pages/User/User';
+import Error from './pages/Error/Error';
 
 function App() {
   const main = useRef();
@@ -32,6 +34,8 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/user/:userName" element={<User />} />
+          <Route path="/*" element={<Error />} />
         </Routes>
       </main>
       <Footer />
