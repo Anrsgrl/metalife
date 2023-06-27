@@ -17,7 +17,7 @@ export const videos = [
     {
         id: 4,
         image: "https://www.classicinformatics.com/hubfs/full-stack%20developer.png",
-        url: "https://images.yourstory.com/cs/1/6b460cd040d711e994bbefffe3577d8b/full-stack-web-development-1586433444650.png",
+        url: "https://www.youtube.com/watch?v=nPVKHXumXP4",
         category: "fullstack",
         demo: true,
     },

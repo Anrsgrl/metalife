@@ -18,7 +18,11 @@ const LessonVideo = () => {
                 <div className="demo-videos py-3">
                     {video.length === 0 && <h5 className='py-2'>Yaxın zamanda əlavə olunacaq...</h5>}
                     {video && video.map((e) => (
-                        <ReactPlayer light={<img src={e.image} alt='Thumbnail' />} url={e.url} controls={true} className="single-video" />
+                        <ReactPlayer light={<img src={e.image} alt='Thumbnail' />} url={e.url} controls={true} className="single-video" config={{
+                            playerOptions: {
+                                playsinline: true
+                            }
+                        }} />
                     ))}
                 </div>
             </div>
