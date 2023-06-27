@@ -1,0 +1,17 @@
+@import "../../../../vendors/mixins";
+@import "../../../../vendors/variables";
+
+.user{
+    .user-aside{
+        text-align: center;
+        .user-image{
+            background-color: $main-color;
+            border: 1px solid $main-color;
+            border-radius: 50%;
+            overflow: hidden;
+            img{
+                @include imageCover;
+            }
+        }
+    }
+}

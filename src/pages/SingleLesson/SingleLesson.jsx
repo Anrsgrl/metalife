@@ -7,7 +7,6 @@ import SingleLessonBlogs from './components/SingleLessonBlogs/SingleLessonBlogs'
 
 const SingleLesson = () => {
     const { lessonPath } = useParams();
-    // console.log(lessonPath)
     const lesson = lessonList.find((lesson) => lesson.path === lessonPath);
     const { image, describe, title } = lesson;
     const navigate = useNavigate()
