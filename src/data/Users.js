@@ -9,6 +9,6 @@ export const users = [
         mail: "esgerlianar003@gmail.com",
         number: "+994703378525",
         image: boy,
-        lessons: ["frontend", "backend"],
+        lessons: ["frontend", "backend", "3d"],
     }
 ]

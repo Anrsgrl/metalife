@@ -4,7 +4,7 @@ import "./UserAside.scss";
 const UserAside = ({user}) => {
         const { name, surname, username, image } = user;
   return (
-    <div className='user-aside px-5 px-md-2 col-12 col-md-3'>
+    <div className='user-aside px-5 px-md-2 col-12 col-md-4'>
         <div className="user-content row">
             <div className="user-image col-12">
                 <img src={image} alt="boy" />
