@@ -5,15 +5,17 @@ import { BiMenuAltLeft } from "react-icons/bi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { VscAccount } from "react-icons/vsc";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { FiLogOut } from "react-icons/fi";
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Nav from '../Nav/Nav';
 
 
-const Header = () => {
+const Header = ({ authUser, userSignOut, loggedUser }) => {
     const navigate = useNavigate();
     const [hamburger, setHamburger] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+    // const [profileMenu, setProfileMenu] = useState(true)
 
     const openHamburger = () => {
         setHamburger(true)
@@ -25,6 +27,18 @@ const Header = () => {
         setDropdown(false)
         document.body.style.overflow = 'unset';
     }
+
+    console.log("authUser", authUser)
+    console.log("loggedUser", loggedUser)
+
+    // useEffect(() => {
+    //     if (loggedUser !== undefined    ) {
+    //         setProfileMenu(false)
+    //     } else {
+    //         setProfileMenu(true)
+    //     }
+    // }, [])
+
 
     return (
         <header className='px-2'>
@@ -91,18 +105,30 @@ const Header = () => {
                         <button className="account mobile clean-button p-0">
                             <VscAccount />
                         </button>
-                        <div className="desktop-buttons desktop">
+                        <div className="desktop-buttons desktop profile-part">
                             <select name="sort-list" id="sort-list">
                                 <option value="aze">AZE</option>
                                 <option value="en">EN</option>
                                 <option value="ru">RU</option>
                             </select>
-                            <button onClick={() => navigate("/sign-in")} className="sign-in px-3 clean-button">
-                                Giriş
-                            </button>
-                            <button onClick={() => navigate("/sign-up")} className="clean-button sign-up p-2">
-                                Qeydiyyat
-                            </button>
+                            {authUser === null ?
+                                (<>
+                                    <button onClick={() => navigate("/sign-in")} className="sign-in px-3 clean-button">
+                                        Giriş
+                                    </button>
+                                    <button onClick={() => navigate("/sign-up")} className="clean-button sign-up p-2">
+                                        Qeydiyyat
+                                    </button>
+                                </>)
+                                :
+                                (
+                                    <div className='username-part'>
+                                        <Link to={`/user/${loggedUser?.username}`} className='px-2'>{loggedUser?.username}</Link>
+                                        <button onClick={() => userSignOut()} className='clean-button'> <FiLogOut /></button>
+                                    </div>
+                                )
+
+                            }
                         </div>
                     </div>
                 </div>

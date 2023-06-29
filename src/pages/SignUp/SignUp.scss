@@ -38,6 +38,8 @@
 
 .form-element {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .tel-info:is(:hover, :focus)~.tel-modal {

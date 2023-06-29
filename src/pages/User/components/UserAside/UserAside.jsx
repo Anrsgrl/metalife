@@ -1,13 +1,14 @@
 import React from 'react';
 import "./UserAside.scss";
+import boy from "../../../../assets/images/boy.png"
 
 const UserAside = ({ user }) => {
-  const { name, surname, username, image } = user;
+  const { name, surname, username } = user;
   return (
     <div className='user-aside px-5 px-md-2 col-12 col-md-4'>
       <div className="user-content row">
         <div className="user-image col-12">
-          <img src={image} alt="boy" />
+          <img src={boy} alt="boy" />
         </div>
         <h3 className='col-12 py-1'>{name} {surname}</h3>
         <h4 className='col-12 text-muted'>{username}</h4>

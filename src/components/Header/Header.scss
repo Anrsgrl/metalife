@@ -53,6 +53,21 @@ header {
 
             }
 
+            .profile-part {
+                @include flexCenter;
+
+                .username-part {
+                    @include flexCenter;
+                    border-left: 1px solid #bebebe;
+
+                    a,
+                    svg {
+                        color: $main-color;
+                        text-decoration: none;
+                    }
+                }
+            }
+
             .desktop-buttons {
                 select {
                     @include cleanButton;

@@ -3,16 +3,45 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import login from "../../assets/images/login.svg";
 import forget from "../../assets/images/forgot-pass.svg";
 import { useEffect } from 'react';
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { useNavigate } from 'react-router';
 
-const SignIn = () => {
+const SignIn = ({ loggedUser }) => {
     const [showPass, setShowPass] = useState(false);
     const [forgot, setForgot] = useState(false);
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const navigate = useNavigate()
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
             behavior: "auto",
         });
     }, []);
+
+    console.log("ss", loggedUser?.username)
+
+    const signIn = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+            .then((e) => {
+                console.log(e)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    const handleSignIn = async (e) => {
+        await signIn(e);
+        console.log("a", loggedUser)
+        navigate(`/`);
+    }
+
     return (
         <div className="sign-field py-4 container">
             {!forgot ? (
@@ -22,11 +51,13 @@ const SignIn = () => {
                     </div>
                     <div className="col-12 col-lg-6 py-3 py-lg-0">
                         <h3 className='py-2'>Giriş</h3>
-                        <form action="">
+                        <form onSubmit={(e) => { handleSignIn(e) }} action="">
                             <div className="row">
-                                <div className="form-element col-12"><input type="text" placeholder='İstifadəçi adı' name="username" className='sign-inputs' required /></div>
                                 <div className="form-element col-12">
-                                    <input type={showPass ? "text" : "password"} placeholder='Şifrə' name="password" className='pe-5 sign-inputs' required />
+                                    <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder='E-poçt' name="email" className='sign-inputs' required />
+                                </div>
+                                <div className="form-element col-12">
+                                    <input onChange={(e) => setPassword(e.target.value)} type={showPass ? "text" : "password"} placeholder='Şifrə' name="password" className='pe-5 sign-inputs' required />
                                     <button onClick={() => setShowPass(!showPass)} type='button' className='clean-button btn-show'>{showPass ? (<FaRegEyeSlash />) : (<FaRegEye />)}</button>
                                 </div>
                             </div>

@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UserAside from './components/UserAside/UserAside';
 import { useNavigate, useParams } from 'react-router-dom';
-import { users } from '../../data/Users';
 import UserProducts from './components/UserProducts/UserProducts';
 import { useEffect } from 'react';
 
-const User = () => {
+
+const User = ({ loggedUser }) => {
   const { userName } = useParams();
-  const navigate = useNavigate();
-  const user = users.find((user) => user.username === userName);
+  const [show, setShow] = useState(false)
+  const navigate = useNavigate()
+
+  // *
+  // ? asgjkagsj
+  // ! 
+  // TODO - DO IT FIRST
+
   useEffect(() => {
-    if (!user) {
-      navigate('/*')
+    if (loggedUser?.username !== userName) {
+      navigate("/*")
+    } else {
+      setShow(true)
     }
-  })
+  }, [])
+
   return (
     <div className="user container py-5">
       <div className="row">
-        {user && <>
-          <UserAside user={user} />
-          <UserProducts user={user} />
+        {!show && <div>cant find</div>}
+        {show && <>
+          <UserAside user={loggedUser} />
+          <UserProducts user={loggedUser} />
         </>}
       </div>
     </div>
