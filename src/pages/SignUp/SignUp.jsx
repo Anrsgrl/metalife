@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 
 
-const SignUp = () => {
+const SignUp = ({ loggedUser }) => {
     const [showPass, setShowPass] = useState(false)
 
     const [mobile, setMobile] = useState();
@@ -36,19 +36,14 @@ const SignUp = () => {
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {
                 setErrorType("email");
-                // or optionally show a notification to the user
             } else if (error.code === "auth/invalid-email") {
                 alert("Invalid email address.");
-                // or optionally show a notification to the user
             } else if (error.code === "auth/operation-not-allowed") {
                 alert("Operation not allowed.");
-                // or optionally show a notification to the user
             } else if (error.code === "auth/weak-password") {
                 setErrorType("pass")
-                // or optionally show a notification to the user
             } else {
-                alert("An error occurred:", error);
-                // or optionally show a general error message to the user
+                console.log("An error occurred:", error);
             }
         }
 
@@ -61,7 +56,10 @@ const SignUp = () => {
             top: 0,
             behavior: "auto",
         });
-    }, []);
+        if (loggedUser) {
+            navigate('/')
+        }
+    }, [loggedUser, navigate]);
 
 
 

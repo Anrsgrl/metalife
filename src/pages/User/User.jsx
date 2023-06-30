@@ -10,11 +10,6 @@ const User = ({ loggedUser }) => {
   const [show, setShow] = useState(false)
   const navigate = useNavigate()
 
-  // *
-  // ? asgjkagsj
-  // ! 
-  // TODO - DO IT FIRST
-
   useEffect(() => {
     if (loggedUser?.username !== userName) {
       navigate("/*")

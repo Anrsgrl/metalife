@@ -84,7 +84,7 @@ function App() {
           <Route path="/lessons/:lessonPath/videos" element={<LessonVideo />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/order" element={<Order />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-up" element={<SignUp loggedUser={loggedUser} />} />
           <Route path="/sign-in" element={<SignIn loggedUser={loggedUser} />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/user/:userName" element={<User loggedUser={loggedUser} />} />

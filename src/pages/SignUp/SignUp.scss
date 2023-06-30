@@ -40,6 +40,11 @@
     position: relative;
     display: flex;
     flex-direction: column;
+
+    a {
+        color: $main-color;
+        text-decoration: none;
+    }
 }
 
 .tel-info:is(:hover, :focus)~.tel-modal {
