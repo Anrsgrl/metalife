@@ -12,11 +12,8 @@
             .user-image {
                 aspect-ratio: 1/1;
                 overflow: hidden;
-
-                @media(max-width: 992px) {
-                    max-width: 448px;
-                    max-height: 424px;
-                }
+                max-width: 448px;
+                max-height: 424px;
 
                 img {
                     @include imageCover;

@@ -110,7 +110,7 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
                         <button
                             onClick={() => openProfile()}
                             className="account mobile clean-button p-0">
-                            {auth?.currentUser ? (<img src={auth?.currentUser?.photoURL} alt="logo" />) : (<VscAccount />)}
+                            {auth?.currentUser?.photoURL ? (<img src={auth?.currentUser?.photoURL} alt="logo" />) : (<VscAccount />)}
                         </button>
                         <AccountAside loggedUser={loggedUser} profileMenu={profileMenu} setProfileMenu={setProfileMenu} userSignOut={userSignOut} />
                         <div className="desktop-buttons desktop profile-part">

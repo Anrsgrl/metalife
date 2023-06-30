@@ -1,6 +1,7 @@
 import React from 'react';
 import "./UserAside.scss";
 import { auth } from "../../../../firebase";
+import boy from "../../../../assets/images/boy.png";
 import { useNavigate } from 'react-router-dom';
 
 const UserAside = ({ user }) => {
@@ -10,7 +11,11 @@ const UserAside = ({ user }) => {
     <div className='user-aside px-5 px-md-2 col-12 col-lg-4'>
       <div className="user-content row">
         <div className="user-image col-12">
-          <img src={auth?.currentUser?.photoURL} alt="boy" />
+          {auth?.currentUser?.photoURL ? (
+            <img src={auth?.currentUser?.photoURL} alt="profile" />
+          ) : (
+            <img src={boy} alt="profile" />
+          )}
         </div>
         <h3 className='col-12 py-1'>{name} {surname}</h3>
         <h4 className='col-12 text-muted'>{username}</h4>

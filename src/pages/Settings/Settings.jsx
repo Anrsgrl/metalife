@@ -3,6 +3,7 @@ import { auth, uploadProfilePhoto } from "../../firebase";
 import { MdManageAccounts } from "react-icons/md";
 import { updateProfile } from '@firebase/auth';
 import "./components/UserSettings/UserSettings.scss";
+import boy from "../../assets/images/boy.png";
 
 const Settings = ({ loggedUser }) => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -63,7 +64,11 @@ const Settings = ({ loggedUser }) => {
                                 <button className='btn-blue ' onClick={handleUpload}>Yüklə</button>
                             </div>
                             <div className="user-image">
-                                <img src={auth?.currentUser?.photoURL} alt="boy" />
+                                {auth?.currentUser?.photoURL ? (
+                                    <img src={auth?.currentUser?.photoURL} alt="profile" />
+                                ) : (
+                                    <img src={boy} alt="profile" />
+                                )}
                             </div>
                         </div>
                     </div>
