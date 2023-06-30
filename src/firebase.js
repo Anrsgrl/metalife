@@ -1,18 +1,31 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
-import { getAuth } from "@firebase/auth";
+import { getAuth, updateProfile } from "@firebase/auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA3tPwLbt8uAq_MR9g7L0kFZyg2jWbU5JM",
-    authDomain: process.env.AUTH_DOMAIN,
-    projectId: "metalife-e327e",
-    storageBucket: process.env.STORAGE_BUCKET,
-    messagingSenderId: process.env.MESSAGING_SENDER_ID,
-    appId: process.env.APP_ID,
-    measurementId: process.env.MEASUREMENT_ID
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
+// Firebase'i başlat
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
-export const auth = getAuth(app)
+export const auth = getAuth(app);
+export const storage = getStorage();
+
+export async function uploadProfilePhoto(file, currentUser) {
+    const fileRef = ref(storage, `profile-images/${currentUser.uid}.png`);
+
+    await uploadBytes(fileRef, file);
+    const photoURL = await getDownloadURL(fileRef);
+
+    await updateProfile(auth.currentUser, { photoURL });
+
+    return photoURL;
+}

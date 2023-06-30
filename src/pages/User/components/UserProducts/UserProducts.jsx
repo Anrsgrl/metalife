@@ -8,7 +8,7 @@ const UserProducts = ({ user }) => {
   const userLessons = lessonList.filter((e) => user?.lessons?.includes(e.path))
   const navigate = useNavigate();
   return (
-    <div className="user-products py-5 px-5 col-12 col-md-8">
+    <div className="user-products py-5 px-5 col-12 col-lg-8">
       <h2 className='pb-2'>Aldığınız dərslər</h2>
       {user &&
         <div className="row">

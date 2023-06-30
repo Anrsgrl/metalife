@@ -1,0 +1,73 @@
+@import "../../../../vendors/mixins";
+@import "../../../../vendors/variables";
+
+
+.settings {
+    .setting-names {
+        .names-content {
+            li {
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+            }
+        }
+
+    }
+
+    .change-profile {
+        @include flexBetween;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        @media(max-width: 576px) {
+            justify-content: center !important;
+        }
+
+        .change-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            @media(max-width: 576px) {
+                justify-content: center !important;
+            }
+
+            .single-input {
+                @include flexCenter;
+                gap: 5px;
+
+                @media(max-width: 576px) {
+                    flex-direction: column;
+                }
+            }
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid $main-color;
+            color: $main-color;
+            border-radius: 4px;
+        }
+
+        .user-image {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+
+            max-width: 248px;
+            max-height: 224px;
+
+            @media(max-width: 992px) {
+                max-width: 248px;
+                max-height: 224px;
+            }
+
+            img {
+                @include imageCover;
+                border: 1px solid $main-color;
+                border-radius: 50%;
+            }
+        }
+    }
+}

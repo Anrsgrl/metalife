@@ -22,6 +22,7 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore";
+import Settings from './pages/Settings/Settings';
 
 function App() {
   const main = useRef();
@@ -88,6 +89,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn loggedUser={loggedUser} />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/user/:userName" element={<User loggedUser={loggedUser} />} />
+          <Route path="/settings" element={<Settings loggedUser={loggedUser} />} />
           <Route path="/*" element={<Error />} />
         </Routes>
       </main>
