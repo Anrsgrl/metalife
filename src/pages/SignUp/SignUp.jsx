@@ -12,7 +12,7 @@ import {
     collection,
     addDoc,
 } from "firebase/firestore";
-
+import { updateProfile } from '@firebase/auth';
 
 const SignUp = ({ loggedUser }) => {
     const [showPass, setShowPass] = useState(false)
@@ -32,6 +32,9 @@ const SignUp = ({ loggedUser }) => {
             await createUserWithEmailAndPassword(auth, email, password);
             console.log("User created");
             addDoc(userssCollectionRef, { name, surname, username, email, password, mobile });
+            updateProfile(auth.currentUser, {
+                displayName: username
+            })
             navigate('/')
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {

@@ -9,13 +9,15 @@ import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Nav from '../Nav/Nav';
+import AccountAside from '../AccountAside/AccountAside';
+import { auth } from '../../firebase';
 
 
 const Header = ({ authUser, userSignOut, loggedUser }) => {
     const navigate = useNavigate();
     const [hamburger, setHamburger] = useState(false);
     const [dropdown, setDropdown] = useState(false);
-    // const [profileMenu, setProfileMenu] = useState(true)
+    const [profileMenu, setProfileMenu] = useState(false)
 
     const openHamburger = () => {
         setHamburger(true)
@@ -28,8 +30,10 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
         document.body.style.overflow = 'unset';
     }
 
-    console.log("authUser", authUser)
-    console.log("loggedUser", loggedUser)
+    const openProfile = () => {
+        setProfileMenu(true)
+        document.body.style.overflow = 'hidden';
+    }
 
     // useEffect(() => {
     //     if (loggedUser !== undefined    ) {
@@ -55,6 +59,7 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
                             <AnimatePresence>
                                 {hamburger &&
                                     <motion.aside key={hamburger}
+                                        style={{ left: 0 }}
                                         initial={{ left: -200, opacity: 0 }}
                                         animate={{ left: 0, opacity: 1 }}
                                         exit={{ left: -200, opacity: 0 }}
@@ -102,9 +107,12 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
                         <li><NavLink to="/contact">Əlaqə</NavLink></li>
                     </ul>
                     <div className="header-profile">
-                        <button className="account mobile clean-button p-0">
-                            <VscAccount />
+                        <button
+                            onClick={() => openProfile()}
+                            className="account mobile clean-button p-0">
+                            {auth?.currentUser ? (<img src={auth?.currentUser?.photoURL} alt="logo" />) : (<VscAccount />)}
                         </button>
+                        <AccountAside loggedUser={loggedUser} profileMenu={profileMenu} setProfileMenu={setProfileMenu} userSignOut={userSignOut} />
                         <div className="desktop-buttons desktop profile-part">
                             <select name="sort-list" id="sort-list">
                                 <option value="aze">AZE</option>
