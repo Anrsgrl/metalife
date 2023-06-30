@@ -14,6 +14,7 @@ const firebaseConfig = {
 };
 
 // Firebase'i başlat
+// updated
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
 export const auth = getAuth(app);
