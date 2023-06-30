@@ -21,7 +21,7 @@ const User = ({ loggedUser }) => {
     } else {
       setShow(true)
     }
-  }, [])
+  }, [loggedUser, navigate, userName])
 
   return (
     <div className="user container py-5">

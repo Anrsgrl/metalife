@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./LessonVideo.scss";
 import { useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBack } from "react-icons/ti";
@@ -13,13 +13,12 @@ import {
 const LessonVideo = () => {
     const params = useParams();
     const navigate = useNavigate();
-    // const video = videos.filter((e) => e.category === params.lessonPath && e.demo === true)
-    const videosCollectionRef = collection(db, "videos");
+    const videosCollectionRef = useRef(collection(db, "videos"));
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
         const getVideos = async () => {
-            const data = await getDocs(videosCollectionRef);
+            const data = await getDocs(videosCollectionRef.current);
             setVideos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getVideos();
