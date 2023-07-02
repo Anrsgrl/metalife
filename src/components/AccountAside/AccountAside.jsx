@@ -25,7 +25,7 @@ const AccountAside = ({ loggedUser, profileMenu, setProfileMenu, userSignOut }) 
                         }} >
                         <button className='close-button clean-button' onClick={() => closeProfile()}><AiOutlineCloseCircle /></button>
                         <div className="aside-content align-items-center">
-                            {auth?.currentUser?.photoURL ? (<img className='w-50 h-50 border rounded-circle' src={auth?.currentUser?.photoURL} alt="logo" />) :
+                            {auth?.currentUser?.photoURL ? (<img className='w-50 h-50 border rounded-circle' style={{ aspectRatio: "1/1" }} src={auth?.currentUser?.photoURL} alt="logo" />) :
                                 (<VscAccount className='main-color' style={{ width: "100%", height: "100%" }} />)}
                             <ul className='aside-ul pt-2 align-items-center'>
                                 {auth?.currentUser ? (
