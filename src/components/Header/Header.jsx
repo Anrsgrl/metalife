@@ -35,15 +35,6 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
         document.body.style.overflow = 'hidden';
     }
 
-    // useEffect(() => {
-    //     if (loggedUser !== undefined    ) {
-    //         setProfileMenu(false)
-    //     } else {
-    //         setProfileMenu(true)
-    //     }
-    // }, [])
-
-
     return (
         <header className='px-2'>
             <div className="container px-0 py-2">
