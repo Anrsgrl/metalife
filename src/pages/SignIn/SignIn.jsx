@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
+
+import { auth } from "../../firebase";
 import login from "../../assets/images/login.svg";
 import forget from "../../assets/images/forgot-pass.svg";
-import { useEffect } from 'react';
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from '@firebase/auth';
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
 
 const SignIn = ({ loggedUser }) => {
     const [showPass, setShowPass] = useState(false);
     const [forgot, setForgot] = useState(false);
-    const [errorType, setErrorType] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [errorType, setErrorType] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo({
@@ -23,12 +22,9 @@ const SignIn = ({ loggedUser }) => {
             behavior: "auto",
         });
         if (loggedUser) {
-            navigate('/')
+            navigate('/');
         }
     }, [loggedUser, navigate]);
-
-    console.log("ss", loggedUser?.username)
-    console.log("error", errorType)
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -51,7 +47,6 @@ const SignIn = ({ loggedUser }) => {
         }
     };
 
-
     return (
         <div className="sign-field py-4 container">
             {!forgot ? (
@@ -61,7 +56,7 @@ const SignIn = ({ loggedUser }) => {
                     </div>
                     <div className="col-12 col-lg-6 py-3 py-lg-0">
                         <h3 className='py-2'>Giriş</h3>
-                        <form onSubmit={(e) => { handleSignIn(e) }} action="">
+                        <form onSubmit={handleSignIn} action="">
                             <div className="row">
                                 <div className="form-element col-12">
                                     <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder='E-poçt' name="email" className='sign-inputs' required />
@@ -102,7 +97,7 @@ const SignIn = ({ loggedUser }) => {
                 </div>
             )}
         </div>
-    )
+    );
 }
 
 export default SignIn;

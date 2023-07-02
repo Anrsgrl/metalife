@@ -31,12 +31,12 @@ const AccountAside = ({ loggedUser, profileMenu, setProfileMenu, userSignOut }) 
                                 {auth?.currentUser ? (
                                     <>
                                         <li><NavLink className="main-color" to={`/user/${loggedUser?.username}`} onClick={() => closeProfile()}>{loggedUser?.username}</NavLink></li>
-                                        <li><button onClick={() => userSignOut()} className="clean-button">Sign out</button></li>
+                                        <li><button onClick={() => userSignOut()} className="clean-button">Çıxış</button></li>
                                     </>
                                 ) : (
                                     <>
-                                        <li><NavLink to="/sign-up" className="main-color" onClick={() => closeProfile()}>Sign up</NavLink></li>
-                                        <li><NavLink to="/sign-in" className="main-color" onClick={() => closeProfile()}>Sign in</NavLink></li>
+                                        <li><NavLink to="/sign-up" className="main-color" onClick={() => closeProfile()}>Qeydiyyat</NavLink></li>
+                                        <li><NavLink to="/sign-in" className="main-color" onClick={() => closeProfile()}>Giriş</NavLink></li>
                                     </>
                                 )}
                             </ul>
