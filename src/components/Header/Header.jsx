@@ -77,8 +77,6 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
                                                     </ul>
                                                 </li>
                                                 <li><NavLink to="/contact" onClick={() => closeHamburger()}>Əlaqə</NavLink></li>
-                                                <li><NavLink to="/sign-in" onClick={() => closeHamburger()}>Giriş</NavLink></li>
-                                                <li><NavLink to="/sign-up" onClick={() => closeHamburger()}>Qeydiyyat</NavLink></li>
                                             </ul>
                                         </div>
                                     </motion.aside>}
