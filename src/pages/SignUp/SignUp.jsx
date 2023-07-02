@@ -48,7 +48,7 @@ const SignUp = ({ loggedUser }) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             alert("User created");
-            addDoc(userssCollectionRef, { name, surname, username, email, password, mobile });
+            addDoc(userssCollectionRef, { name, surname, username, email, mobile });
             updateProfile(auth.currentUser, {
                 displayName: username
             });
