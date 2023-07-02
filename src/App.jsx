@@ -70,6 +70,9 @@ function App() {
     findUser();
   }, [userData, authUser]);
 
+  console.log(authUser)
+  console.log(loggedUser)
+
   return (
     <>
       <Header authUser={authUser} userSignOut={userSignOut} loggedUser={loggedUser} />

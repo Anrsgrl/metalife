@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import { db, auth } from "../../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
 const SignUp = ({ loggedUser }) => {
     const [showPass, setShowPass] = useState(false);
@@ -29,8 +29,22 @@ const SignUp = ({ loggedUser }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const checkUsernameAvailability = async (username) => {
+        const q = query(userssCollectionRef, where("username", "==", username));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.empty;
+    };
+
     const signUp = async (e) => {
         e.preventDefault();
+
+        const usernameAvailable = await checkUsernameAvailability(username);
+
+        if (!usernameAvailable) {
+            setErrorType("username");
+            return;
+        }
+
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             alert("User created");
@@ -81,10 +95,11 @@ const SignUp = ({ loggedUser }) => {
                                 <input onChange={handleChange} type="text" placeholder='Soyad' name="surname" className='sign-inputs' required />
                             </div>
                             <div className="form-element col-12">
-                                <input onChange={handleChange} type="text" placeholder='İstifadəçi adı' name="username" className='sign-inputs' required />
+                                <input onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value.toLocaleLowerCase() })} type="text" placeholder='İstifadəçi adı' name="username" className={errorType === "username" ? 'sign-inputs mb-2 border-danger' : 'sign-inputs'} required />
+                                {errorType === "username" && <p className='text-danger'>Bu istifadəçi adı artıq mövcuddur.</p>}
                             </div>
                             <div className="form-element col-12">
-                                <input onChange={handleChange} type="email" placeholder='E-poçt' name="email" className={errorType === "email" ? 'sign-inputs mb-2 border-danger' : 'sign-inputs'} required />
+                                <input onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value.toLocaleLowerCase() })} type="email" placeholder='E-poçt' name="email" className={errorType === "email" ? 'sign-inputs mb-2 border-danger' : 'sign-inputs'} required />
                                 {errorType === "email" && <p className='text-danger'>Bu emaildən istifadə olunmuşdur.</p>}
                             </div>
                             <div className="form-element col-12">
