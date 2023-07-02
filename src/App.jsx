@@ -18,30 +18,27 @@ import User from './pages/User/User';
 import Error from './pages/Error/Error';
 import { onAuthStateChanged, signOut } from '@firebase/auth';
 import { auth, db } from './firebase';
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import Settings from './pages/Settings/Settings';
 
 function App() {
   const main = useRef();
-  const [userData, setUserData] = useState([])
-  const [authUser, setAuthUser] = useState(null)
-  const [loggedUser, setLoggedUser] = useState(null)
-
-  // const usersCollectionRef = collection(db, "users");
-  const navigate = useNavigate()
+  const [userData, setUserData] = useState([]);
+  const [authUser, setAuthUser] = useState(null);
+  const [loggedUser, setLoggedUser] = useState(null);
+  const navigate = useNavigate();
 
   const userSignOut = () => {
-    signOut(auth).then(() => {
-      console.log("sign out")
-      navigate('/')
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
-  console.log("userData", userData)
+    signOut(auth)
+      .then(() => {
+        console.log("sign out");
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const usersCollectionRef = useRef(collection(db, "users"));
 
   useEffect(() => {
