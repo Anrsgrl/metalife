@@ -3,21 +3,35 @@
 
 
 .lesson-videos {
+    a {
+        text-decoration: none;
+        color: $main-color;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     h3 {
         color: $main-color;
         font-weight: 600;
         border-bottom: 1px solid #bebebe;
     }
 
-    .single-video {
-        position: relative;
-        width: 640px;
-        height: 360px;
-        background-color: white;
+    .single-video-part {
+        display: flex;
+        flex-direction: column;
 
-        @media(max-width: 768px) {
-            width: 100% !important;
-            height: 235px !important;
+        .single-video {
+            position: relative;
+            width: 640px;
+            height: 360px;
+            background-color: white;
+
+            @media(max-width: 768px) {
+                width: 100% !important;
+                height: 235px !important;
+            }
         }
     }
 

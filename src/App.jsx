@@ -64,11 +64,13 @@ function App() {
 
   useEffect(() => {
     const findUser = () => {
-      setLoggedUser(userData.find((e) => e.email === authUser?.email));
+      setLoggedUser(userData?.find((e) => e.email === authUser?.email));
     };
 
     findUser();
   }, [userData, authUser]);
+
+  console.log(authUser)
 
   return (
     <>
@@ -78,8 +80,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
-          <Route path="/lessons/:lessonPath" element={<SingleLesson />} />
-          <Route path="/lessons/:lessonPath/videos" element={<LessonVideo />} />
+          <Route path="/lessons/:lessonPath" element={<SingleLesson authUser={authUser} />} />
+          <Route path="/lessons/:lessonPath/videos" element={<LessonVideo authUser={authUser} />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/order" element={<Order />} />
           <Route path="/sign-up" element={<SignUp loggedUser={loggedUser} />} />

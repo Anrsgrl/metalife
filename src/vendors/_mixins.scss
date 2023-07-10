@@ -1,3 +1,9 @@
+@mixin flex($justify: center) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify;
+}
+
 @mixin flexCenter {
     display: flex;
     align-items: center;
@@ -20,4 +26,28 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@mixin btn($color, $bg) {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: $color;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 12px 40px;
+    text-align: center;
+
+    &:active {
+        box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+        outline: 0;
+    }
 }
