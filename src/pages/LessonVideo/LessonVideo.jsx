@@ -25,9 +25,6 @@ const LessonVideo = ({ authUser }) => {
     }, []);
 
     const paidVideos = videos.filter((e) => e.category === params.lessonPath && e.demo === false);
-    console.log(paidVideos)
-    console.log(videos)
-
     return (
         <div className="lesson-videos container py-3">
             <button onClick={() => navigate(-1)} type="button" className='clean-button back'><TiArrowBack /></button>

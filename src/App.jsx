@@ -70,7 +70,6 @@ function App() {
     findUser();
   }, [userData, authUser]);
 
-  console.log(authUser)
 
   return (
     <>
