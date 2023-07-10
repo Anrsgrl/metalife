@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { auth, uploadProfilePhoto } from "../../firebase";
 import { MdManageAccounts } from "react-icons/md";
-import { updateProfile } from '@firebase/auth';
+import { updateProfile, sendEmailVerification } from '@firebase/auth';
 import "./components/UserSettings/UserSettings.scss";
 import boy from "../../assets/images/boy.png";
+import { Link } from 'react-router-dom';
 
 const Settings = ({ loggedUser }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [profileUrl, setProfileUrl] = useState();
+    const [emailMsg, setEmailMsg] = useState("")
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -39,6 +41,20 @@ const Settings = ({ loggedUser }) => {
         }
     }, [profileUrl]);
 
+    const sendVerification = () => {
+        if (auth.currentUser) {
+            sendEmailVerification(auth.currentUser)
+                .then(() => {
+                    setEmailMsg("success")
+                })
+                .catch((error) => {
+                    setEmailMsg("failed")
+                    console.log("E-poçt göndərmə xətası:", error);
+                });
+        }
+    };
+
+
     return (
         <div className="settings container py-5">
             <h1 className='py-3 section-heading'>Ayarlar</h1>
@@ -56,11 +72,11 @@ const Settings = ({ loggedUser }) => {
                     </ul>
                 </div>
                 <div className="col-lg-9 setting-content d-flex flex-column">
-                    <div className="pp-settings">
+                    <div className="pp-settings py-5">
                         <h3 className='border-bottom pb-2'>Profil şəkli</h3>
                         <div className="change-profile">
                             <div className="change-inputs">
-                                <input type="file" accept=".PNG, .JPEG, .JPG" onChange={handleFileChange} />
+                                <input className='ps-4 ps-lg-0' type="file" accept=".PNG, .JPEG, .JPG" onChange={handleFileChange} />
                                 <button className='btn-blue ' onClick={handleUpload}>Yüklə</button>
                             </div>
                             <div className="user-image">
@@ -70,6 +86,23 @@ const Settings = ({ loggedUser }) => {
                                     <img src={boy} alt="profile" />
                                 )}
                             </div>
+                        </div>
+                    </div>
+                    <div className="email-settings">
+                        <h3 className='border-bottom pb-2'>E-poçt</h3>
+                        <div className="change-profile">
+                            <p className="change-inputs">
+                                {auth?.currentUser?.email}
+                            </p>
+                            {auth?.currentUser?.emailVerified ? (<p className='text-success'>E-poçtunuz təstiqlənmişdir.</p>)
+                                :
+                                (
+                                    <div className='d-flex flex-column'>
+                                        <button onClick={() => sendVerification()} className='btn-blue'>E-poçtu təstiqlə</button>
+                                        {emailMsg === "success" && <p className='text-success py-2'>E-poçt göndərildi</p>}
+                                        {emailMsg === "failed" && <p className='text-danger py-2'>E-poçt göndəriləmmədi. Zəhmət olmasa <Link to="/contact">bizimlə əlaqə saxlayın</Link></p>}
+                                    </div>
+                                )}
                         </div>
                     </div>
                 </div>
