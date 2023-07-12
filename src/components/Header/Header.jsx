@@ -93,6 +93,7 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
                                 <NavLink to="portfolio">İşlərimiz</NavLink>
                             </ul>
                         </li>
+                        <li><NavLink to="/blogs">Blog</NavLink></li>
                         <li><NavLink to="/contact">Əlaqə</NavLink></li>
                     </ul>
                     <div className="header-profile">

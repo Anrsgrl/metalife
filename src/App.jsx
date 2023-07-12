@@ -20,10 +20,13 @@ import { onAuthStateChanged, signOut } from '@firebase/auth';
 import { auth, db } from './firebase';
 import { collection, getDocs } from "firebase/firestore";
 import Settings from './pages/Settings/Settings';
+import Blogs from './pages/Blogs/Blogs';
+import BlogDetail from './pages/Blogs/components/BlogDetail/BlogDetail';
 
 function App() {
   const main = useRef();
   const [userData, setUserData] = useState([]);
+  const [blogs, setBlogs] = useState([])
   const [authUser, setAuthUser] = useState(null);
   const [loggedUser, setLoggedUser] = useState(null);
   const navigate = useNavigate();
@@ -40,6 +43,7 @@ function App() {
   };
 
   const usersCollectionRef = useRef(collection(db, "users"));
+  const blogsCollectionRef = useRef(collection(db, "blogs"));
 
   useEffect(() => {
     const getUsers = async () => {
@@ -70,6 +74,15 @@ function App() {
     findUser();
   }, [userData, authUser]);
 
+  useEffect(() => {
+
+    const getVideos = async () => {
+      const data = await getDocs(blogsCollectionRef.current);
+      setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getVideos();
+  }, []);
+
 
   return (
     <>
@@ -83,6 +96,8 @@ function App() {
           <Route path="/lessons/:lessonPath/videos" element={<LessonVideo authUser={authUser} />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/blogs" element={<Blogs blogs={blogs} />} />
+          <Route path="/blogs/:blogUrl" element={<BlogDetail blogs={blogs} />} />
           <Route path="/sign-up" element={<SignUp loggedUser={loggedUser} />} />
           <Route path="/sign-in" element={<SignIn loggedUser={loggedUser} />} />
           <Route path="/contact" element={<Contact />} />

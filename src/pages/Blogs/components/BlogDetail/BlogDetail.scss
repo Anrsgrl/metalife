@@ -1,0 +1,56 @@
+@import "../../../../vendors/mixins";
+@import "../../../../vendors/variables";
+
+.blog-info {
+    @include flex(space-between);
+
+    @media(max-width: 992px) {
+        font-size: 14px;
+    }
+
+    @media(max-width: 576px) {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    ul {
+        @include flexBetween;
+        font-style: italic;
+        font-size: 12px;
+
+        a {
+            padding-left: 15px;
+            text-decoration: none;
+        }
+    }
+}
+
+.blog-right {
+    @include flex(flex-start, column);
+    gap: 5px;
+
+    @media(max-width: 992px) {
+        display: none;
+    }
+}
+
+.blog-tools {
+    @include flex;
+    gap: 5px;
+}
+
+.blog-footer {
+    @include flex(flex-start);
+    gap: 5px;
+    border-top: 1px solid #bebebe;
+
+    img {
+        object-fit: cover;
+        width: 75px;
+        height: 75px;
+        aspect-ratio: 1/1;
+        padding: 1px;
+        border: 1px solid $main-color;
+        border-radius: 50%;
+    }
+}

@@ -7,11 +7,11 @@ const SingleLessonBlogs = () => {
         <div className="single-lesson-blogs py-5">
             <h3 className='py-1'>Bu mövzu barədə bəzi bloglar</h3>
             <div className="lesson-blogs py-3">
-                <SingleBlog title="Http və Https arasındaki fərqliliklər nədir?" image="https://ithemes.com/wp-content/uploads/2022/11/HTTP-vs-HTTPS.png" />
-                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" />
-                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" />
-                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" />
-                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" />
+                <SingleBlog title="Http və Https arasındaki fərqliliklər nədir?" image="https://ithemes.com/wp-content/uploads/2022/11/HTTP-vs-HTTPS.png" size={true} />
+                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" size={true} />
+                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" size={true} />
+                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" size={true} />
+                <SingleBlog title="CSS3 yoxsa SCSS?" image="https://codersera.com/blog/wp-content/uploads/2020/04/css_vs_scss.jpg" size={true} />
             </div>
         </div>
     )

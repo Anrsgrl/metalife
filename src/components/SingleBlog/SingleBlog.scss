@@ -1,12 +1,14 @@
 @import "../../vendors/mixins";
 @import "../../vendors/variables";
 
-.single-blog {
-    overflow: hidden;
-    text-decoration: none;
+.sm-size {
     height: 250px;
     width: 250px;
-    display: flex;
+}
+
+.single-blog {
+    overflow: hidden;
+    @include flex;
 
     .blog-content {
         border: 1px solid $main-color;
@@ -15,8 +17,8 @@
         color: black;
         overflow: hidden;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
+        flex-direction: column;
         height: 100%;
         width: 100%;
 
