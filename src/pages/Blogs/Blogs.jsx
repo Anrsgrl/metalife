@@ -6,7 +6,6 @@ import { useAuth } from '../../firebase';
 
 const Blogs = () => {
     const { blogs } = useAuth();
-    console.log(blogs)
 
     if (!blogs || blogs.length === 0) {
         return <div className="container py-5">

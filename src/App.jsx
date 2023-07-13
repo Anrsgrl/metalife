@@ -19,14 +19,10 @@ import Error from './pages/Error/Error';
 import Settings from './pages/Settings/Settings';
 import Blogs from './pages/Blogs/Blogs';
 import BlogDetail from './pages/Blogs/components/BlogDetail/BlogDetail';
-import { useAuth } from './firebase';
 
 function App() {
   const main = useRef();
-  const { loggedUser, currentUser, blogs } = useAuth();
-  console.log("loggedUser", loggedUser)
-  console.log("currentUser", currentUser)
-  console.log("blogs", blogs)
+
   return (
     <>
       <Header />

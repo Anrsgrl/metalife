@@ -40,11 +40,10 @@ const Header = () => {
     const userSignOut = () => {
         signOut(auth)
             .then(() => {
-                console.log("sign out");
                 navigate('/');
             })
             .catch((error) => {
-                console.log(error);
+                console.log(error.message);
             });
     };
 
