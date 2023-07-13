@@ -5,12 +5,16 @@ import FadeLoader from "react-spinners/FadeLoader";
 import { MdDateRange } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import SingleBlog from '../../../../components/SingleBlog/SingleBlog';
-const BlogDetail = ({ blogs }) => {
+import { useAuth } from '../../../../firebase';
+const BlogDetail = () => {
+    const { blogs } = useAuth();
     const { blogUrl } = useParams();
     const blog = blogs?.find((blog) => blog?.title.toLowerCase().split(" ").join("-") === blogUrl);
 
-    if (!blog) {
-        return <div className="container"><FadeLoader color="#4A4AB5" /></div>;
+    if (!blog || blog?.length === 0) {
+        return <div className="container py-5">
+            <FadeLoader color="#4A4AB5" />
+        </div>
     }
 
     const { content, blog_image, title, author, author_image, time, hashtags } = blog;

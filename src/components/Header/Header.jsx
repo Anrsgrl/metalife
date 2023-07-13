@@ -10,10 +10,12 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Nav from '../Nav/Nav';
 import AccountAside from '../AccountAside/AccountAside';
-import { auth } from '../../firebase';
+import { auth, useAuth } from '../../firebase';
+import { signOut } from '@firebase/auth';
 
 
-const Header = ({ authUser, userSignOut, loggedUser }) => {
+const Header = () => {
+    const { currentUser, loggedUser } = useAuth();
     const navigate = useNavigate();
     const [hamburger, setHamburger] = useState(false);
     const [dropdown, setDropdown] = useState(false);
@@ -34,6 +36,17 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
         setProfileMenu(true)
         document.body.style.overflow = 'hidden';
     }
+
+    const userSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                console.log("sign out");
+                navigate('/');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     return (
         <header className='px-2'>
@@ -109,7 +122,7 @@ const Header = ({ authUser, userSignOut, loggedUser }) => {
                                 <option value="en">EN</option>
                                 <option value="ru">RU</option>
                             </select>
-                            {authUser === null ?
+                            {currentUser === null ?
                                 (<>
                                     <button onClick={() => navigate("/sign-in")} className="sign-in px-3 clean-button">
                                         Giriş

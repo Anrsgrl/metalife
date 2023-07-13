@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getDocs, getFirestore, doc } from "firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { getDownloadURL, getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
 import { useEffect, useRef, useState } from "react";
@@ -50,7 +50,10 @@ export async function uploadBlogPhoto(file) {
 export function useAuth() {
     const [currentUser, setCurrentUser] = useState(null);
     const [userData, setUserData] = useState([]);
+    const [blogs, setBlogs] = useState([])
+
     const usersCollectionRef = useRef(collection(db, "users"));
+    const blogsCollectionRef = useRef(collection(db, "blogs"));
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -71,10 +74,19 @@ export function useAuth() {
         }
     }, [currentUser]);
 
+    useEffect(() => {
+        const getVideos = async () => {
+            const data = await getDocs(blogsCollectionRef.current);
+            setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getVideos();
+    }, []);
+
     const loggedUser = currentUser ? userData.find((user) => user.email === currentUser.email) : null;
 
-    return { currentUser, loggedUser };
+    return { currentUser, loggedUser, blogs };
 }
+
 
 
 

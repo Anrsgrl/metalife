@@ -5,11 +5,12 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import signUpp from "../../assets/images/sign3.svg";
 import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
-import { db, auth } from "../../firebase";
+import { db, auth, useAuth } from "../../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
-const SignUp = ({ loggedUser }) => {
+const SignUp = () => {
+    const { loggedUser } = useAuth();
     const [showPass, setShowPass] = useState(false);
     const [formData, setFormData] = useState({
         mobile: null,

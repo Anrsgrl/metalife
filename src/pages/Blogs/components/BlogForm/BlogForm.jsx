@@ -5,6 +5,9 @@ import { db, useAuth } from '../../../../firebase';
 
 const BlogForm = () => {
     const { currentUser, loggedUser } = useAuth();
+    const [errorMsg, setErrorMsg] = useState(false);
+    const [hashtags, setHashtags] = useState([]);
+    const [newHashtag, setNewHashtag] = useState("")
 
     const [blogData, setBlogData] = useState({
         author: "",
@@ -13,8 +16,6 @@ const BlogForm = () => {
         title: "",
         content: "",
     });
-    const [hashtags, setHashtags] = useState([]);
-    const [newHashtag, setNewHashtag] = useState("")
 
     const blogsCollectionRef = useRef(collection(db, "blogs"));
 
@@ -27,6 +28,17 @@ const BlogForm = () => {
     const handleImageUpload = async (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
+            const fileSizeInBytes = file.size;
+            const maxSizeInBytes = 512000;
+
+            if (fileSizeInBytes > maxSizeInBytes) {
+                e.target.value = null;
+                setErrorMsg(true);
+                return;
+            } else {
+                setErrorMsg(false)
+            }
+
             const storage = getStorage();
             const fileRef = storageRef(storage, 'blog-images/' + file.name);
             await uploadBytes(fileRef, file);
@@ -57,7 +69,7 @@ const BlogForm = () => {
                 hashtags: hashtags
             });
 
-            alert("Yeni blog bu ID ilə əlavə edildi: ", newBlogRef.id);
+            alert(`Yeni blog bu ID ilə əlavə edildi: ${newBlogRef.id}`);
 
             // Reset form data
             setBlogData({
@@ -97,12 +109,13 @@ const BlogForm = () => {
                 <label htmlFor="blogImg">Blog şəkli -- </label>
                 <input
                     type="file"
-                    accept="image/*"
+                    accept=".PNG, .JPEG, .JPG"
                     id='blogImg'
                     onChange={handleImageUpload}
                     required
                     className='py-2'
                 />
+                {errorMsg && <p className='text-danger'>Seçilən şəklin ölçüsü 500 kilobaytdan az olmalıdır.</p>}
                 <input
                     onChange={handleChange}
                     type="text"
@@ -125,7 +138,7 @@ const BlogForm = () => {
                     required
                     style={{ resize: "vertical" }}
                 ></textarea>
-                <button className='btn-blue' type="submit">Təstiqlə</button>
+                <button className='btn-blue' type="submit">Təsdiqlə</button>
             </form>
         </div>
     );

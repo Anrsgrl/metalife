@@ -4,14 +4,15 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBack } from "react-icons/ti";
 import ReactPlayer from 'react-player';
 import { useEffect } from 'react';
-import { db } from "../../firebase";
+import { db, useAuth } from "../../firebase";
 import {
     collection,
     getDocs,
 } from "firebase/firestore";
 
-const LessonVideo = ({ authUser }) => {
+const LessonVideo = () => {
     const params = useParams();
+    const { currentUser } = useAuth();
     const navigate = useNavigate();
     const videosCollectionRef = useRef(collection(db, "videos"));
     const [videos, setVideos] = useState([])
@@ -31,7 +32,7 @@ const LessonVideo = ({ authUser }) => {
             <div className="demo-videos-field py-2">
                 <h3 className='pb-2'>Pulsuz videolar</h3>
                 <div className="demo-videos py-3">
-                    {authUser ? (
+                    {currentUser ? (
                         <>
                             {videos.filter((e) => e.category === params.lessonPath && e.demo === true).length === 0 && <h5 className='py-2'>Yaxın zamanda əlavə olunacaq...</h5>}
                             {videos.filter((e) => e.category === params.lessonPath && e.demo === true) &&
@@ -55,7 +56,7 @@ const LessonVideo = ({ authUser }) => {
             <div className="paid-videos pt-5">
                 <h3 className='pb-2'>Ödənişli videolar</h3>
                 {paidVideos.length === 0 && <div className="paid-video py-2">
-                    {authUser?.emailVerified
+                    {currentUser?.emailVerified
                         ? (<><h5>Ödənişli dərsləri almaq üçün</h5><button type="button" className='btn-blue'>Dərsi al</button></>) : (<p>Dərsləri almaq üçün giriş etməli və emailin sizin olduğunu profil hissəsindən təstiqləməlisiniz.</p>)}
                 </div>}
                 {paidVideos && videos.filter((e) => e.category === params.lessonPath && e.demo === false).map((e) => (

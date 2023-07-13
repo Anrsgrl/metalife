@@ -1,6 +1,6 @@
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -9,100 +9,43 @@ import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import Portfolio from './pages/Portfolio/Portfolio';
 import DragButton from './components/DragButton/DragButton';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Order from './pages/Order/Order';
 import Contact from './pages/Contact/Contact';
 import SingleLesson from './pages/SingleLesson/SingleLesson';
 import LessonVideo from './pages/LessonVideo/LessonVideo';
 import User from './pages/User/User';
 import Error from './pages/Error/Error';
-import { onAuthStateChanged, signOut } from '@firebase/auth';
-import { auth, db } from './firebase';
-import { collection, getDocs } from "firebase/firestore";
 import Settings from './pages/Settings/Settings';
 import Blogs from './pages/Blogs/Blogs';
 import BlogDetail from './pages/Blogs/components/BlogDetail/BlogDetail';
+import { useAuth } from './firebase';
 
 function App() {
   const main = useRef();
-  const [userData, setUserData] = useState([]);
-  const [blogs, setBlogs] = useState([])
-  const [authUser, setAuthUser] = useState(null);
-  const [loggedUser, setLoggedUser] = useState(null);
-  const navigate = useNavigate();
-
-  const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("sign out");
-        navigate('/');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const usersCollectionRef = useRef(collection(db, "users"));
-  const blogsCollectionRef = useRef(collection(db, "blogs"));
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef.current);
-      setUserData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-
-    getUsers();
-
-    return () => {
-      unsubscribeAuth();
-    };
-  }, [authUser]);
-
-  useEffect(() => {
-    const findUser = () => {
-      setLoggedUser(userData?.find((e) => e.email === authUser?.email));
-    };
-
-    findUser();
-  }, [userData, authUser]);
-
-  useEffect(() => {
-
-    const getVideos = async () => {
-      const data = await getDocs(blogsCollectionRef.current);
-      setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getVideos();
-  }, []);
-
-
+  const { loggedUser, currentUser, blogs } = useAuth();
+  console.log("loggedUser", loggedUser)
+  console.log("currentUser", currentUser)
+  console.log("blogs", blogs)
   return (
     <>
-      <Header authUser={authUser} userSignOut={userSignOut} loggedUser={loggedUser} />
+      <Header />
       <main ref={main}>
         <DragButton main={main} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
-          <Route path="/lessons/:lessonPath" element={<SingleLesson authUser={authUser} />} />
-          <Route path="/lessons/:lessonPath/videos" element={<LessonVideo authUser={authUser} />} />
+          <Route path="/lessons/:lessonPath" element={<SingleLesson />} />
+          <Route path="/lessons/:lessonPath/videos" element={<LessonVideo />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/order" element={<Order />} />
-          <Route path="/blogs" element={<Blogs blogs={blogs} />} />
-          <Route path="/blogs/:blogUrl" element={<BlogDetail blogs={blogs} />} />
-          <Route path="/sign-up" element={<SignUp loggedUser={loggedUser} />} />
-          <Route path="/sign-in" element={<SignIn loggedUser={loggedUser} />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:blogUrl" element={<BlogDetail />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/user/:userName" element={<User loggedUser={loggedUser} />} />
-          <Route path="/settings" element={<Settings loggedUser={loggedUser} />} />
+          <Route path="/user/:userName" element={<User />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/*" element={<Error />} />
         </Routes>
       </main>

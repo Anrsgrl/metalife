@@ -3,11 +3,12 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from '@firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { auth } from "../../firebase";
+import { auth, useAuth } from "../../firebase";
 import login from "../../assets/images/login.svg";
 import forget from "../../assets/images/forgot-pass.svg";
 
-const SignIn = ({ loggedUser }) => {
+const SignIn = () => {
+    const { loggedUser } = useAuth();
     const [showPass, setShowPass] = useState(false);
     const [forgot, setForgot] = useState(false);
     const [errorType, setErrorType] = useState("");

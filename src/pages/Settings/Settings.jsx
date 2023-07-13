@@ -6,23 +6,30 @@ import "./components/UserSettings/UserSettings.scss";
 import boy from "../../assets/images/boy.png";
 import { Link } from 'react-router-dom';
 
-const Settings = ({ loggedUser }) => {
+const Settings = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [profileUrl, setProfileUrl] = useState();
     const [emailMsg, setEmailMsg] = useState("")
+    const [errorMsg, setErrorMsg] = useState(false);
 
     const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
+        const file = event.target.files[0];
+        if (file && file.size <= 512000) {
+            setSelectedFile(file);
+            setErrorMsg(false)
+        } else {
+            setSelectedFile(null);
+            setErrorMsg(true)
+        }
     };
 
     const handleUpload = async () => {
         if (selectedFile) {
             try {
                 const downloadURL = await uploadProfilePhoto(selectedFile, auth.currentUser);
-                console.log("Profil fotoğrafı yüklendi. İndirme URL'si:", downloadURL);
                 setProfileUrl(downloadURL);
             } catch (error) {
-                console.log("Profil fotoğrafı yükleme hatası:", error);
+                console.log("Profil şəkli yükləmə xətası:", error);
             }
         }
     };
@@ -76,8 +83,19 @@ const Settings = ({ loggedUser }) => {
                         <h3 className='border-bottom pb-2'>Profil şəkli</h3>
                         <div className="change-profile">
                             <div className="change-inputs">
-                                <input className='ps-4 ps-lg-0' type="file" accept=".PNG, .JPEG, .JPG" onChange={handleFileChange} />
-                                <button className='btn-blue ' onClick={handleUpload}>Yüklə</button>
+                                <input
+                                    className='ps-4 ps-lg-0'
+                                    type="file"
+                                    accept=".png, .jpeg, .jpg"
+                                    onChange={handleFileChange}
+                                />
+                                <button
+                                    className={selectedFile ? "btn-white" : "btn-disabled"}
+                                    onClick={handleUpload}
+                                    disabled={!selectedFile}
+                                >
+                                    Yüklə
+                                </button>
                             </div>
                             <div className="user-image">
                                 {auth?.currentUser?.photoURL ? (
@@ -86,6 +104,7 @@ const Settings = ({ loggedUser }) => {
                                     <img src={boy} alt="profile" />
                                 )}
                             </div>
+                            {errorMsg && <p className='text-danger'>Seçilən şəklin ölçüsü 500 kilobaytdan az olmalıdır.</p>}
                         </div>
                     </div>
                     <div className="email-settings">
