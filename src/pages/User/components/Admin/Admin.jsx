@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import BlogForm from "../../../Blogs/components/BlogForm/BlogForm";
 import AdminPanel from './components/AdminPanel.jsx/AdminPanel';
 
 const Admin = ({ user }) => {
@@ -18,9 +17,9 @@ const Admin = ({ user }) => {
     return (
         <div className="admin-panel py-5 px-5 col-12 col-lg-8">
             {level === "admin" ? (
-                <BlogForm />
+                <AdminPanel isAdmin={true} />
             ) : level === "teacher" ? (
-                <AdminPanel />
+                <AdminPanel isAdmin={false} />
             ) : (
                 <form onSubmit={(e) => checkPass(e)}>
                     <h2 className='pb-2'>Admin panel</h2>

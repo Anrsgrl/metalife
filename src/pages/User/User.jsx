@@ -10,6 +10,7 @@ const User = () => {
   const { loggedUser } = useAuth();
   const { userName } = useParams();
   const [show, setShow] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,11 @@ const User = () => {
       } else {
         setShow(true);
       }
+    }
+    if (loggedUser?.userKey === process.env.REACT_APP_ADMIN_KEY) {
+      setAdmin(true)
+    } else {
+      setAdmin(false)
     }
   }, [loggedUser, navigate, userName]);
 
@@ -37,8 +43,7 @@ const User = () => {
         {show && (
           <>
             <UserAside user={loggedUser} />
-            {/* <UserProducts user={loggedUser} /> */}
-            <Admin user={loggedUser} />
+            {admin ? <Admin user={loggedUser} /> : <UserProducts user={loggedUser} />}
           </>
         )}
       </div>

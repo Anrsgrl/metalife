@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import BlogForm from '../../../../../Blogs/components/BlogForm/BlogForm';
 import AdminControllers from '../AdminControllers/AdminControllers';
-const AdminPanel = () => {
+const AdminPanel = ({ isAdmin }) => {
     const [panel, setPanel] = useState("blog")
-    const isAdmin = true;
     return (
         <div className="admin-panel">
             <div className="panel-buttons row">

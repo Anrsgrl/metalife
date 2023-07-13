@@ -21,6 +21,7 @@ const UserProducts = ({ user }) => {
               </div>
             </button>
           ))}
+          {userLessons?.length === 0 && <p>Hər hansı bir dərs almamısınız.</p>}
         </div>}
     </div>
   )
