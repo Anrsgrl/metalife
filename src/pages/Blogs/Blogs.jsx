@@ -2,7 +2,6 @@ import React from 'react';
 import "./Blogs.scss";
 import SingleBlog from '../../components/SingleBlog/SingleBlog';
 import FadeLoader from "react-spinners/FadeLoader";
-import BlogForm from './components/BlogForm/BlogForm';
 import { useAuth } from '../../firebase';
 
 const Blogs = () => {
@@ -17,12 +16,11 @@ const Blogs = () => {
 
     return (
         <div className="blogs container py-5">
-            <div className="row">
+            <div className="row py-5">
                 {blogs?.map((blog) => (
                     <SingleBlog key={blog.id} title={blog?.title} image={blog?.blog_image} hashtags={blog?.hashtags} size={false} />
                 ))}
             </div>
-            <BlogForm />
         </div>
     )
 }

@@ -18,6 +18,7 @@ const Settings = () => {
             setSelectedFile(file);
             setErrorMsg(false)
         } else {
+            event.target.value = null;
             setSelectedFile(null);
             setErrorMsg(true)
         }

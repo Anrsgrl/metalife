@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import UserProducts from './components/UserProducts/UserProducts';
 import { useAuth } from '../../firebase';
 import FadeLoader from 'react-spinners/FadeLoader';
+import Admin from './components/Admin/Admin';
 
 const User = () => {
   const { loggedUser } = useAuth();
@@ -36,7 +37,8 @@ const User = () => {
         {show && (
           <>
             <UserAside user={loggedUser} />
-            <UserProducts user={loggedUser} />
+            {/* <UserProducts user={loggedUser} /> */}
+            <Admin user={loggedUser} />
           </>
         )}
       </div>

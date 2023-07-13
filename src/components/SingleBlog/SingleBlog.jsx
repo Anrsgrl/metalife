@@ -7,7 +7,7 @@ const SingleBlog = (props) => {
     const blogUrl = title.toLowerCase().split(" ").join("-");
     const navigate = useNavigate()
     return (
-        <button type='button' onClick={() => navigate(`/blogs/${blogUrl}`)} className={`clean-button single-blog ${size ? "sm-size" : "col-12 col-md-6 col-lg-4"}`}>
+        <button type='button' onClick={() => navigate(`/blogs/${blogUrl}`)} className={`clean-button single-blog ${size ? "sm-size" : "col-12 col-md-6 col-lg-4 py-2"}`}>
             <div className="blog-content">
                 <div className="blog-top">
                     <img src={image} alt="blog" />

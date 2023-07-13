@@ -86,7 +86,7 @@ const BlogForm = () => {
     };
 
     return (
-        <div className="blog-write row py-5">
+        <div className="blog-write row">
             <form className='py-3 col-12' onSubmit={handleHashtagsSubmit}>
                 <h3 className='py-2'>Hashtag əlavə etmə</h3>
                 <input
