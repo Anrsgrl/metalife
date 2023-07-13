@@ -31,7 +31,6 @@ const SignIn = () => {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            console.log("User signed in");
             navigate('/');
         } catch (error) {
             if (error.code === "auth/user-not-found") {

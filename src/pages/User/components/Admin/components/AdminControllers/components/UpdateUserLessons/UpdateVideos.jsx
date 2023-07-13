@@ -7,7 +7,7 @@ const UpdateVideos = () => {
     const [hashtags, setHashtags] = useState([])
     const [newHashtag, setNewHashtag] = useState()
     const [group, setGroup] = useState()
-    const [demo, setDemo] = useState(false)
+    const [demo, setDemo] = useState("")
     const [url, setUrl] = useState()
 
 

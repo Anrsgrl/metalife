@@ -1,31 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import "./LessonVideo.scss";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBack } from "react-icons/ti";
 import ReactPlayer from 'react-player';
-import { useEffect } from 'react';
-import { db, useAuth } from "../../firebase";
-import {
-    collection,
-    getDocs,
-} from "firebase/firestore";
+import { useAuth } from "../../firebase";
 
 const LessonVideo = () => {
     const params = useParams();
-    const { currentUser } = useAuth();
+    const { currentUser, videos } = useAuth();
     const navigate = useNavigate();
-    const videosCollectionRef = useRef(collection(db, "videos"));
-    const [videos, setVideos] = useState([])
 
-    useEffect(() => {
-        const getVideos = async () => {
-            const data = await getDocs(videosCollectionRef.current);
-            setVideos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getVideos();
-    }, []);
-
-    const paidVideos = videos.filter((e) => e.category === params.lessonPath && e.demo === false);
+    const paidVideos = videos.filter((e) => e.hashtags?.includes(params.lessonPath) && e.demo === "false");
+    const demoVideos = videos.filter((e) => e.hashtags?.includes(params.lessonPath) && e.demo === "true");
     return (
         <div className="lesson-videos container py-3">
             <button onClick={() => navigate(-1)} type="button" className='clean-button back'><TiArrowBack /></button>
@@ -34,9 +20,9 @@ const LessonVideo = () => {
                 <div className="demo-videos py-3">
                     {currentUser ? (
                         <>
-                            {videos.filter((e) => e.category === params.lessonPath && e.demo === true).length === 0 && <h5 className='py-2'>Yaxın zamanda əlavə olunacaq...</h5>}
-                            {videos.filter((e) => e.category === params.lessonPath && e.demo === true) &&
-                                videos.filter((e) => e.category === params.lessonPath && e.demo === true).map((e) => (
+                            {demoVideos.length === 0 && <h5 className='py-2'>Yaxın zamanda əlavə olunacaq...</h5>}
+                            {demoVideos &&
+                                demoVideos?.map((e) => (
                                     <div className='single-video-part'>
                                         <ReactPlayer key={e.id} url={e.url} controls={true} className="single-video" config={{
                                             playerOptions: {
@@ -59,7 +45,7 @@ const LessonVideo = () => {
                     {currentUser?.emailVerified
                         ? (<><h5>Ödənişli dərsləri almaq üçün</h5><button type="button" className='btn-blue'>Dərsi al</button></>) : (<p>Dərsləri almaq üçün giriş etməli və emailin sizin olduğunu profil hissəsindən təstiqləməlisiniz.</p>)}
                 </div>}
-                {paidVideos && videos.filter((e) => e.category === params.lessonPath && e.demo === false).map((e) => (
+                {paidVideos && paidVideos.map((e) => (
                     <>
                         <ReactPlayer key={e.id} url={e.url} controls={true} className="single-video" config={{
                             playerOptions: {
