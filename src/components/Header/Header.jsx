@@ -88,6 +88,7 @@ const Header = () => {
                                                         <NavLink onClick={() => closeHamburger()} to="portfolio">İşlərimiz</NavLink>
                                                     </ul>
                                                 </li>
+                                                <li><NavLink to="/contact" onClick={() => closeHamburger()}>Blog</NavLink></li>
                                                 <li><NavLink to="/contact" onClick={() => closeHamburger()}>Əlaqə</NavLink></li>
                                             </ul>
                                         </div>
