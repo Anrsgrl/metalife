@@ -85,12 +85,14 @@ const BlogForm = () => {
         }
     };
 
+    const disabledIf = title?.length === 0 || hashtags?.length === 0 || content?.length === 0
+
     return (
         <div className="blog-write row">
             <form className='py-3 col-12' onSubmit={handleHashtagsSubmit}>
                 <h3 className='py-2'>Hashtag əlavə etmə</h3>
                 <input
-                    onChange={(e) => setNewHashtag(e.target.value)}
+                    onChange={(e) => setNewHashtag(e.target.value.toLocaleLowerCase())}
                     type="text"
                     placeholder="hashtags"
                     name="hashtags"
@@ -138,7 +140,8 @@ const BlogForm = () => {
                     required
                     style={{ resize: "vertical" }}
                 ></textarea>
-                <button className='btn-blue' type="submit">Təsdiqlə</button>
+                <button className={disabledIf ? "btn-disabled" : 'btn-blue'} type="submit" disabled={disabledIf}>Təsdiqlə</button>
+                {disabledIf && <p className='text-danger'>Bütün hissələri doldurun.</p>}
             </form>
         </div>
     );

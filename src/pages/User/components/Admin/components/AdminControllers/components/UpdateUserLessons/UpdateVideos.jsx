@@ -76,13 +76,13 @@ const UpdateVideos = () => {
                     <div className="form-element col-12 col-md-6">
                         <input value={demo !== "true" ? group : ""} disabled={demo === "true"} type="text" placeholder='Video aid olduğu grup' name="title" className='sign-inputs' onChange={(e) => setGroup(e.target.value)} required />
                     </div>
-                    <button type='submit' className={disabledIf ? "btn-disabled" : "btn-blue"} disabled={disabledIf}>Submit</button>
+                    <button type='submit' className={disabledIf ? "btn-disabled" : "btn-blue"} disabled={disabledIf}>Təsdiqlə</button>
                 </div>
             </form>
             <form className='py-3 col-12' onSubmit={(e) => handleHashtagsSubmit(e)}>
                 <h3 className='py-2'>Hashtag əlavə etmə</h3>
                 <input
-                    onChange={(e) => setNewHashtag(e.target.value)}
+                    onChange={(e) => setNewHashtag(e.target.value.toLocaleLowerCase())}
                     type="text"
                     placeholder="hashtags"
                     name="hashtags"
