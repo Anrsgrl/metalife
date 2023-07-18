@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../firebase';
 import ReactPlayer from 'react-player';
@@ -12,6 +12,13 @@ const Search = () => {
     const { videos, blogs, currentUser } = useAuth()
     const filteredVideos = videos.filter((e) => e.demo === "true" && e.hashtags?.includes(searchItemValue));
     const filteredBlogs = blogs.filter((e) => e.hashtags?.includes(searchItemValue));
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "auto",
+        });
+    }, []);
     return (
         <div className="search container py-5">
             {searchItemValue ? (

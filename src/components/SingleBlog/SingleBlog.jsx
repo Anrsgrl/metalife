@@ -15,7 +15,7 @@ const SingleBlog = (props) => {
                 </div>
                 <div className="hashtags pb-1 px-2">
                     {hashtags?.slice(0, 3).map((item) => (
-                        <Link to={`/blog/${item}`}>#{item}</Link>
+                        <Link key={item} to={`/blog/${item}`}>#{item}</Link>
                     ))}
                 </div>
             </div>
