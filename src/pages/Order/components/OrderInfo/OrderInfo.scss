@@ -8,8 +8,7 @@
     }
 
     .single-order-info {
-        @include flexCenter;
-        flex-direction: column;
+        @include flex(center, column, center);
         text-align: center;
         opacity: 0.9;
         cursor: pointer;

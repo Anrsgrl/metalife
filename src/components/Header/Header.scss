@@ -3,7 +3,7 @@
 
 header {
     .header-content {
-        @include flexBetween;
+        @include flex(space-between);
 
         .hamburger {
             svg {
@@ -13,7 +13,7 @@ header {
         }
 
         .header-menu {
-            @include flexCenter;
+            @include flex;
             gap: 15px;
 
             .active {
@@ -27,7 +27,7 @@ header {
         }
 
         .header-left {
-            @include flexCenter;
+            @include flex;
 
             .logo-button {
                 width: 75px;
@@ -42,7 +42,7 @@ header {
         }
 
         .header-profile {
-            @include flexCenter;
+            @include flex;
             gap: 10px;
 
             .account {
@@ -60,10 +60,10 @@ header {
             }
 
             .profile-part {
-                @include flexCenter;
+                @include flex;
 
                 .username-part {
-                    @include flexCenter;
+                    @include flex;
                     border-left: 1px solid #bebebe;
 
                     a,
@@ -127,13 +127,10 @@ header {
                 background-color: white;
                 box-shadow: -2px 1px 20px -8px rgba(0, 0, 0, .75);
                 padding: 30px;
-                @include flexCenter;
+                @include flex;
 
                 .aside-content {
-                    text-align: left;
-                    display: flex;
-                    justify-content: center;
-                    flex-direction: column;
+                    @include flex(center, column, flex-start);
                     gap: 5px;
 
                     select {
@@ -150,9 +147,7 @@ header {
 
                     .aside-ul {
                         list-style: none;
-                        display: flex;
-                        justify-content: center;
-                        flex-direction: column;
+                        @include flex(center, column, flex-start);
                         gap: 14px;
                         padding: 0;
                         margin: 0;
@@ -172,27 +167,20 @@ header {
                     }
 
                     .open-dropdown {
-                        @include flexCenter;
+                        @include flex;
                     }
 
                     .aside-dropdown {
-                        padding-left: 0.5rem;
-                        display: flex;
+                        @include flex(center, column, flex-start);
                         gap: 5px;
-                        flex-direction: column;
+                        padding-left: 0.5rem;
                         border-left: 1px solid #bebebe;
                         height: 0;
                         overflow: hidden;
                     }
 
-                    .aside-dropdown-open {
-                        padding-left: 0.5rem;
-                        display: flex;
-                        gap: 5px;
-                        flex-direction: column;
-                        border-left: 1px solid #bebebe;
+                    .open {
                         height: 55px;
-                        overflow: hidden;
                     }
                 }
             }

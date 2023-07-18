@@ -68,7 +68,7 @@ const SignIn = () => {
         <div className="sign-field py-4 container">
             {!forgot ? (
                 <div className="row">
-                    <div className="smartphone skeleton-loader col-12 col-lg-6">
+                    <div className="smartphone col-12 col-lg-6">
                         <img className='w-100 h-100' src={login} alt="signIn" />
                     </div>
                     <div className="col-12 col-lg-6 py-3 py-lg-0">
@@ -96,7 +96,7 @@ const SignIn = () => {
                 </div>
             ) : (
                 <div className="row w-100">
-                    <div className="smartphone skeleton-loader col-12 col-lg-6">
+                    <div className="smartphone col-12 col-lg-6">
                         <img className='w-100 h-100' src={forget} alt="forget" />
                     </div>
                     <div className="col-12 col-lg-6 py-3 py-lg-0">

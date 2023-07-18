@@ -12,9 +12,7 @@
     .application-content {
         background-color: $main-color;
         border-radius: 9px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        @include flex(space-evenly, row, center);
 
         @media(max-width: 767px) {
             flex-direction: column-reverse;
@@ -42,7 +40,7 @@
         }
 
         .application-buttons {
-            @include flexCenter;
+            @include flex;
             flex-wrap: wrap;
         }
     }

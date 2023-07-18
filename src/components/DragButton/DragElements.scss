@@ -15,7 +15,7 @@
     background-color: $main-color;
     color: white;
     padding: 10px;
-    @include flexCenter;
+    @include flex;
 }
 
 .open-drag-menu {
@@ -39,7 +39,7 @@
 
     .close-button {
         border-radius: 50%;
-        @include flexCenter;
+        @include flex;
         border: 1px solid white;
         color: white;
         background-color: transparent;

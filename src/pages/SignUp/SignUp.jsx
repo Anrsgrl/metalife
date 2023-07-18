@@ -82,7 +82,7 @@ const SignUp = () => {
     return (
         <div className="sign-field py-4 container">
             <div className="row">
-                <div className="smartphone skeleton-loader col-12 col-lg-6">
+                <div className="smartphone col-12 col-lg-6">
                     <img className='w-100 h-100' src={signUpp} alt="signUp" />
                 </div>
                 <div className="col-12 col-lg-6 py-3 py-lg-0">

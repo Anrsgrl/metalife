@@ -26,7 +26,7 @@
     }
 
     .change-profile {
-        @include flexBetween;
+        @include flex(space-between);
         flex-wrap: wrap;
         gap: 10px;
 
@@ -44,7 +44,7 @@
             }
 
             .single-input {
-                @include flexCenter;
+                @include flex;
                 gap: 5px;
 
                 @media(max-width: 576px) {

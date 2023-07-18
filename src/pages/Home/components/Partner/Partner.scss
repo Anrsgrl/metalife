@@ -4,7 +4,7 @@
 .partners {
 
     .swiper-slide {
-        @include flexCenter;
+        @include flex;
     }
 
     .swiper-button-next,

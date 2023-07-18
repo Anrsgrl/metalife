@@ -11,14 +11,12 @@
     @include flex;
 
     .blog-content {
+        @include flex(space-between, column, stretch);
         border: 1px solid $main-color;
         border-radius: 9px;
         background-color: white;
         color: black;
         overflow: hidden;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
         height: 100%;
         width: 100%;
 

@@ -1,20 +1,8 @@
-@mixin flex($justify: center, $direction: row) {
+@mixin flex($justify: center, $direction: row, $align: center) {
     display: flex;
-    align-items: center;
+    align-items: $align;
     justify-content: $justify;
     flex-direction: $direction;
-}
-
-@mixin flexCenter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@mixin flexBetween {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 @mixin cleanButton {

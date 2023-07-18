@@ -14,7 +14,7 @@
     }
 
     ul {
-        @include flexBetween;
+        @include flex(space-between);
         font-style: italic;
         font-size: 12px;
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import "./Blogs.scss";
 import SingleBlog from '../../components/SingleBlog/SingleBlog';
 import FadeLoader from "react-spinners/FadeLoader";
 import { useAuth } from '../../firebase';

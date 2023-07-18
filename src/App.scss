@@ -92,8 +92,7 @@ ul {
     padding: 3px;
     width: 100%;
     position: absolute;
-    @include flexCenter;
-    flex-direction: column;
+    @include flex(center, column);
     background-color: white;
     opacity: 0;
     visibility: hidden;
@@ -111,20 +110,6 @@ ul {
   &:hover .dropdown-menuu {
     opacity: 1;
     visibility: visible;
-  }
-}
-
-.skeleton-loader:empty {
-  background: #eee;
-  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-  border-radius: 5px;
-  background-size: 200% 100%;
-  animation: 1.5s shine linear infinite;
-}
-
-@keyframes shine {
-  to {
-    background-position-x: -200%;
   }
 }
 

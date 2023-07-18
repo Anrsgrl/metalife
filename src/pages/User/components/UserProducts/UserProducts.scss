@@ -10,7 +10,7 @@
 
             .lesson-detail {
                 color: $main-color;
-                @include flexBetween;
+                @include flex(space-between);
             }
 
             img {

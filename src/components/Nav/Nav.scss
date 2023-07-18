@@ -4,7 +4,7 @@
 .search-bar {
     width: 100%;
     position: relative;
-    @include flexCenter;
+    @include flex;
 
     input {
         outline: 0;
@@ -31,7 +31,7 @@
 .navv {
 
     ul {
-        @include flexBetween;
+        @include flex(space-between);
         overflow-x: scroll;
         font-style: italic;
         font-size: 12px;

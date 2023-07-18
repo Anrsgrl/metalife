@@ -6,7 +6,7 @@ const Lesson = (props) => {
     const { image, title, p, path } = props;
     const navigate = useNavigate()
     return (
-        <div onClick={() => navigate(`/lessons/${path}`)} data-aos="fade-up" className="col-9 col-md-5 col-lg-3 skeleton-loader  me-0 me-md-4 mb-4 p-0 lesson">
+        <div onClick={() => navigate(`/lessons/${path}`)} data-aos="fade-up" className="col-9 col-md-5 col-lg-3 me-0 me-md-4 mb-4 p-0 lesson">
             <img src={image} alt="design" />
             <div className="lesson-text px-2">
                 <h3>{title}</h3>

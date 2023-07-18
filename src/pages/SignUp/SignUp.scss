@@ -4,7 +4,7 @@
 .sign-field {
     width: 100%;
     min-height: 80vh;
-    @include flexCenter;
+    @include flex;
 
     @media(max-width: 576px) {
         min-height: fit-content;
@@ -38,8 +38,6 @@
 
 .form-element {
     position: relative;
-    display: flex;
-    flex-direction: column;
 
     a {
         color: $main-color;
@@ -77,7 +75,7 @@
 }
 
 .sign-buttons {
-    @include flexBetween;
+    @include flex(space-between);
 
     @media(max-width: 576px) {
         flex-direction: column;

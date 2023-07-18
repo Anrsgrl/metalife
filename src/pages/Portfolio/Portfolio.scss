@@ -13,8 +13,7 @@
             }
 
             .logo-part {
-                @include flexCenter;
-                flex-direction: column;
+                @include flex(center, column, center);
             }
         }
 

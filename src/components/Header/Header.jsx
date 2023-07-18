@@ -83,7 +83,7 @@ const Header = () => {
                                                     <button onClick={() => setDropdown(!dropdown)} className='pb-1 clean-button open-dropdown p-0'>
                                                         Sayt Sifarişi <span className={dropdown ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
-                                                    <ul className={dropdown ? 'aside-dropdown-open' : 'aside-dropdown'}>
+                                                    <ul className={dropdown ? 'aside-dropdown open' : 'aside-dropdown'}>
                                                         <NavLink onClick={() => closeHamburger()} to="order">Sifariş et</NavLink>
                                                         <NavLink onClick={() => closeHamburger()} to="portfolio">İşlərimiz</NavLink>
                                                     </ul>

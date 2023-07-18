@@ -14,7 +14,7 @@
 
     .show-more {
         font-size: 1.5rem;
-        @include flexCenter;
+        @include flex;
         width: 100%;
         color: $main-color;
     }
@@ -28,8 +28,7 @@
         border-radius: 4px;
         text-align: center;
         overflow: hidden;
-        @include flexBetween;
-        flex-direction: column;
+        @include flex(space-between, column, center);
         height: 500px;
         background-color: white;
 
@@ -47,7 +46,7 @@
                 color: $main-color;
                 width: 100%;
                 gap: 5px;
-                @include flexCenter;
+                @include flex;
             }
         }
     }
@@ -59,7 +58,7 @@
     }
 
     .swiper-slide {
-        @include flexCenter;
+        @include flex;
     }
 
     .swiper-button-next,

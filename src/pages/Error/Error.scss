@@ -1,34 +1,39 @@
 @import "../../vendors/mixins";
 @import "../../vendors/variables";
 
-.not-found{
+.not-found {
     min-height: 80vh;
-    @include flexCenter;
-    flex-direction: column;
+    @include flex(center, column, center);
     gap: 5px;
     text-align: center;
-    h2{
-        @media(max-width: 768px){
+
+    h2 {
+        @media(max-width: 768px) {
             font-size: 25px;
-        }    
-        @media(max-width: 576px){
+        }
+
+        @media(max-width: 576px) {
             font-size: 18px;
-        }    
+        }
     }
-    p{
-        @media(max-width: 768px){
+
+    p {
+        @media(max-width: 768px) {
             font-size: 13px;
-        }    
-        @media(max-width: 576px){
+        }
+
+        @media(max-width: 576px) {
             font-size: 11px;
-        }    
+        }
     }
-    img{
+
+    img {
         width: 50%;
         height: 50%;
         object-fit: cover;
-        @media(max-width: 768px){
+
+        @media(max-width: 768px) {
             width: 100%;
-        } 
+        }
     }
 }

@@ -3,9 +3,7 @@
 
 .hero {
     .hero-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        @include flex(space-evenly, row, center);
 
         @media(max-width: 992px) {
             flex-direction: column-reverse;
