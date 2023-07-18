@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import BlogForm from '../../../../../Blogs/components/BlogForm/BlogForm';
 import AdminControllers from '../AdminControllers/AdminControllers';
 const AdminPanel = ({ isAdmin }) => {
     const [panel, setPanel] = useState("blog")
@@ -12,10 +11,10 @@ const AdminPanel = ({ isAdmin }) => {
                 <button type="button" className={panel === "videos" ? "btn-blue col-6" : "btn-white col-6"} onClick={() => setPanel("videos")}>Videos</button>
             </div>
             <div className="panel-items">
-                {panel === "blog" && <BlogForm />}
-                {panel === "user" && <AdminControllers user={true} teacher={false} video={false} />}
-                {panel === "teacher" && <AdminControllers user={false} teacher={true} video={false} />}
-                {panel === "videos" && <AdminControllers user={false} teacher={false} video={true} />}
+                {panel === "blog" && <AdminControllers user={false} teacher={false} video={false} blog={true} />}
+                {panel === "user" && <AdminControllers user={true} teacher={false} video={false} blog={false} />}
+                {panel === "teacher" && <AdminControllers user={false} teacher={true} video={false} blog={false} />}
+                {panel === "videos" && <AdminControllers user={false} teacher={false} video={true} blog={false} />}
             </div>
         </div>
     )

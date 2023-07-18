@@ -1,9 +1,9 @@
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref as storageRef, uploadBytes } from 'firebase/storage';
 import React, { useRef, useState } from 'react';
-import { db, useAuth } from '../../../../firebase';
+import { db, useAuth } from '../../../../../../../../firebase';
 
-const BlogForm = () => {
+const UpdateBlog = () => {
     const { currentUser, loggedUser } = useAuth();
     const [errorMsg, setErrorMsg] = useState(false);
     const [hashtags, setHashtags] = useState([]);
@@ -147,4 +147,4 @@ const BlogForm = () => {
     );
 };
 
-export default BlogForm;
+export default UpdateBlog;

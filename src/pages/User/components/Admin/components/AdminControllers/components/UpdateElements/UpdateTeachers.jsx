@@ -1,6 +1,6 @@
 import { doc, updateDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
-import { db } from '../../../../../../../firebase';
+import { db } from '../../../../../../../../firebase';
 
 const UpdateTeachers = ({ filteredData }) => {
     const [selectedUser, setSelectedUser] = useState("");

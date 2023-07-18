@@ -19,6 +19,7 @@ import Error from './pages/Error/Error';
 import Settings from './pages/Settings/Settings';
 import Blogs from './pages/Blogs/Blogs';
 import BlogDetail from './pages/Blogs/components/BlogDetail/BlogDetail';
+import Search from './pages/Search/Search';
 
 function App() {
   const main = useRef();
@@ -43,6 +44,7 @@ function App() {
           <Route path="/user/:userName" element={<User />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/*" element={<Error />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </main>
       <Footer />
