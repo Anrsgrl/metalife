@@ -14,6 +14,7 @@ const Nav = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSearchTerm("")
         navigate(`/search?searchItem=${searchTerm}`);
     };
 
@@ -25,7 +26,7 @@ const Nav = () => {
             </form>
             <ul className='px-0 pt-1 m-0 hashtags'>
                 {hashtags.map((hashtag) => (
-                    <li key={hashtag}><Link className='text-muted' to="/">#{hashtag}</Link></li>
+                    <li key={hashtag}><Link className='text-muted' to={`/search?searchItem=${hashtag}`}>#{hashtag}</Link></li>
                 ))}
             </ul>
         </div>
