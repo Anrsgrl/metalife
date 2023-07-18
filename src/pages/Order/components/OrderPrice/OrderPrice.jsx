@@ -25,7 +25,7 @@ const OrderPrice = () => {
                             onChange={(e) => setTel(e.target.value)}
                             required
                         ></InputMask>
-                        <button onClick={() => setChange(!change)} type='button' className='clean-button btn-show'>{change ? (<TfiReload />) : (<TfiReload />)}</button>
+                        <button onClick={() => setChange(!change)} type='button' className='clean-button btn-show'>{change ? (<TfiReload className={change && "rotate-180"} />) : (<TfiReload />)}</button>
                     </div>) : (<div data-aos="fade-right" className="form-element col-12 col-md-6">
                         <div className="form-element col-12"><input type="email" placeholder='E-poçt' name="email" className='sign-inputs' required /></div>
                         <button onClick={() => setChange(!change)} type='button' className='clean-button btn-show'>{change ? (<TfiReload />) : (<TfiReload />)}</button>
