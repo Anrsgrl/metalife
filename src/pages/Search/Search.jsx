@@ -54,7 +54,7 @@ const Search = () => {
                         </div>
                     </div>
                     <div className="single-lesson-blogs py-5">
-                        <h3 className='pb-2' style={{ color: "#4A4AB5", fontWeight: "600" }}>Bu mövzu barədə bəzi bloglar</h3>
+                        <h3 className='pb-2' style={{ color: "#4A4AB5", fontWeight: "600" }}>Axtarışa uyğun bloglar</h3>
                         <div className="lesson-blogs py-3">
                             {!blogs || blogs?.length === 0 ? (
                                 <FadeLoader color="#4A4AB5" />
