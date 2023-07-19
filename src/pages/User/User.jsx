@@ -13,7 +13,15 @@ const User = () => {
   const [admin, setAdmin] = useState(false);
   const navigate = useNavigate();
 
+  console.log(process.env.REACT_APP_ADMIN_KEY)
+  console.log(loggedUser?.userKey)
+
   useEffect(() => {
+    if (loggedUser?.userKey === process.env.REACT_APP_ADMIN_KEY) {
+      setAdmin(true)
+    } else {
+      setAdmin(false)
+    }
     if (loggedUser !== null) {
       if (loggedUser === undefined) {
         setShow(false);
@@ -22,11 +30,6 @@ const User = () => {
       } else {
         setShow(true);
       }
-    }
-    if (loggedUser?.userKey === process.env.REACT_APP_ADMIN_KEY) {
-      setAdmin(true)
-    } else {
-      setAdmin(false)
     }
   }, [loggedUser, navigate, userName]);
 

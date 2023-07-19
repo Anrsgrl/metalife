@@ -9,7 +9,7 @@ import UpdateBlog from './components/UpdateElements/UpdateBlog';
 const AdminControllers = (props) => {
     const { userData, videos } = useAuth();
     const { user, teacher, video, blog } = props;
-    const filteredData = userData?.filter((e) => e.key !== process.env.REACT_APP_ADMIN_KEY)
+    const filteredData = userData?.filter((e) => e.userKey !== process.env.REACT_APP_ADMIN_KEY)
 
 
     return (

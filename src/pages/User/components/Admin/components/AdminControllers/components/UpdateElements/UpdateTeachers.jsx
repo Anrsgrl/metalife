@@ -11,7 +11,7 @@ const UpdateTeachers = ({ filteredData }) => {
         try {
             const singleUserRef = doc(db, "users", selectedUser);
             await updateDoc(singleUserRef, {
-                key: process.env.REACT_APP_ADMIN_KEY
+                userKey: process.env.REACT_APP_ADMIN_KEY
             });
             setError("Əlavə olundu!")
         } catch (error) {
