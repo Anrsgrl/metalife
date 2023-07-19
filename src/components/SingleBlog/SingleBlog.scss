@@ -30,8 +30,8 @@
         }
 
         .hashtags {
-            display: flex;
-            align-items: center;
+            @include flex;
+            flex-wrap: wrap;
             gap: 4px;
         }
     }
