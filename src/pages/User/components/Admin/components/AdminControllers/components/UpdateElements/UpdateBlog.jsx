@@ -17,6 +17,8 @@ const UpdateBlog = () => {
         content: "",
     });
 
+    console.table(hashtags)
+
     const blogsCollectionRef = useRef(collection(db, "blogs"));
 
     const { blog_image, title, content } = blogData;
@@ -50,7 +52,7 @@ const UpdateBlog = () => {
     const handleHashtagsSubmit = (e) => {
         e.preventDefault();
         if (newHashtag !== "") {
-            setHashtags([...hashtags, newHashtag]);;
+            setHashtags([...hashtags, newHashtag.replace(/\s/g, '')]);;
         }
         setNewHashtag("")
     };
