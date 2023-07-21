@@ -50,16 +50,25 @@
 }
 
 .blog-footer {
-    @include flex(flex-start);
+    @include flex(space-between);
     gap: 5px;
     border-top: 1px solid #bebebe;
 
-    img {
-        object-fit: cover;
-        width: 75px;
-        height: 75px;
-        aspect-ratio: 1/1;
-        border: 1px solid $main-color;
-        border-radius: 50%;
+    .author-side {
+        @include flex(flex-start);
+
+        img {
+            object-fit: cover;
+            width: 75px;
+            height: 75px;
+            aspect-ratio: 1/1;
+            border: 1px solid $main-color;
+            border-radius: 50%;
+        }
+
+        p {
+            font-size: 14px;
+        }
     }
+
 }
