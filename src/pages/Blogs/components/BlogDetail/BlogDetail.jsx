@@ -28,7 +28,7 @@ const BlogDetail = () => {
                     <div className='blog-info'>
                         <ul className='px-0 pt-1 m-0 hashtags'>
                             {hashtags?.slice(0, 3).map((hashtag) => (
-                                <li key={hashtag}><Link className='text-muted' to="/">#{hashtag}</Link></li>
+                                <li key={hashtag}><Link className='text-muted' to={`/search?searchItem=${hashtag}`}>#{hashtag}</Link></li>
                             ))}
                         </ul>
                         <div className="blog-time">
