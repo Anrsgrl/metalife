@@ -25,6 +25,16 @@
     }
 }
 
+.blog-content {
+    h4 {
+        color: #333333;
+    }
+
+    p {
+        color: #555555;
+    }
+}
+
 .blog-right {
     @include flex(flex-start, column);
     gap: 5px;

@@ -9,8 +9,7 @@ import { useAuth } from '../../../../firebase';
 const BlogDetail = () => {
     const { blogs } = useAuth();
     const { blogUrl } = useParams();
-    const blog = blogs?.find((blog) => blog?.title.toLowerCase().split(" ").join("-") === blogUrl);
-
+    const blog = blogs?.find((blog) => blog?.title.replace("?", "").toLowerCase().split(" ").join("-") === blogUrl);
     if (!blog || blog?.length === 0) {
         return <div className="container py-5">
             <FadeLoader color="#4A4AB5" />
@@ -37,7 +36,7 @@ const BlogDetail = () => {
                         </div>
                     </div>
                     <h1 className="section-heading py-2">{title}</h1>
-                    <div style={{ wordWrap: 'break-word' }} className="py-5" dangerouslySetInnerHTML={{ __html: content }} />
+                    <div style={{ wordWrap: 'break-word' }} className="py-5 blog-content" dangerouslySetInnerHTML={{ __html: content }} />
                     <div className="blog-footer pt-5">
                         <img src={author_image} alt="" />
                         <h6>{author}</h6>
@@ -55,3 +54,5 @@ const BlogDetail = () => {
 };
 
 export default BlogDetail;
+
+

@@ -13,9 +13,6 @@ const User = () => {
   const [admin, setAdmin] = useState(false);
   const navigate = useNavigate();
 
-  console.log(process.env.REACT_APP_ADMIN_KEY)
-  console.log(loggedUser?.userKey)
-
   useEffect(() => {
     if (loggedUser?.userKey === process.env.REACT_APP_ADMIN_KEY) {
       setAdmin(true)
