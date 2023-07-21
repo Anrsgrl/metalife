@@ -1,4 +1,19 @@
 [[redirects]]
+from = "/lessons/*"
+to = "/lessons"
+status = 301
+
+[[redirects]]
+from = "/lessons/:lessonPath/videos"
+to = "/lessons/:lessonPath"
+status = 301
+
+[[redirects]]
+from = "/blogs/:blogUrl"
+to = "/blogs"
+status = 301
+
+[[redirects]]
 from = "/*"
 to = "/index.html"
-status = "200"
+status = 200
