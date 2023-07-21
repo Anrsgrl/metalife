@@ -5,10 +5,10 @@ const AdminPanel = ({ isAdmin }) => {
     return (
         <div className="admin-panel">
             <div className="panel-buttons row">
-                <button type="button" className={panel === "blog" ? "btn-blue col-6" : "btn-white col-6"} onClick={() => setPanel("blog")}>Blog</button>
-                {isAdmin && <button type="button" className={panel === "teacher" ? "btn-blue col-6" : "btn-white col-6"} onClick={() => setPanel("teacher")}>Teacher</button>}
-                <button type="button" className={panel === "user" ? "btn-blue col-6" : "btn-white col-6"} onClick={() => setPanel("user")}>User</button>
-                <button type="button" className={panel === "videos" ? "btn-blue col-6" : "btn-white col-6"} onClick={() => setPanel("videos")}>Videos</button>
+                <button type="button" className={panel === "blog" ? "btn-blue col-5" : "btn-white col-5"} onClick={() => setPanel("blog")}>Blog</button>
+                {isAdmin && <button type="button" className={panel === "teacher" ? "btn-blue col-5" : "btn-white col-5"} onClick={() => setPanel("teacher")}>Teacher</button>}
+                <button type="button" className={panel === "user" ? "btn-blue col-5" : "btn-white col-5"} onClick={() => setPanel("user")}>User</button>
+                <button type="button" className={panel === "videos" ? "btn-blue col-5" : "btn-white col-5"} onClick={() => setPanel("videos")}>Videos</button>
             </div>
             <div className="panel-items">
                 {panel === "blog" && <AdminControllers user={false} teacher={false} video={false} blog={true} />}

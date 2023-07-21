@@ -2,12 +2,14 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref as storageRef, uploadBytes } from 'firebase/storage';
 import React, { useRef, useState } from 'react';
 import { db, useAuth } from '../../../../../../../../firebase';
+import { frontendHashtags, backendHashtags, fullstackHashtags, uidesignHashtags, interiorDesignHashtags, threeDHashtags } from '../../../../../../../../data/updateHashtags';
 
 const UpdateBlog = () => {
     const { currentUser, loggedUser } = useAuth();
     const [errorMsg, setErrorMsg] = useState(false);
     const [hashtags, setHashtags] = useState([]);
     const [newHashtag, setNewHashtag] = useState("")
+    const [showHelperHash, setShowHelperHash] = useState(false)
 
     const [blogData, setBlogData] = useState({
         author: "",
@@ -87,7 +89,7 @@ const UpdateBlog = () => {
         }
     };
 
-    const disabledIf = title?.length === 0 || hashtags?.length === 0 || content?.length === 0
+    const disabledIf = title?.length === 0 || hashtags?.length === 0 || content?.length === 0 || !blog_image
 
     return (
         <div className="blog-write row">
@@ -103,10 +105,21 @@ const UpdateBlog = () => {
                     required
                 />
                 {hashtags && <p className='text-muted'>{hashtags?.map((tag) => `#${tag}`).join(", ")}</p>}
-                <div className="d-flex">
+                <div className="hashtags-controllers col-12">
                     <button className='btn-blue' type="submit">Əlavə et</button>
-                    <button className='btn-white ms-2' type="button" onClick={() => setHashtags([])}>Hamısını sil</button>
+                    <button className='btn-blue' type="button" onClick={() => setHashtags([])}>Hamısını sil</button>
+                    <button className={showHelperHash ? "btn-white" : "btn-blue"} type="button" onClick={() => setShowHelperHash(!showHelperHash)}>{showHelperHash ? "Köməkçi tagları gizlət" : "Köməkçi tagları göstər"}</button>
                 </div>
+                {showHelperHash &&
+                    <div className="helper-hashtags col-12 py-2">
+                        <button type='button' className='btn-white' onClick={() => setHashtags(frontendHashtags)}>Frontend hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(backendHashtags)}>Backend hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(fullstackHashtags)}>Fullstack hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(uidesignHashtags)}>UI/UIX hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(interiorDesignHashtags)}>Interior hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(threeDHashtags)}>3D Modelling hashtags</button>
+                    </div>
+                }
             </form>
             <form className='col-12 py-4' onSubmit={handleSubmit}>
                 <h3>Blog barədə məlumatlar</h3>
@@ -131,6 +144,7 @@ const UpdateBlog = () => {
                 />
                 <div className="blog-tools py-3">
                     <button type='button' className='btn-white' onClick={() => setBlogData({ ...blogData, content: blogData.content + "<h3 class='py-2'></h3>" })}>Başlıq əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => setBlogData({ ...blogData, content: blogData.content + "<h5 class='py-2'></h5>" })}>Altbaşlıq əlavə et</button>
                     <button type='button' className='btn-white' onClick={() => setBlogData({ ...blogData, content: blogData.content + "<p></p>" })}>Paragraf əlavə et</button>
                 </div>
                 <textarea

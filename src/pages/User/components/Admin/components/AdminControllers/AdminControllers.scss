@@ -1,6 +1,12 @@
 @import "../../../../../../vendors/mixins";
 @import "../../../../../../vendors/variables";
 
+.panel-buttons {
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
 .admin-controllers {
     select {
         outline: 0;
@@ -8,5 +14,29 @@
         background-color: transparent;
         color: black;
         margin-right: 8px;
+    }
+
+    .blog-write {
+        .blog-tools {
+            @include flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .hashtags-controllers {
+            @include flex;
+            gap: 5px
+        }
+
+        .helper-hashtags {
+            @include flex(right, row, center);
+            flex-wrap: wrap;
+            gap: 5px;
+
+            @media(max-width: 992px) {
+                flex-direction: column;
+                align-items: normal;
+            }
+        }
     }
 }
