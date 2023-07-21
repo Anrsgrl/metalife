@@ -13,7 +13,7 @@ const SingleBlog = (props) => {
                     <img src={image} alt="blog" />
                     <h6 className='p-2 pb-1'>{title}</h6>
                 </div>
-                <div className="hashtags pb-1 px-2">
+                <div className="hashtags pb-1 px-2 mb-1">
                     {hashtags?.slice(0, 3).map((item) => (
                         <Link key={item} to={`/blog/${item}`}>#{item}</Link>
                     ))}

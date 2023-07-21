@@ -8,7 +8,7 @@ import SingleBlog from '../../components/SingleBlog/SingleBlog';
 const Search = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const searchItemValue = searchParams.get("searchItem");
+    const searchItemValue = searchParams.get("searchItem").replace(/\s/g, '');
     const { videos, blogs, currentUser } = useAuth()
     const filteredVideos = videos.filter((e) => e.demo === "true" && e.hashtags?.includes(searchItemValue));
     const filteredBlogs = blogs.filter((e) => e.hashtags?.includes(searchItemValue));
@@ -36,7 +36,7 @@ const Search = () => {
                                             <h5 className='py-2'>Axtarışınıza uyğun video tapılmadı.</h5>
                                         ) : (
                                             filteredVideos?.map((e) => (
-                                                <div className='single-video-part'>
+                                                <div key={e.id} className='single-video-part'>
                                                     <ReactPlayer key={e.id} url={e.url} controls={true} className="single-video" config={{
                                                         playerOptions: {
                                                             playsinline: true
