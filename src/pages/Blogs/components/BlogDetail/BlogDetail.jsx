@@ -8,24 +8,22 @@ import SingleBlog from '../../../../components/SingleBlog/SingleBlog';
 import { useAuth } from '../../../../firebase';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
 
-
 const BlogDetail = () => {
     const { blogs } = useAuth();
     const { blogUrl } = useParams();
-    const blog = blogs?.find((blog) => blog?.title.replace("?", "").toLowerCase().split(" ").join("-") === blogUrl);
+    const decodedBlogUrl = decodeURIComponent(blogUrl);
+    const blog = blogs?.find((blog) => blog?.title.replace("?", "").toLowerCase().split(" ").join("-") === decodedBlogUrl);
     if (!blog || blog?.length === 0) {
         return <div className="container py-5">
             <FadeLoader color="#4A4AB5" />
         </div>
     }
 
-    const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(blogUrl)}`;
+    const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(decodedBlogUrl)}`;
 
     const { content, blog_image, title, author, author_image, time, hashtags } = blog;
 
     const formattedTime = time.toDate().toLocaleString();
-
-    // console.log("blogLink=", blogUrl)
 
     return (
         <div className="blog-detail container py-5">
