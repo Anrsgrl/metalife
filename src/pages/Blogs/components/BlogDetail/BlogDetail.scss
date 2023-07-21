@@ -18,6 +18,11 @@
         font-style: italic;
         font-size: 12px;
 
+        @media(max-width: 572px) {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         a {
             padding-left: 15px;
             text-decoration: none;
@@ -53,6 +58,12 @@
     @include flex(space-between);
     gap: 5px;
     border-top: 1px solid #bebebe;
+
+    @media(max-width: 768px) {
+        text-align: center;
+        gap: 30px;
+        flex-direction: column;
+    }
 
     .author-side {
         @include flex(flex-start);

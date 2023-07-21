@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./BlogDetail.scss";
 import { useParams } from 'react-router';
 import FadeLoader from "react-spinners/FadeLoader";
@@ -6,11 +6,12 @@ import { MdDateRange } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import SingleBlog from '../../../../components/SingleBlog/SingleBlog';
 import { useAuth } from '../../../../firebase';
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
+import { FacebookShareButton, TwitterShareButton, FacebookIcon, TwitterIcon, TelegramShareButton, TelegramIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'react-share';
 
 const BlogDetail = () => {
     const { blogs } = useAuth();
     const { blogUrl } = useParams();
+    const [loading, setLoading] = useState(true);
     const decodedBlogUrl = decodeURIComponent(blogUrl);
     const blog = blogs?.find((blog) => blog?.title.replace("?", "").toLowerCase().split(" ").join("-") === decodedBlogUrl);
     if (!blog || blog?.length === 0) {
@@ -20,6 +21,8 @@ const BlogDetail = () => {
     }
 
     const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(decodedBlogUrl)}`;
+    const quoteText = `${blog.title}  Bu və daha çox blog üçün səhifəmizi ziyarət edə bilərsiniz:`;
+
 
     const { content, blog_image, title, author, author_image, time, hashtags } = blog;
 
@@ -29,7 +32,8 @@ const BlogDetail = () => {
         <div className="blog-detail container py-5">
             <div className="row">
                 <div className="blog-left col-12 col-lg-9">
-                    <img src={blog_image} className="w-100 py-2" alt="blog" />
+                    {loading && <FadeLoader color="#4A4AB5" />}
+                    <img src={blog_image} className="w-100 py-2" alt="blog" onLoad={() => setLoading(false)} />
                     <div className='blog-info'>
                         <ul className='px-0 pt-1 m-0 hashtags'>
                             {hashtags?.slice(0, 3).map((hashtag) => (
@@ -53,15 +57,31 @@ const BlogDetail = () => {
                         <div className="share-side">
                             <h6>Paylaş:</h6>
                             <div className="share-buttons">
-                                <FacebookShareButton url={blogLink} className="share-button">
-                                    <FacebookIcon size={40} />
-                                </FacebookShareButton>
-                                <TwitterShareButton url={blogLink} className="share-button">
+                                <TwitterShareButton
+                                    hashtags={blog.hashtags.slice(0, 3)}
+                                    url={blogLink} title={quoteText} className="share-button">
                                     <TwitterIcon size={40} />
                                 </TwitterShareButton>
-                                <LinkedinShareButton url={blogLink} className="share-button">
+                                <FacebookShareButton
+                                    hashtags={blog.hashtags.slice(0, 3)}
+                                    url={blogLink} title={quoteText} className="share-button">
+                                    <FacebookIcon size={40} />
+                                </FacebookShareButton>
+                                <TelegramShareButton
+                                    hashtags={blog.hashtags.slice(0, 3)}
+                                    url={blogLink} title={quoteText} className="share-button">
+                                    <TelegramIcon size={40} />
+                                </TelegramShareButton>
+                                <LinkedinShareButton
+                                    hashtags={blog.hashtags.slice(0, 3)}
+                                    url={blogLink} title={quoteText} className="share-button">
                                     <LinkedinIcon size={40} />
                                 </LinkedinShareButton>
+                                <WhatsappShareButton
+                                    hashtags={blog.hashtags.slice(0, 3)}
+                                    url={blogLink} title={quoteText} className="share-button">
+                                    <WhatsappIcon size={40} />
+                                </WhatsappShareButton>
                             </div>
                         </div>
                     </div>
