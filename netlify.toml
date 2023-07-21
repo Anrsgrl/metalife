@@ -10,7 +10,7 @@ status = 301
 
 [[redirects]]
 from = "/blogs/:blogUrl"
-to = "/blogs"
+to = "/blogs/:blogUrl"
 status = 301
 
 [[redirects]]
