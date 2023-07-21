@@ -9,6 +9,7 @@
 .single-blog {
     overflow: hidden;
     @include flex;
+    height: 240px;
 
     .blog-content {
         @include flex(space-between, column, stretch);
