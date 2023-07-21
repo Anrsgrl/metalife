@@ -19,10 +19,13 @@ const BlogDetail = () => {
         </div>
     }
 
-    const blogLink = window.location.href;
+    const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(blogUrl)}`;
+
     const { content, blog_image, title, author, author_image, time, hashtags } = blog;
 
     const formattedTime = time.toDate().toLocaleString();
+
+    // console.log("blogLink=", blogUrl)
 
     return (
         <div className="blog-detail container py-5">
