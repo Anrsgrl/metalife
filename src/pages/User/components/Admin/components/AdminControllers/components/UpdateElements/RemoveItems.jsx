@@ -55,7 +55,7 @@ const RemoveItems = () => {
                         className="col-12 col-md-5"
                     >
                         <option value="default" disabled hidden>
-                            Bir öğe seçin
+                            Bir blog seçin
                         </option>
                         {blogs?.map((e) => (
                             <option key={e?.id} value={e?.id}>
