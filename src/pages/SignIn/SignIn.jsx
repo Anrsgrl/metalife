@@ -8,7 +8,7 @@ import login from "../../assets/images/login.svg";
 import forget from "../../assets/images/forgot-pass.svg";
 
 const SignIn = () => {
-    const { loggedUser } = useAuth();
+    const { loggedUser, userData } = useAuth();
     const [showPass, setShowPass] = useState(false);
     const [forgot, setForgot] = useState(false);
     const [errorType, setErrorType] = useState("");
@@ -16,6 +16,9 @@ const SignIn = () => {
     const [password, setPassword] = useState("");
     const [resetEmail, setResetEmail] = useState("")
     const navigate = useNavigate();
+
+    console.log(userData.find((e) => e.email === email))
+    console.log(userData)
 
     useEffect(() => {
         window.scrollTo({
@@ -30,8 +33,12 @@ const SignIn = () => {
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate('/');
+            if (userData.find((e) => e?.email === email)) {
+                await signInWithEmailAndPassword(auth, email, password);
+                navigate('/');
+            } else {
+                setErrorType("user")
+            }
         } catch (error) {
             if (error.code === "auth/user-not-found") {
                 setErrorType("user");
@@ -81,15 +88,15 @@ const SignIn = () => {
                                 <div className="form-element col-12">
                                     <input onChange={(e) => setPassword(e.target.value)} type={showPass ? "text" : "password"} placeholder='Şifrə' name="password"
                                         className={errorType === "pass" ? 'pe-5 sign-inputs mb-2 border-danger' : 'pe-5 sign-inputs'} required />
-                                    {errorType === "pass" && <p className='text-danger'>Şifrəniz yanlışdır.</p>}
-                                    {errorType === "temporary" && <p className='text-danger'>Çox yanlış kod girdiyiniz üçün, profiliniz keçici olaraq bloklanmışdır.</p>}
-                                    {errorType === "user" && <p className='text-danger'>Qeyd etdiyiniz məlumatlar heç bir istifadəçi ilə uymur. Zəhmət olmasa <Link to="/sign-up">qeydiyyatdan</Link> keçin</p>}
                                     <button onClick={() => setShowPass(!showPass)} type='button' className='clean-button btn-show'>{showPass ? (<FaRegEyeSlash />) : (<FaRegEye />)}</button>
                                 </div>
+                                {errorType === "pass" && <p className='text-danger'>Şifrəniz yanlışdır.</p>}
+                                {errorType === "temporary" && <p className='text-danger'>Çox yanlış kod girdiyiniz üçün, profiliniz keçici olaraq bloklanmışdır.</p>}
+                                {errorType === "user" && <p className='text-danger'>Qeyd etdiyiniz məlumatlar heç bir istifadəçi ilə uymur. Zəhmət olmasa <Link to="/sign-up">qeydiyyatdan</Link> keçin</p>}
                             </div>
                             <div className="sign-buttons">
                                 <button type='submit' className='btn-blue'>Giriş</button>
-                                <button onClick={() => setForgot(true)} type='button' className="clean-button">Şifrəni unuttun?</button>
+                                <button onClick={() => { setForgot(true); setErrorType("") }} type='button' className="clean-button">Şifrəni unuttun?</button>
                             </div>
                         </form>
                     </div>

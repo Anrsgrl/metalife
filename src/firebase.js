@@ -64,8 +64,8 @@ export async function uploadBlogPhoto(file) {
 export function useAuth() {
     const [currentUser, setCurrentUser] = useState(null);
     const [userData, setUserData] = useState([]);
-    const [blogs, setBlogs] = useState([])
-    const [videos, setVideos] = useState([])
+    const [blogs, setBlogs] = useState([]);
+    const [videos, setVideos] = useState([]);
 
     const usersCollectionRef = useRef(collection(db, "users"));
     const blogsCollectionRef = useRef(collection(db, "blogs"));
@@ -83,12 +83,12 @@ export function useAuth() {
         const getUsers = async () => {
             const data = await getDocs(usersCollectionRef.current);
             setUserData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            console.log("userData:", data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
 
-        if (currentUser) {
-            getUsers();
-        }
+        getUsers()
     }, [currentUser]);
+
 
     useEffect(() => {
         const getBlogs = async () => {
@@ -110,6 +110,9 @@ export function useAuth() {
 
     return { currentUser, loggedUser, blogs, userData, videos };
 }
+
+
+
 
 
 

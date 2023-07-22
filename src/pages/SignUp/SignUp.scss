@@ -10,6 +10,11 @@
         min-height: fit-content;
     }
 
+    a {
+        color: $main-color;
+        text-decoration: none;
+    }
+
 }
 
 .sign-inputs {
@@ -39,10 +44,6 @@
 .form-element {
     position: relative;
 
-    a {
-        color: $main-color;
-        text-decoration: none;
-    }
 }
 
 .tel-info:is(:hover, :focus)~.tel-modal {
