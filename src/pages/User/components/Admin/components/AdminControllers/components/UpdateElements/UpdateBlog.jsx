@@ -171,7 +171,7 @@ const UpdateBlog = () => {
                 <button className={disabledIf ? "btn-disabled" : 'btn-blue'} type="submit" disabled={disabledIf}>Təsdiqlə</button>
                 {disabledIf && <p className='text-danger py-2'>Bütün hissələri doldurun.</p>}
                 <div className="preview">
-                    <h2 className='py-2'>Önizləmə: <button type='button' className='clean-button' onClick={() => setPreview(!preview)}>{checkEnt ? <AiFillEye /> : <AiFillEyeInvisible />}</button></h2>
+                    <h2 className='py-2'>Önizləmə: <button type='button' className='clean-button' onClick={() => setPreview(!preview)}>{preview ? <AiFillEye /> : <AiFillEyeInvisible />}</button></h2>
                     {preview && <div style={{ wordWrap: 'break-word' }} className="py-5 blog-content" dangerouslySetInnerHTML={{ __html: blogData.content }} />}
                 </div>
             </form>
