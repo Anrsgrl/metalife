@@ -20,11 +20,9 @@ import Settings from './pages/Settings/Settings';
 import Blogs from './pages/Blogs/Blogs';
 import BlogDetail from './pages/Blogs/components/BlogDetail/BlogDetail';
 import Search from './pages/Search/Search';
-import { auth } from './firebase';
 
 function App() {
   const main = useRef();
-  console.log(auth.currentUser)
   return (
     <>
       <Header />

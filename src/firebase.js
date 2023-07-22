@@ -83,7 +83,6 @@ export function useAuth() {
         const getUsers = async () => {
             const data = await getDocs(usersCollectionRef.current);
             setUserData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-            console.log("userData:", data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
 
         getUsers()

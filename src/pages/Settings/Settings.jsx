@@ -40,9 +40,6 @@ const Settings = () => {
             updateProfile(auth.currentUser, {
                 photoURL: profileUrl
             })
-                .then(() => {
-                    console.log("Profil fotoğrafı URL'si güncellendi");
-                })
                 .catch((error) => {
                     console.log("Profil fotoğrafı URL'sini güncelleme hatası:", error);
                 });

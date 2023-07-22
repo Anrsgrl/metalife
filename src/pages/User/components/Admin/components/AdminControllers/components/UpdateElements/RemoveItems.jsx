@@ -13,7 +13,6 @@ const RemoveItems = () => {
     const usersCollectionRef = useRef(collection(db, "users"));
 
     const removeItem = async (collectionRef, itemId) => {
-        console.log(auth)
         try {
             if (!itemId) return;
 
@@ -45,8 +44,6 @@ const RemoveItems = () => {
             console.error("Error:", error.message);
         }
     };
-    const items = getAuth;
-    console.log(items)
     return (
         <div className="remove-items-field py-5">
             <h2 className='py-3'>Remove Items</h2>
