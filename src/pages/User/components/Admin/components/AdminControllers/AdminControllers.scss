@@ -64,12 +64,13 @@
         }
     }
 
-    .remove-items {
-        .remove-blogs {
-            @include flex;
+    .remove-items-field {
+        .remove-items {
+            @include flex(center, column, normal);
+            gap: 40px;
 
-            @media(max-width: 768px) {
-                gap: 5px;
+            div {
+                @include flex;
             }
         }
     }
