@@ -45,7 +45,7 @@ const RemoveItems = () => {
     };
     return (
         <div className="remove-items-field py-5">
-            <h2 className='py-3'>Remove Items</h2>
+            <h2 className='py-3'>Məlumatları silmək</h2>
             {status && <p className='text-success text-center'>Uğurla silindi!</p>}
             <div className="remove-items">
                 <div className="row remove-blogs">
