@@ -10,6 +10,7 @@ const UpdateBlog = () => {
     const [hashtags, setHashtags] = useState([]);
     const [newHashtag, setNewHashtag] = useState("")
     const [showHelperHash, setShowHelperHash] = useState(false)
+    const [checkEnt, setCheckEnt] = useState(false)
 
     const [blogData, setBlogData] = useState({
         author: "",
@@ -18,8 +19,6 @@ const UpdateBlog = () => {
         title: "",
         content: "",
     });
-
-    console.table(hashtags)
 
     const blogsCollectionRef = useRef(collection(db, "blogs"));
 
@@ -89,6 +88,12 @@ const UpdateBlog = () => {
         }
     };
 
+    const checkEnter = (event) => {
+        if (event.key === 'Enter' && checkEnt) {
+            setBlogData({ ...blogData, content: event.target.value + "<p></p>" })
+        }
+    }
+
     const disabledIf = title?.length === 0 || hashtags?.length === 0 || content?.length === 0 || !blog_image
 
     return (
@@ -147,6 +152,10 @@ const UpdateBlog = () => {
                     <button type='button' className='btn-white' onClick={() => setBlogData({ ...blogData, content: blogData.content + "<h5 class='py-2'></h5>" })}>Altbaşlıq əlavə et</button>
                     <button type='button' className='btn-white' onClick={() => setBlogData({ ...blogData, content: blogData.content + "<p></p>" })}>Paragraf əlavə et</button>
                 </div>
+                <div className="pb-2 check-enter">
+                    <p className='m-0'>Enter basıldıqda paragraf əlavə etmə:</p>
+                    <button type='button' className='clean-button' onClick={() => setCheckEnt(!checkEnt)}>{checkEnt ? "Açıq" : "Bağlı"}</button>
+                </div>
                 <textarea
                     onChange={handleChange}
                     placeholder="Kontent"
@@ -155,6 +164,7 @@ const UpdateBlog = () => {
                     value={content}
                     required
                     style={{ resize: "vertical" }}
+                    onKeyDown={checkEnter}
                 ></textarea>
                 <button className={disabledIf ? "btn-disabled" : 'btn-blue'} type="submit" disabled={disabledIf}>Təsdiqlə</button>
                 {disabledIf && <p className='text-danger'>Bütün hissələri doldurun.</p>}

@@ -23,6 +23,15 @@
             gap: 5px;
         }
 
+        .check-enter {
+            @include flex(flex-start);
+
+            button {
+                color: $main-color;
+                font-size: 15px;
+            }
+        }
+
         .hashtags-controllers {
             @include flex;
             gap: 5px
