@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import AdminPanel from './components/AdminPanel.jsx/AdminPanel';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 
 const Admin = ({ level, setLevel }) => {
     const [password, setPassword] = useState();
     const [error, setError] = useState(false)
+    const [showPass, setShowPass] = useState(false);
     const checkPass = (e) => {
         e.preventDefault();
         if (password === process.env.REACT_APP_ADMIN_PASS) {
@@ -25,7 +27,10 @@ const Admin = ({ level, setLevel }) => {
             ) : (
                 <form onSubmit={(e) => checkPass(e)}>
                     <h2 className='pb-2'>Admin panel</h2>
-                    <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Şifrə' name="password" className='col-6 sign-inputs' required />
+                    <div className="form-element">
+                        <input onChange={(e) => setPassword(e.target.value)} type={showPass ? "text" : "password"} placeholder='Şifrə' name="password" className='col-6 sign-inputs pe-5' required />
+                        <button onClick={() => setShowPass(!showPass)} type='button' className='clean-button btn-show'>{showPass ? (<FaRegEyeSlash />) : (<FaRegEye />)}</button>
+                    </div>
                     {error && <p className='text-danger'>Şifrə yanlışdır.</p>}
                     <button className='btn-blue' type="submit">Giriş et</button>
                 </form>
