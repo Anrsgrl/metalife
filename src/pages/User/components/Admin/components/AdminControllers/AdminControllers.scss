@@ -12,6 +12,11 @@
         text-align: center;
     }
 
+    h2 {
+        color: $main-color;
+        text-align: center;
+    }
+
     select {
         outline: 0;
         border: 0;
@@ -52,14 +57,19 @@
             }
         }
 
-        h2 {
-            color: $main-color;
-            text-align: center;
-        }
-
         .preview {
             svg {
                 fill: $main-color;
+            }
+        }
+    }
+
+    .remove-items {
+        .remove-blogs {
+            @include flex;
+
+            @media(max-width: 768px) {
+                gap: 5px;
             }
         }
     }

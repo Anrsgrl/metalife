@@ -23,8 +23,8 @@ const UpdateTeachers = ({ filteredData }) => {
         <form onSubmit={addTeacher}>
             <h3 className='py-2'>Müəllim əlavə et</h3>
             <div className="row">
-                <select className='col-6 m-0' onChange={(e) => setSelectedUser(e.target.value)} name="users">
-                    <option value="" selected disabled hidden>İstifadəçini seçin</option>
+                <select defaultValue={"default"} className='col-6 m-0' onChange={(e) => setSelectedUser(e.target.value)} name="users">
+                    <option value="default" disabled hidden>İstifadəçini seçin</option>
                     {filteredData?.map((item) => (
                         <option key={item?.name} value={item?.id}>{item?.username}</option>
                     ))}

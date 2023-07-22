@@ -32,16 +32,16 @@ const UpdateUserLessons = ({ filteredData, videos }) => {
         <form onSubmit={updateUserLessons}>
             <h3 className='py-2'>İstifadəçiyə dərs əlavə et</h3>
             <div className="row">
-                <select className='col-6 m-0' onChange={(e) => setSelectedUser(e.target.value)} name="users">
-                    <option value="" selected disabled hidden>İstifadəçini seçin</option>
+                <select defaultValue={"default"} className='col-6 m-0' onChange={(e) => setSelectedUser(e.target.value)} name="users">
+                    <option value="default" disabled hidden>İstifadəçini seçin</option>
                     {filteredData?.map((item) => (
                         <option key={item?.name} value={item?.id}>{item?.username}</option>
                     ))}
                 </select>
-                <select className='col-6 m-0' onChange={(e) => setSelectedLesson(e.target.value)} name="videos">
-                    <option value="" selected disabled hidden>Grupu seçin</option>
+                <select defaultValue={"default"} className='col-6 m-0' onChange={(e) => setSelectedLesson(e.target.value)} name="videos">
+                    <option value="default" disabled hidden>Grupu seçin</option>
                     {videos?.map((item) => (
-                        <option key={item?.category} value={item?.group}>{item?.group}</option>
+                        <option key={item?.title} value={item?.group}>{item?.group}</option>
                     ))}
                 </select>
                 <button type="submit" className={!selectedUser || !selectedLesson ? "btn-disabled col-6 my-2" : 'btn-blue col-6 my-2'} disabled={!selectedUser || !selectedLesson}> Təsdiqlə </button>

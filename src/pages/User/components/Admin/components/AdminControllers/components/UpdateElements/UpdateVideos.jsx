@@ -62,8 +62,8 @@ const UpdateVideos = () => {
             <h3 className='py-2'>Yeni dərs əlavə et</h3>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="row">
-                    <select className='col-6 m-0 py-2' onChange={(e) => setDemo(e.target.value)} name="users">
-                        <option value="" selected disabled hidden>Pulsuz videodur?</option>
+                    <select defaultValue={"default"} className='col-6 m-0 py-2' onChange={(e) => setDemo(e.target.value)} name="users">
+                        <option value="default" disabled hidden>Pulsuz videodur?</option>
                         <option value="true">Bəli</option>
                         <option value="false">Xeyr</option>
                     </select>
