@@ -16,7 +16,7 @@
                 max-height: 424px;
 
                 img {
-                    @include imageCover;
+                    width: 100%;
                     border: 1px solid $main-color;
                     border-radius: 50%;
                 }

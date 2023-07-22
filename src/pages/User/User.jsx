@@ -11,6 +11,7 @@ const User = () => {
   const { userName } = useParams();
   const [show, setShow] = useState(false);
   const [admin, setAdmin] = useState(false);
+  const [level, setLevel] = useState("")
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,8 +43,8 @@ const User = () => {
       <div className="row">
         {show && (
           <>
-            <UserAside user={loggedUser} />
-            {admin ? <Admin user={loggedUser} /> : <UserProducts user={loggedUser} />}
+            {level === "" && <UserAside user={loggedUser} />}
+            {admin ? <Admin user={loggedUser} level={level} setLevel={setLevel} /> : <UserProducts user={loggedUser} />}
           </>
         )}
       </div>

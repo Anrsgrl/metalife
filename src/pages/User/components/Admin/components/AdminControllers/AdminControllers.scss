@@ -8,6 +8,10 @@
 }
 
 .admin-controllers {
+    @media(max-width:767px) {
+        text-align: center;
+    }
+
     select {
         outline: 0;
         border: 0;
@@ -38,13 +42,24 @@
         }
 
         .helper-hashtags {
-            @include flex(right, row, center);
+            @include flex(center, row, center);
             flex-wrap: wrap;
             gap: 5px;
 
             @media(max-width: 992px) {
                 flex-direction: column;
                 align-items: normal;
+            }
+        }
+
+        h2 {
+            color: $main-color;
+            text-align: center;
+        }
+
+        .preview {
+            svg {
+                fill: $main-color;
             }
         }
     }

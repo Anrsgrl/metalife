@@ -3,6 +3,7 @@ import { getDownloadURL, getStorage, ref as storageRef, uploadBytes } from 'fire
 import React, { useRef, useState } from 'react';
 import { db, useAuth } from '../../../../../../../../firebase';
 import { frontendHashtags, backendHashtags, fullstackHashtags, uidesignHashtags, interiorDesignHashtags, threeDHashtags } from '../../../../../../../../data/updateHashtags';
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const UpdateBlog = () => {
     const { currentUser, loggedUser } = useAuth();
@@ -11,6 +12,7 @@ const UpdateBlog = () => {
     const [newHashtag, setNewHashtag] = useState("")
     const [showHelperHash, setShowHelperHash] = useState(false)
     const [checkEnt, setCheckEnt] = useState(false)
+    const [preview, setPreview] = useState(false);
 
     const [blogData, setBlogData] = useState({
         author: "",
@@ -110,10 +112,10 @@ const UpdateBlog = () => {
                     required
                 />
                 {hashtags && <p className='text-muted'>{hashtags?.map((tag) => `#${tag}`).join(", ")}</p>}
-                <div className="hashtags-controllers col-12">
-                    <button className='btn-blue' type="submit">Əlavə et</button>
-                    <button className='btn-blue' type="button" onClick={() => setHashtags([])}>Hamısını sil</button>
-                    <button className={showHelperHash ? "btn-white" : "btn-blue"} type="button" onClick={() => setShowHelperHash(!showHelperHash)}>{showHelperHash ? "Köməkçi tagları gizlət" : "Köməkçi tagları göstər"}</button>
+                <div className="hashtags-controllers col-12 row m-0">
+                    <button className='btn-blue col-12 col-md-4' type="submit">Əlavə et</button>
+                    <button className='btn-blue col-12 col-md-4' type="button" onClick={() => setHashtags([])}>Hamısını sil</button>
+                    <button className={`${showHelperHash ? "btn-white" : "btn-blue"} col-12 col-md-4`} type="button" onClick={() => setShowHelperHash(!showHelperHash)}>{showHelperHash ? "Köməkçi tagları gizlət" : "Köməkçi tagları göstər"}</button>
                 </div>
                 {showHelperHash &&
                     <div className="helper-hashtags col-12 py-2">
@@ -167,7 +169,11 @@ const UpdateBlog = () => {
                     onKeyDown={checkEnter}
                 ></textarea>
                 <button className={disabledIf ? "btn-disabled" : 'btn-blue'} type="submit" disabled={disabledIf}>Təsdiqlə</button>
-                {disabledIf && <p className='text-danger'>Bütün hissələri doldurun.</p>}
+                {disabledIf && <p className='text-danger py-2'>Bütün hissələri doldurun.</p>}
+                <div className="preview">
+                    <h2 className='py-2'>Önizləmə: <button type='button' className='clean-button' onClick={() => setPreview(!preview)}>{checkEnt ? <AiFillEye /> : <AiFillEyeInvisible />}</button></h2>
+                    {preview && <div style={{ wordWrap: 'break-word' }} className="py-5 blog-content" dangerouslySetInnerHTML={{ __html: blogData.content }} />}
+                </div>
             </form>
         </div>
     );

@@ -5,10 +5,11 @@ import UpdateUserLessons from './components/UpdateElements/UpdateUserLessons';
 import UpdateTeachers from './components/UpdateElements/UpdateTeachers';
 import UpdateVideos from './components/UpdateElements/UpdateVideos';
 import UpdateBlog from './components/UpdateElements/UpdateBlog';
+import RemoveItems from './components/UpdateElements/RemoveItems';
 
 const AdminControllers = (props) => {
     const { userData, videos } = useAuth();
-    const { user, teacher, video, blog } = props;
+    const { user, teacher, video, blog, trash } = props;
     const filteredData = userData?.filter((e) => e.userKey !== process.env.REACT_APP_ADMIN_KEY)
 
 
@@ -18,6 +19,7 @@ const AdminControllers = (props) => {
             {user && <UpdateUserLessons videos={videos} filteredData={filteredData} />}
             {video && <UpdateVideos />}
             {blog && <UpdateBlog />}
+            {trash && <RemoveItems />}
         </div>
     );
 }
