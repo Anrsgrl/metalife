@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { auth, db, storage, useAuth } from '../../../../../../../../firebase';
+import { db, storage, useAuth } from '../../../../../../../../firebase';
 import { collection, doc, deleteDoc } from 'firebase/firestore';
 import { deleteObject, ref } from 'firebase/storage';
-import { getAuth } from 'firebase/auth';
 
 const RemoveItems = () => {
     const [selectedItemId, setSelectedItemId] = useState("");
