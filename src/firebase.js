@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
-import { getDownloadURL, getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, getStorage, ref, ref as storageRef, uploadBytes } from "firebase/storage";
 import { useEffect, useRef, useState } from "react";
 
 const firebaseConfig = {
@@ -20,15 +20,29 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 
 export async function uploadProfilePhoto(file, currentUser) {
-    const fileRef = storageRef(storage, `profile-images/${currentUser.uid}.png`);
+    try {
+        if (currentUser.photoURL) {
+            const oldPhotoRef = ref(storage, currentUser.photoURL);
+            await deleteObject(oldPhotoRef);
+        }
+        const fileRef = storageRef(storage, `profile-images/${currentUser.uid}.png`);
+        await uploadBytes(fileRef, file);
+        const photoURL = await getDownloadURL(fileRef);
 
-    await uploadBytes(fileRef, file);
-    const photoURL = await getDownloadURL(fileRef);
+        // Update the user profile with the new photoURL
+        await updateProfile(auth.currentUser, { photoURL });
 
-    await updateProfile(auth.currentUser, { photoURL });
+        // Check if the currentUser.photoURL exists (not null or empty)
+        // If it exists, delete the old profile photo
 
-    return photoURL;
+        return photoURL;
+    } catch (error) {
+        console.error("Error:", error.message);
+        throw error;
+    }
 }
+
+
 
 export async function uploadBlogPhoto(file) {
     const storage = getStorage(app);

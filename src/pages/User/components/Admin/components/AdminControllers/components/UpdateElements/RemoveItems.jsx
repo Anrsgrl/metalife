@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { auth, db, storage, useAuth } from '../../../../../../../../firebase';
 import { collection, doc, deleteDoc } from 'firebase/firestore';
 import { deleteObject, ref } from 'firebase/storage';
+import { getAuth } from 'firebase/auth';
 
 const RemoveItems = () => {
     const [selectedItemId, setSelectedItemId] = useState("");
@@ -12,6 +13,7 @@ const RemoveItems = () => {
     const usersCollectionRef = useRef(collection(db, "users"));
 
     const removeItem = async (collectionRef, itemId) => {
+        console.log(auth)
         try {
             if (!itemId) return;
 
@@ -26,13 +28,13 @@ const RemoveItems = () => {
             }
             await deleteDoc(itemRef);
 
-            if (collectionRef.current === usersCollectionRef.current) {
-                const selectedUser = userData.find((user) => user.id === itemId);
-                if (selectedUser) {
-                    const userEmail = selectedUser.email;
-                    await auth.deleteUserByEmail(userEmail);
-                }
-            }
+            // if (collectionRef.current === usersCollectionRef.current) {
+            //     const selectedUser = userData.find((user) => user.id === itemId);
+            //     if (selectedUser) {
+            //         const userEmail = selectedUser.email;
+            //         await deleteUser("6nWlAK9uwlZPVb65eQpTXhnV2Sh1");
+            //     }
+            // }
 
             setSelectedItemId("");
             setStatus("Uğurla silindi");
@@ -43,7 +45,8 @@ const RemoveItems = () => {
             console.error("Error:", error.message);
         }
     };
-
+    const items = getAuth;
+    console.log(items)
     return (
         <div className="remove-items-field py-5">
             <h2 className='py-3'>Remove Items</h2>
