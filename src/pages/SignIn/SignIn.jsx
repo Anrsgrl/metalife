@@ -17,9 +17,6 @@ const SignIn = () => {
     const [resetEmail, setResetEmail] = useState("")
     const navigate = useNavigate();
 
-    console.log(userData.find((e) => e.email === email))
-    console.log(userData)
-
     useEffect(() => {
         window.scrollTo({
             top: 0,
