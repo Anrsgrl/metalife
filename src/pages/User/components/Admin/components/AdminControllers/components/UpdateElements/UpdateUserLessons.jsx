@@ -40,7 +40,7 @@ const UpdateUserLessons = ({ filteredData, videos }) => {
                 </select>
                 <select defaultValue={"default"} className='col-6 m-0' onChange={(e) => setSelectedLesson(e.target.value)} name="videos">
                     <option value="default" disabled hidden>Grupu seçin</option>
-                    {videos?.map((item) => (
+                    {videos?.filter((e) => e?.group).map((item) => (
                         <option key={item?.title} value={item?.group}>{item?.group}</option>
                     ))}
                 </select>
