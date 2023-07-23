@@ -1,6 +1,7 @@
 import { addDoc, collection } from 'firebase/firestore';
 import React, { useRef, useState } from 'react';
 import { db } from '../../../../../../../../firebase';
+import { backendHashtags, frontendHashtags, fullstackHashtags, interiorDesignHashtags, threeDHashtags, uidesignHashtags } from '../../../../../../../../data/updateHashtags';
 
 const UpdateVideos = () => {
     const [title, setTitle] = useState()
@@ -9,9 +10,14 @@ const UpdateVideos = () => {
     const [group, setGroup] = useState()
     const [demo, setDemo] = useState("")
     const [url, setUrl] = useState()
+    const [showHelperHash, setShowHelperHash] = useState(false)
 
-
-    const disabledIf = title?.length === 0 || hashtags?.length === 0 || group?.length === 0 || url?.length === 0;
+    const parseVideoIdFromLink = (link) => {
+        const url = new URL(link);
+        const videoId = url.searchParams.get("v");
+        return videoId;
+    };
+    const disabledIf = title?.length === 0 || hashtags?.length === 0 || group?.length === 0 || url?.length === 0 || demo === "";
 
     const handleHashtagsSubmit = (e) => {
         e.preventDefault();
@@ -27,24 +33,26 @@ const UpdateVideos = () => {
         e.preventDefault();
 
         try {
+            const videoId = parseVideoIdFromLink(url);
             if (demo) {
                 const newBlogRef = await addDoc(videosCollectionRef.current, {
                     title,
                     hashtags,
-                    url,
+                    url: videoId,
                     demo,
                 });
-                alert(`Yeni blog bu ID ilə əlavə edildi: ${newBlogRef.id}`);
+                alert(`Yeni video bu ID ilə əlavə edildi: ${newBlogRef.id}`);
             } else {
                 const newVideoRef = await addDoc(videosCollectionRef.current, {
                     title,
                     hashtags,
-                    url,
+                    url: videoId,
                     demo,
                     group,
                 });
                 alert(`Yeni video bu ID ilə əlavə edildi: ${newVideoRef.id}`);
             }
+            setDemo("")
             setTitle("")
             setHashtags([])
             setGroup("")
@@ -53,7 +61,7 @@ const UpdateVideos = () => {
 
 
         } catch (error) {
-            console.error("Error adding blog: ", error);
+            alert("Error adding video: ", error.message);
         }
     };
 
@@ -74,7 +82,17 @@ const UpdateVideos = () => {
                         <input value={url} type="text" placeholder='Video linki' name="url" className='sign-inputs' onChange={(e) => setUrl(e.target.value)} required />
                     </div>
                     <div className="form-element col-12 col-md-6">
-                        <input value={demo !== "true" ? group : ""} disabled={demo === "true"} type="text" placeholder='Video aid olduğu grup' name="title" className='sign-inputs' onChange={(e) => setGroup(e.target.value)} required />
+                        {demo !== "true" && (
+                            <input
+                                value={group}
+                                type="text"
+                                placeholder='Video aid olduğu grup'
+                                name="title"
+                                className='sign-inputs'
+                                onChange={(e) => setGroup(e.target.value)}
+                                required
+                            />
+                        )}
                     </div>
                     <button type='submit' className={disabledIf ? "btn-disabled" : "btn-blue"} disabled={disabledIf}>Təsdiqlə</button>
                 </div>
@@ -91,10 +109,21 @@ const UpdateVideos = () => {
                     required
                 />
                 {hashtags && <p className='text-muted'>{hashtags?.map((tag) => `#${tag}`).join(", ")}</p>}
-                <div className="d-flex">
-                    <button className='btn-blue' type="submit">Əlavə et</button>
-                    <button className='btn-white ms-2' type="button" onClick={() => setHashtags([])}>Hamısını sil</button>
+                <div className="hashtags-controllers col-12 row m-0">
+                    <button className='btn-blue col-12 col-md-4' type="submit">Əlavə et</button>
+                    <button className='btn-blue col-12 col-md-4' type="button" onClick={() => setHashtags([])}>Hamısını sil</button>
+                    <button className={`${showHelperHash ? "btn-white" : "btn-blue"} col-12 col-md-4`} type="button" onClick={() => setShowHelperHash(!showHelperHash)}>{showHelperHash ? "Köməkçi tagları gizlət" : "Köməkçi tagları göstər"}</button>
                 </div>
+                {showHelperHash &&
+                    <div className="helper-hashtags col-12 py-2">
+                        <button type='button' className='btn-white' onClick={() => setHashtags(frontendHashtags)}>Frontend hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(backendHashtags)}>Backend hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(fullstackHashtags)}>Fullstack hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(uidesignHashtags)}>UI/UIX hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(interiorDesignHashtags)}>Interior hashtags</button>
+                        <button type='button' className='btn-white' onClick={() => setHashtags(threeDHashtags)}>3D Modelling hashtags</button>
+                    </div>
+                }
             </form>
             {disabledIf && <p className='text-danger'>Bütün hissələri doldurun.</p>}
         </>

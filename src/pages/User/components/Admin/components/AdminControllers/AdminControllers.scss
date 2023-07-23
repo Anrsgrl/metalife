@@ -7,6 +7,22 @@
     gap: 5px;
 }
 
+.hashtags-controllers {
+    @include flex;
+    gap: 5px
+}
+
+.helper-hashtags {
+    @include flex(center, row, center);
+    flex-wrap: wrap;
+    gap: 5px;
+
+    @media(max-width: 992px) {
+        flex-direction: column;
+        align-items: normal;
+    }
+}
+
 .admin-controllers {
     @media(max-width:767px) {
         text-align: center;
@@ -38,22 +54,6 @@
             button {
                 color: $main-color;
                 font-size: 15px;
-            }
-        }
-
-        .hashtags-controllers {
-            @include flex;
-            gap: 5px
-        }
-
-        .helper-hashtags {
-            @include flex(center, row, center);
-            flex-wrap: wrap;
-            gap: 5px;
-
-            @media(max-width: 992px) {
-                flex-direction: column;
-                align-items: normal;
             }
         }
 
