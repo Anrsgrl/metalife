@@ -27,7 +27,13 @@ const UpdateUserLessons = ({ filteredData, videos }) => {
             setError(error.message);
         }
     };
-
+    const getUniqueGroups = (videos) => {
+        const uniqueGroups = {};
+        videos?.filter((e) => e?.group).forEach((item) => {
+            uniqueGroups[item.group] = item;
+        });
+        return Object.values(uniqueGroups);
+    };
     return (
         <form onSubmit={updateUserLessons}>
             <h3 className='py-2'>İstifadəçiyə dərs əlavə et</h3>
@@ -40,8 +46,10 @@ const UpdateUserLessons = ({ filteredData, videos }) => {
                 </select>
                 <select defaultValue={"default"} className='col-6 m-0' onChange={(e) => setSelectedLesson(e.target.value)} name="videos">
                     <option value="default" disabled hidden>Grupu seçin</option>
-                    {videos?.filter((e) => e?.group).map((item) => (
-                        <option key={item?.title} value={item?.group}>{item?.group}</option>
+                    {getUniqueGroups(videos).map((item) => (
+                        <option key={item?.title} value={item?.group}>
+                            {item?.group}
+                        </option>
                     ))}
                 </select>
                 <button type="submit" className={!selectedUser || !selectedLesson ? "btn-disabled col-6 my-2" : 'btn-blue col-6 my-2'} disabled={!selectedUser || !selectedLesson}> Təsdiqlə </button>
