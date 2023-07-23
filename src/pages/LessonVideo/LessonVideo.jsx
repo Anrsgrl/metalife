@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TiArrowBack } from "react-icons/ti";
 import ReactPlayer from 'react-player';
 import { useAuth } from "../../firebase";
+import YouTube from 'react-youtube';
 
 const LessonVideo = () => {
     const params = useParams();
@@ -24,11 +25,7 @@ const LessonVideo = () => {
                             {demoVideos &&
                                 demoVideos?.map((e) => (
                                     <div className='single-video-part'>
-                                        <ReactPlayer key={e.id} url={e.url} controls={true} className="single-video" config={{
-                                            playerOptions: {
-                                                playsinline: true
-                                            }
-                                        }} />
+                                        <YouTube videoId={e.url} />
                                         <h6 className='pt-3'>{e.title}</h6>
                                     </div>
                                 ))
