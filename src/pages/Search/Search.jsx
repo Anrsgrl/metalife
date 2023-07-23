@@ -1,18 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../firebase';
-import ReactPlayer from 'react-player';
+import YouTube from 'react-youtube';
 import { FadeLoader } from 'react-spinners';
 import SingleBlog from '../../components/SingleBlog/SingleBlog';
+import { BiTime } from 'react-icons/bi';
 
 const Search = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const searchItemValue = searchParams.get("searchItem").replace(/\s/g, '');
     const { videos, blogs, currentUser } = useAuth()
+    const [videoDuration, setVideoDuration] = useState(null);
     const filteredVideos = videos.filter((e) => e.demo === "true" && e.hashtags?.includes(searchItemValue));
     const filteredBlogs = blogs.filter((e) => e.hashtags?.includes(searchItemValue));
 
+    const onPlayerReady = (event) => {
+        const player = event.target;
+        const duration = player.getDuration();
+        setVideoDuration(duration);
+    };
+
+    const formatTime = (totalSeconds) => {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = Math.floor(totalSeconds % 60);
+        return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    };
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -27,25 +41,21 @@ const Search = () => {
                     <div className="lesson-videos">
                         <div className="demo-videos-field py-2">
                             <h3 className='pb-2'>Axtarışa uyğun videolar</h3>
-                            <div className="demo-videos py-3">
+                            <div className="demo-videos py-3 h-100 w-100">
                                 {currentUser ? (
                                     <>
-                                        {!videos || videos?.length === 0 ? (
-                                            <FadeLoader color="#4A4AB5" />
-                                        ) : filteredVideos.length === 0 ? (
-                                            <h5 className='py-2'>Axtarışınıza uyğun video tapılmadı.</h5>
-                                        ) : (
+                                        {filteredVideos.length === 0 && <h5 className='py-2'>Axtarışınıza uyğun video tapılmadı.</h5>}
+                                        {filteredVideos &&
                                             filteredVideos?.map((e) => (
-                                                <div key={e.id} className='single-video-part'>
-                                                    <ReactPlayer key={e.id} url={e.url} controls={true} className="single-video" config={{
-                                                        playerOptions: {
-                                                            playsinline: true
-                                                        }
-                                                    }} />
-                                                    <h6 className='pt-3'>{e.title}</h6>
+                                                <div className='single-video-part col-12 col-md-9 col-lg-6'>
+                                                    <YouTube videoId={e.url} className={"w-100 h-100"} iframeClassName={"w-100 h-100"} onReady={onPlayerReady} />
+                                                    <div className="video-info px-3 py-2">
+                                                        <h6>{e.title}</h6>
+                                                        {filteredVideos !== null && <p className='video-time'><BiTime /> {formatTime(videoDuration)}</p>}
+                                                    </div>
                                                 </div>
                                             ))
-                                        )}
+                                        }
                                     </>
                                 ) : (
                                     <p>Pulsuz videoları izləmək üçün <Link to="/sign-in">giriş</Link> etməlisiniz. Profiliniz yoxdursa <Link to="/sign-up">qeydiyyatdan</Link> keçə bilərsiniz.</p>

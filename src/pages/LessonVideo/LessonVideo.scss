@@ -26,6 +26,7 @@
         border-radius: 6px;
         color: $main-color;
         background-color: white;
+        overflow: hidden;
 
         @media(max-width: 1200px) {
             height: 300px;
