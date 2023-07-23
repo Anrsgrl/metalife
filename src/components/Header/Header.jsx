@@ -82,7 +82,7 @@ const Header = () => {
                                                 <li><NavLink to="/" onClick={() => closeHamburger()}>Ana səhifə</NavLink></li>
                                                 <li><NavLink to="/lessons" onClick={() => closeHamburger()}>Dərslər</NavLink></li>
                                                 <li>
-                                                    <button onClick={() => setDropdown(!dropdown)} className='pb-1 clean-button open-dropdown p-0'>
+                                                    <button onClick={() => { setDropdown(!dropdown); setDropdownLesson(false) }} className='pb-1 clean-button open-dropdown p-0'>
                                                         Sayt Sifarişi <span className={dropdown ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdown ? 'aside-dropdown open' : 'aside-dropdown'}>
@@ -91,7 +91,7 @@ const Header = () => {
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <button onClick={() => setDropdownLesson(!dropdownLessons)} className='pb-1 clean-button open-dropdown p-0'>
+                                                    <button onClick={() => { setDropdownLesson(!dropdownLessons); setDropdown(false) }} className='pb-1 clean-button open-dropdown p-0'>
                                                         Pulsuz Dərslər <span className={dropdownLessons ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdownLessons ? 'aside-dropdown open2' : 'aside-dropdown'}>
