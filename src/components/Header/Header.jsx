@@ -19,6 +19,7 @@ const Header = () => {
     const navigate = useNavigate();
     const [hamburger, setHamburger] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+    const [dropdownLessons, setDropdownLesson] = useState(false);
     const [profileMenu, setProfileMenu] = useState(false)
 
     const openHamburger = () => {
@@ -29,6 +30,7 @@ const Header = () => {
     const closeHamburger = () => {
         setHamburger(false)
         setDropdown(false)
+        setDropdownLesson(false)
         document.body.style.overflow = 'unset';
     }
 
@@ -84,8 +86,21 @@ const Header = () => {
                                                         Sayt Sifarişi <span className={dropdown ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdown ? 'aside-dropdown open' : 'aside-dropdown'}>
-                                                        <NavLink onClick={() => closeHamburger()} to="order">Sifariş et</NavLink>
-                                                        <NavLink onClick={() => closeHamburger()} to="portfolio">İşlərimiz</NavLink>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/order">Sifariş et</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/portfolio">İşlərimiz</NavLink></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <button onClick={() => setDropdownLesson(!dropdownLessons)} className='pb-1 clean-button open-dropdown p-0'>
+                                                        Pulsuz Dərslər <span className={dropdownLessons ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
+                                                    </button>
+                                                    <ul className={dropdownLessons ? 'aside-dropdown open2' : 'aside-dropdown'}>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons/fullstack/videos">Fullstack</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons/frontend/videos">Frontend</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons/backend/videos">Backend</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons/ui-designer/videos">UI/UX</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons/interior-designer/videos">İnteryer</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons/3d-modelling/videos">3D Modelləmə</NavLink></li>
                                                     </ul>
                                                 </li>
                                                 <li><NavLink to="/blogs" onClick={() => closeHamburger()}>Blog</NavLink></li>
@@ -102,8 +117,19 @@ const Header = () => {
                         <li className='dropdownn'>
                             Sayt Sifarişi
                             <ul className='dropdown-menuu'>
-                                <NavLink to="order">Sifariş et</NavLink>
-                                <NavLink to="portfolio">İşlərimiz</NavLink>
+                                <li><NavLink to="order">Sifariş et</NavLink></li>
+                                <li><NavLink to="portfolio">İşlərimiz</NavLink></li>
+                            </ul>
+                        </li>
+                        <li className='dropdownn'>
+                            Pulsuz Dərslər
+                            <ul className='dropdown-menuu'>
+                                <li><NavLink to="/lessons/fullstack/videos">Fullstack</NavLink></li>
+                                <li><NavLink to="/lessons/frontend/videos">Frontend</NavLink></li>
+                                <li><NavLink to="/lessons/backend/videos">Backend</NavLink></li>
+                                <li><NavLink to="/lessons/ui-designer/videos">UI/UX</NavLink></li>
+                                <li><NavLink to="/lessons/interior-designer/videos">İnteryer</NavLink></li>
+                                <li><NavLink to="/lessons/3d-modelling/videos">3D Modelləmə</NavLink></li>
                             </ul>
                         </li>
                         <li><NavLink to="/blogs">Blog</NavLink></li>

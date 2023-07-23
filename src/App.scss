@@ -104,20 +104,39 @@ ul {
   cursor: pointer;
   padding: 3px;
 
+  &:hover {
+    color: $main-color;
+  }
+
   .dropdown-menuu {
     padding: 3px;
     width: 100%;
     position: absolute;
-    @include flex(center, column);
+    @include flex(center, column, flex-start);
     background-color: white;
     opacity: 0;
     visibility: hidden;
     cursor: pointer;
     padding: 0;
-    top: -3px;
-    right: 0;
+    top: 30px;
+    left: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    ;
+    border-radius: 9px;
+    width: 100%;
+    text-align: center;
+    min-width: max-content;
+    background-color: #fff;
+    padding: 12px 5px;
+    z-index: 99;
+
+    li:hover a {
+      color: $main-color !important;
+    }
 
     a {
+      padding-left: 16px;
+      padding-right: 16px;
       color: black !important;
       text-decoration: none;
     }
