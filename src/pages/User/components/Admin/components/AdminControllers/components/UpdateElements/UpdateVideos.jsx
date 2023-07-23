@@ -34,7 +34,7 @@ const UpdateVideos = () => {
 
         try {
             const videoId = parseVideoIdFromLink(url);
-            if (demo) {
+            if (demo === "true") {
                 const newBlogRef = await addDoc(videosCollectionRef.current, {
                     title,
                     hashtags,
