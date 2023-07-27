@@ -1,32 +1,14 @@
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Route, Routes } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Home from "./pages/Home/Home";
-import LessonsPage from './pages/LessonsPage/LessonsPage';
-import SignUp from './pages/SignUp/SignUp';
-import SignIn from './pages/SignIn/SignIn';
-import Portfolio from './pages/Portfolio/Portfolio';
-import DragButton from './components/DragButton/DragButton';
-import { useRef } from 'react';
-import Order from './pages/Order/Order';
-import Contact from './pages/Contact/Contact';
-import SingleLesson from './pages/SingleLesson/SingleLesson';
-import LessonVideo from './pages/LessonVideo/LessonVideo';
-import User from './pages/User/User';
-import Error from './pages/Error/Error';
-import Settings from './pages/Settings/Settings';
-import Blogs from './pages/Blogs/Blogs';
-import BlogDetail from './pages/Blogs/components/BlogDetail/BlogDetail';
-import Search from './pages/Search/Search';
+import error from "./assets/images/error.svg";
 
 function App() {
-  const main = useRef();
   return (
     <>
       <Header />
-      <main ref={main}>
+      {/* <main ref={main}>
         <DragButton main={main} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -45,7 +27,10 @@ function App() {
           <Route path="/*" element={<Error />} />
           <Route path="/search" element={<Search />} />
         </Routes>
-      </main>
+      </main> */}
+      <div className="container py-5">
+        <img src={error} alt="error" style={{ width: "100%" }} />
+      </div>
       <Footer />
     </>
   );
