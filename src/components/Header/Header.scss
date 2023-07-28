@@ -64,7 +64,6 @@ header {
 
                 .username-part {
                     @include flex;
-                    border-left: 1px solid #bebebe;
 
                     a,
                     svg {
@@ -86,9 +85,6 @@ header {
                     }
                 }
 
-                .sign-in {
-                    border-left: 1px solid #bebebe;
-                }
 
                 .sign-up {
                     border: 1px solid black;

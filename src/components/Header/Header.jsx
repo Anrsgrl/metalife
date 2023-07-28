@@ -80,11 +80,11 @@ const Header = () => {
                                         }} >
                                         <button className='close-button clean-button' onClick={() => closeHamburger()}><AiOutlineCloseCircle /></button>
                                         <div className="aside-content">
-                                            <select name="sort-list" id="sort-list">
+                                            {/* <select name="sort-list" id="sort-list">
                                                 <option value="aze">AZE</option>
                                                 <option value="en">EN</option>
                                                 <option value="ru">RU</option>
-                                            </select>
+                                            </select> */}
                                             <ul className='aside-ul pt-2'>
                                                 <li><NavLink to="/" onClick={() => closeHamburger()}>Ana səhifə</NavLink></li>
                                                 <li>
@@ -164,11 +164,11 @@ const Header = () => {
                         </button>
                         <AccountAside loggedUser={loggedUser} profileMenu={profileMenu} setProfileMenu={setProfileMenu} userSignOut={userSignOut} />
                         <div className="desktop-buttons desktop profile-part">
-                            <select name="sort-list" id="sort-list">
+                            {/* <select name="sort-list" id="sort-list">
                                 <option value="aze">AZE</option>
                                 <option value="en">EN</option>
                                 <option value="ru">RU</option>
-                            </select>
+                            </select> */}
                             {currentUser === null ?
                                 (<>
                                     <button onClick={() => navigate("/sign-in")} className="sign-in px-3 clean-button">
