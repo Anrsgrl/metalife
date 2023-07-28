@@ -3,7 +3,7 @@ import "./Hero.scss";
 import vector from "../../../../assets/images/hero-vector.svg";
 import { useNavigate } from 'react-router-dom';
 
-const Hero = () => {
+const Hero = ({ handleContentLoad }) => {
     const navigate = useNavigate();
     return (
         <div className="hero container py-5">
@@ -14,7 +14,7 @@ const Hero = () => {
                     <button onClick={() => navigate("/lessons")} className="btn-blue mt-3">Öyrənməyə başla</button>
                 </div>
                 <div className="hero-vector skeleton-loading">
-                    <img className='w-100' src={vector} alt="vector" />
+                    <img onLoad={handleContentLoad} className='w-100' src={vector} alt="vector" />
                 </div>
             </div>
         </div>
