@@ -18,7 +18,7 @@ const UpdateCodes = () => {
 
     const codesCollectionRef = useRef(collection(db, "codes"));
 
-    const { codeName, title, content } = codeData;
+    const { title, content } = codeData;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
