@@ -40,7 +40,7 @@ function App() {
     <>
       {isLoading && <div className='loading-container'><FadeLoader color="#4A4AB5" /></div>}
       <Header />
-      <main ref={main} >
+      <main onLoad={handleContentLoad} ref={main} >
         <DragButton main={main} />
         <Routes>
           <Route path="/" element={<Home handleContentLoad={handleContentLoad} />} />
