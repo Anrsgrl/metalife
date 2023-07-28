@@ -20,6 +20,7 @@ const Header = () => {
     const [hamburger, setHamburger] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [dropdownLessons, setDropdownLesson] = useState(false);
+    const [dropdownCode, setDropdownCode] = useState(false);
     const [profileMenu, setProfileMenu] = useState(false)
 
     const openHamburger = () => {
@@ -48,6 +49,12 @@ const Header = () => {
                 console.log(error.message);
             });
     };
+
+    const openDropdown = (a, b, c) => {
+        setDropdown(a);
+        setDropdownLesson(b);
+        setDropdownCode(c);
+    }
 
     return (
         <header className='px-2'>
@@ -80,9 +87,17 @@ const Header = () => {
                                             </select>
                                             <ul className='aside-ul pt-2'>
                                                 <li><NavLink to="/" onClick={() => closeHamburger()}>Ana səhifə</NavLink></li>
-                                                <li><NavLink to="/lessons" onClick={() => closeHamburger()}>Dərslər</NavLink></li>
                                                 <li>
-                                                    <button onClick={() => { setDropdown(!dropdown); setDropdownLesson(false) }} className='pb-1 clean-button open-dropdown p-0'>
+                                                    <button onClick={() => openDropdown(false, false, !dropdownCode)} className='pb-1 clean-button open-dropdown p-0'>
+                                                        Dərslər <span className={dropdownCode ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
+                                                    </button>
+                                                    <ul className={dropdownCode ? 'aside-dropdown open' : 'aside-dropdown'}>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/lessons">Bütün dərslər</NavLink></li>
+                                                        <li><NavLink onClick={() => closeHamburger()} to="/code">Kodları öyrən</NavLink></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <button onClick={() => openDropdown(!dropdown, false, false)} className='pb-1 clean-button open-dropdown p-0'>
                                                         Sayt Sifarişi <span className={dropdown ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdown ? 'aside-dropdown open' : 'aside-dropdown'}>
@@ -91,7 +106,7 @@ const Header = () => {
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <button onClick={() => { setDropdownLesson(!dropdownLessons); setDropdown(false) }} className='pb-1 clean-button open-dropdown p-0'>
+                                                    <button onClick={() => openDropdown(false, !dropdownLessons, false)} className='pb-1 clean-button open-dropdown p-0'>
                                                         Pulsuz Dərslər <span className={dropdownLessons ? "rotate-arrow" : ""}><MdKeyboardArrowDown /></span>
                                                     </button>
                                                     <ul className={dropdownLessons ? 'aside-dropdown open2' : 'aside-dropdown'}>
@@ -103,7 +118,7 @@ const Header = () => {
                                                         <li><NavLink onClick={() => closeHamburger()} to="/lessons/3d-modelling/videos">3D Modelləmə</NavLink></li>
                                                     </ul>
                                                 </li>
-                                                <li><NavLink to="/blogs" onClick={() => closeHamburger()}>Blog</NavLink></li>
+                                                <li><NavLink to="/blogs" onClick={() => closeHamburger()}>Bloq</NavLink></li>
                                                 <li><NavLink to="/contact" onClick={() => closeHamburger()}>Əlaqə</NavLink></li>
                                             </ul>
                                         </div>
@@ -113,7 +128,13 @@ const Header = () => {
                     </div>
                     <ul className='header-menu desktop m-0 ps-4'>
                         <li><NavLink to="/">Ana səhifə</NavLink></li>
-                        <li><NavLink to="/lessons">Dərslər</NavLink></li>
+                        <li className='dropdownn'>
+                            Dərslər
+                            <ul className='dropdown-menuu'>
+                                <li><NavLink to="/lessons">Bütün dərslər</NavLink></li>
+                                <li><NavLink to="/code">Kodları öyrən</NavLink></li>
+                            </ul>
+                        </li>
                         <li className='dropdownn'>
                             Sayt Sifarişi
                             <ul className='dropdown-menuu'>
@@ -132,7 +153,7 @@ const Header = () => {
                                 <li><NavLink to="/lessons/3d-modelling/videos">3D Modelləmə</NavLink></li>
                             </ul>
                         </li>
-                        <li><NavLink to="/blogs">Blog</NavLink></li>
+                        <li><NavLink to="/blogs">Bloq</NavLink></li>
                         <li><NavLink to="/contact">Əlaqə</NavLink></li>
                     </ul>
                     <div className="header-profile">

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { BiSearchAlt } from "react-icons/bi";
 import "./Nav.scss";
 import { hashtags } from '../../data/Hashtags';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Nav = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleInputChange = (e) => {
         setSearchTerm(e);
@@ -14,12 +15,14 @@ const Nav = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSearchTerm("")
+        setSearchTerm("");
         navigate(`/search?searchItem=${searchTerm}`);
     };
 
+    const hideNav = location.pathname.startsWith("/code");
+
     return (
-        <div className="navv p-0 container">
+        <div className={`navv p-0 container ${hideNav ? "d-none" : ""}`}>
             <form onSubmit={(e) => handleSubmit(e)} className="search-bar">
                 <input onChange={(e) => handleInputChange(e.target.value.toLocaleLowerCase())} value={searchTerm} type="text" placeholder='Axtarış...' name="" id="" className='ps-2 pe-4' />
                 <button type="submit"><BiSearchAlt /></button>
@@ -30,7 +33,7 @@ const Nav = () => {
                 ))}
             </ul>
         </div>
-    )
+    );
 }
 
 export default Nav;

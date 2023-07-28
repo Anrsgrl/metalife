@@ -66,10 +66,12 @@ export function useAuth() {
     const [userData, setUserData] = useState([]);
     const [blogs, setBlogs] = useState([]);
     const [videos, setVideos] = useState([]);
+    const [codes, setCodes] = useState([]);
 
     const usersCollectionRef = useRef(collection(db, "users"));
     const blogsCollectionRef = useRef(collection(db, "blogs"));
     const videosCollectionRef = useRef(collection(db, "videos"));
+    const codesCollectionRef = useRef(collection(db, "codes"));
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -104,10 +106,17 @@ export function useAuth() {
         };
         getVideos();
     }, []);
+    useEffect(() => {
+        const getVideos = async () => {
+            const data = await getDocs(codesCollectionRef.current);
+            setCodes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getVideos();
+    }, []);
 
     const loggedUser = currentUser ? userData.find((user) => user.email === currentUser.email) : null;
 
-    return { currentUser, loggedUser, blogs, userData, videos };
+    return { currentUser, loggedUser, blogs, userData, videos, codes };
 }
 
 
