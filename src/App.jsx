@@ -19,31 +19,17 @@ import Settings from "./pages/Settings/Settings";
 import Error from "./pages/Error/Error";
 import Search from "./pages/Search/Search";
 import Code from './pages/Code/Code';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import FadeLoader from "react-spinners/FadeLoader";
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const main = useRef();
-
-  const handleContentLoad = () => {
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isLoading])
   return (
     <>
-      {isLoading && <div className='loading-container'><FadeLoader color="#4A4AB5" /></div>}
       <Header />
-      <main onLoad={handleContentLoad} ref={main} >
+      <main ref={main} >
         <DragButton main={main} />
         <Routes>
-          <Route path="/" element={<Home handleContentLoad={handleContentLoad} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />
           <Route path="/lessons/:lessonPath" element={<SingleLesson />} />
           <Route path="/lessons/:lessonPath/videos" element={<LessonVideo />} />

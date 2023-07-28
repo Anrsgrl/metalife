@@ -5,7 +5,7 @@ import Application from './components/Application/Application';
 import Stuff from './components/Stuff/Stuff';
 import Partner from './components/Partner/Partner';
 
-const Home = ({ handleContentLoad }) => {
+const Home = () => {
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -14,7 +14,7 @@ const Home = ({ handleContentLoad }) => {
     }, []);
     return (
         <>
-            <Hero handleContentLoad={handleContentLoad} />
+            <Hero />
             <Lessons show={true} />
             <Stuff />
             <Partner />
