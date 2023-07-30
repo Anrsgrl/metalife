@@ -1,11 +1,11 @@
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import React, { useRef, useState } from 'react';
 import { db } from '../../../../../../../../firebase';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const UpdateCodes = () => {
     const [errorMsg, setErrorMsg] = useState(false);
-    const [checkEnt, setCheckEnt] = useState(false)
+    const [checkEnt, setCheckEnt] = useState(false);
     const [preview, setPreview] = useState(false);
     const [lang, setLang] = useState("");
     const textareaRef = useRef(null);
@@ -25,15 +25,15 @@ const UpdateCodes = () => {
         setCodeData({ ...codeData, [name]: value });
     };
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!title || !content) {
+        if (!title || !content || !lang) {
             setErrorMsg(true);
             return;
         }
         try {
             const codesRef = await addDoc(codesCollectionRef.current, {
+                time: serverTimestamp(),
                 codeName: lang,
                 title,
                 content,
@@ -53,29 +53,48 @@ const UpdateCodes = () => {
 
     const checkEnter = (event) => {
         if (event.key === 'Enter' && checkEnt) {
-            setCodeData({ ...codeData, content: event.target.value + "<p></p>" })
+            setCodeData({ ...codeData, content: event.target.value + "<p></p>" });
         }
-    }
-    const addCodeTag = (tag) => {
+    };
+
+    const addTagAndContent = (tag, className) => {
         if (!tag) return;
         const textarea = textareaRef.current;
         const startPos = textarea.selectionStart;
         const endPos = textarea.selectionEnd;
+        const selectedText = textarea.value.substring(startPos, endPos);
 
-        let newContent;
-        if (tag === "li") {
-            newContent = codeData.content.slice(0, startPos) + `<${tag}></${tag}>` + codeData.content.slice(endPos);
+        // Special case for pre tag with code inside
+        if (tag === "pre") {
+            const newContent =
+                codeData.content.slice(0, startPos) +
+                `<${tag} class="${className}"><code class='p-3' style='background: #f5f5f5ab; color:#333 !important'>${selectedText}</code></${tag}>` +
+                codeData.content.slice(endPos);
+
+            setCodeData({ ...codeData, content: newContent });
+            setTimeout(() => {
+                textarea.selectionStart = startPos;
+                textarea.selectionEnd = endPos + 25 + selectedText.length;
+            }, 0);
         } else {
-            newContent = codeData.content.slice(0, startPos) + `<code>&lt;${tag}&gt;</code>` + codeData.content.slice(endPos);
-        }
+            const newContent =
+                codeData.content.slice(0, startPos) +
+                (className ? `<${tag} class="${className}">` : `<${tag}>`) +
+                `${selectedText}</${tag}>` +
+                codeData.content.slice(endPos);
 
-        setCodeData({ ...codeData, content: newContent });
-        setTimeout(() => {
-            textarea.selectionStart = startPos + (tag === "li" ? tag.length + 2 : 18);
-            textarea.selectionEnd = startPos + (tag === "li" ? tag.length + 2 : 18);
-        }, 0);
+
+            setCodeData({ ...codeData, content: newContent });
+            setTimeout(() => {
+                textarea.selectionStart = startPos;
+                textarea.selectionEnd = endPos + tag.length * 2 + 5;
+            }, 0);
+        }
     };
-    const disabledIf = title?.length === 0 || content?.length === 0 || !lang
+
+
+    const disabledIf = codeData.title?.length === 0 || content?.length === 0 || !lang;
+
     return (
         <div className="blog-write row">
             <form className='col-12 py-4' onSubmit={handleSubmit}>
@@ -95,12 +114,14 @@ const UpdateCodes = () => {
                     required
                 />
                 <div className="blog-tools py-3">
-                    <button type='button' className='btn-white' onClick={() => setCodeData({ ...codeData, content: codeData.content + "<h3 class='py-2'></h3>" })}>Başlıq əlavə et</button>
-                    <button type='button' className='btn-white' onClick={() => setCodeData({ ...codeData, content: codeData.content + "<h5 class='py-2'></h5>" })}>Altbaşlıq əlavə et</button>
-                    <button type='button' className='btn-white' onClick={() => setCodeData({ ...codeData, content: codeData.content + "<p></p>" })}>Paragraf əlavə et</button>
-                    <button type='button' className='btn-white' onClick={() => addCodeTag("code")}>Kod əlavə et</button>
-                    <button type='button' className='btn-white' onClick={() => setCodeData({ ...codeData, content: codeData.content + "<ul style='list-style: circle;'></ul>" })}>ul əlavə et</button>
-                    <button type='button' className='btn-white' onClick={() => addCodeTag("li")}>List əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("h3", "py-2")}>Başlıq əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("h5", "py-2")}>Altbaşlıq əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("p")}>Abzas əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("code")}>Kod əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("pre")}>Kod arxaplanı əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("ul")}>Ul əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("li")}>Li əlavə et</button>
+                    <button type='button' className='btn-white' onClick={() => addTagAndContent("strong")}>Tünd yazı əlavə et</button>
                 </div>
                 <div className="pb-2 check-enter">
                     <p className='m-0'>Enter basıldıqda paragraf əlavə etmə:</p>

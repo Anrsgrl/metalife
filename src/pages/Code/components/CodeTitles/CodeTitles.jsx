@@ -15,6 +15,7 @@ const CodeTitles = ({ filteredData, url }) => {
         setHamburger(false)
         document.body.style.overflow = 'unset';
     }
+    const sortedData = filteredData.sort((a, b) => a.time - b.time);
     return (
         <div className="code-title-field container py-3 col-3 col-lg-2">
             {url && <h3 className='pb-2 d-none d-lg-block'>{url?.toUpperCase()} Kodları</h3>}
@@ -40,7 +41,7 @@ const CodeTitles = ({ filteredData, url }) => {
                         <div className="aside-content">
                             {url && <h3 className='pb-2'>{url?.toUpperCase()} Kodları</h3>}
                             <ul className="code-title-hamburger custom-scroll p-0 m-0">
-                                {filteredData?.map((code) => (
+                                {sortedData?.map((code) => (
                                     <li onClick={() => closeHamburger()} key={code.id}>
                                         <NavLink to={`/code/${url}/${code?.title?.toLowerCase().split(" ").join("-")}`} className="p-2">{code.title}</NavLink>
                                     </li>

@@ -7,6 +7,12 @@
     gap: 5px;
 }
 
+.admin-panel {
+    ul {
+        list-style: circle !important;
+    }
+}
+
 .hashtags-controllers {
     @include flex;
     gap: 5px
