@@ -1,7 +1,7 @@
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.css';
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+// import Header from "./components/Header/Header";
+// import Footer from "./components/Footer/Footer";
 // import DragButton from "./components/DragButton/DragButton";
 // import Home from "./pages/Home/Home";
 // import LessonsPage from "./pages/LessonsPage/LessonsPage";
