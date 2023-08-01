@@ -26,7 +26,7 @@ function App() {
   // const main = useRef();
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {/* <main ref={main} >
         <DragButton main={main} />
         <Routes>
@@ -50,11 +50,11 @@ function App() {
           <Route path="/code/:codeName/:codeTitle" element={<Code />} />
         </Routes>
       </main> */}
-      <div className="container text-center pt-2">
+      <div className="container text-center py-5">
         <img src={img} alt="" className='w-50 h-100' />
         <h6 className='pt-2'>Ödəniş olunduqda fəaliyətinə davam edəcək.</h6>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
