@@ -50,8 +50,9 @@ function App() {
           <Route path="/code/:codeName/:codeTitle" element={<Code />} />
         </Routes>
       </main> */}
-      <div className="container">
-        <img src={img} alt="" className='w-100 h-100' />
+      <div className="container text-center pt-2">
+        <img src={img} alt="" className='w-50 h-100' />
+        <h6 className='pt-2'>Ödəniş olunduqda fəaliyətinə davam edəcək.</h6>
       </div>
       <Footer />
     </>
