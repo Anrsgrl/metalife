@@ -37,34 +37,30 @@ const LessonVideo = () => {
                 </div>}
             <div className="videos-field">
                 <h3 className='pb-2'>Pulsuz videolar</h3>
-                <div className="videos-list">
                     {currentUser ? (
-                        <>
-                            {demoVideos.length === 0 && <h5 className='py-2'>Yaxın zamanda əlavə olunacaq...</h5>}
+                        <div className="videos-list">
+                            {demoVideos.length === 0 && <p className='py-2'>Yaxın zamanda əlavə olunacaq...</p>}
                             {demoVideos &&
                                 demoVideos?.map((e) => (
                                     <SingleLessonVideo url={e?.url} title={e?.title} />
                                 ))
                             }
-                        </>
+                        </div>
                     ) : (
-                        <p>Pulsuz videoları izləmək üçün <Link to="/sign-in">giriş</Link> etməlisiniz. Profiliniz yoxdursa <Link to="/sign-up">qeydiyyatdan</Link> keçə bilərsiniz.</p>
+                        <p className='py-2'>Pulsuz videoları izləmək üçün <Link to="/sign-in">giriş</Link> etməlisiniz. Profiliniz yoxdursa <Link to="/sign-up">qeydiyyatdan</Link> keçə bilərsiniz.</p>
                     )}
-                </div>
             </div>
             <div className="videos-field">
                 <h3 className='pb-2'>Ödənişli videolar</h3>
                 {paidVideos.length === 0 && <div className="paid-video py-2">
                     {currentUser?.emailVerified
-                        ? (<><h5>Ödənişli dərsləri almaq üçün</h5><button type="button" className='btn-blue'>Dərsi al</button></>) : (<p>Dərsləri almaq üçün giriş etməli və emailin sizin olduğunu profil hissəsindən təstiqləməlisiniz.</p>)}
+                        ? (<><h5>Ödənişli dərsləri almaq üçün</h5><button type="button" className='btn-blue'>Dərsi al</button></>) : (<p className='py-2'>Dərsləri almaq üçün giriş etməli və emailin sizin olduğunu profil hissəsindən təstiqləməlisiniz.</p>)}
                 </div>}
-                <div className="videos-list">
                     {paidVideos && paidVideos.map((e) => (
-                        <>
+                        <div className="videos-list">
                             <SingleLessonVideo url={e?.url} title={e?.title} />
-                        </>
+                        </div>
                     ))}
-                </div>
             </div>
         </div>
     )
