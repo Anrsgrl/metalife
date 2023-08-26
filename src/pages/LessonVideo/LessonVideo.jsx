@@ -12,11 +12,16 @@ const LessonVideo = () => {
 
     const paidVideos = videos.filter((e) => e.hashtags?.includes(params.lessonPath) && e.demo === "false" && e?.paid === "paid");
     const demoVideos = videos.filter((e) => e.hashtags?.includes(params.lessonPath) && e.demo === "true");
-    const groupVideos = videos.filter((e) => e.hashtags?.includes(params.lessonPath) && e.demo === "false" && e?.group === loggedUser?.lessons[0]);
+    
+    let groupVideos = [];
+    if (loggedUser?.lessons && loggedUser.lessons.length > 0) {
+        groupVideos = videos.filter((e) => e.hashtags?.includes(params.lessonPath) && e.demo === "false" && e?.group === loggedUser?.lessons[0]);
+    }
+    
     return (
         <div className="lesson-videos container py-3">
             <button onClick={() => navigate(-1)} type="button" className='clean-button back'><TiArrowBack /></button>
-            {groupVideos.length !== 0 &&
+            {groupVideos.length !== 0 && currentUser &&
                 <div className="videos-field">
                     <h3 className='pb-2'>{loggedUser?.lessons[0]}</h3>
                     <div className="videos-list py-3">

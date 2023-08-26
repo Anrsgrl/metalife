@@ -30,6 +30,18 @@
     }
 }
 
+.blog-left{
+    .skeleton{
+        height: 500px;
+        @media (max-width: 767px){
+            height: 330px;
+        }
+        @media (max-width: 576px){
+            height: 250px;
+        }
+    }
+}
+
 .blog-content {
     h5 {
         color: #333333;

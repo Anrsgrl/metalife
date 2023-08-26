@@ -10,15 +10,22 @@
             justify-content: center;
 
             .user-image {
-                aspect-ratio: 1/1;
                 overflow: hidden;
                 max-width: 448px;
                 max-height: 424px;
-
+                .skeleton{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    aspect-ratio: 1/1;
+                    border: 1px solid $main-color;
+                }
                 img {
                     width: 100%;
                     border: 1px solid $main-color;
                     border-radius: 50%;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
                 }
             }
         }
