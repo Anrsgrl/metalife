@@ -221,7 +221,7 @@ code {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 /* Track */
@@ -238,4 +238,9 @@ code {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #4a4ab579;
+}
+
+input::file-selector-button {
+  @include btn($main-color, white);
+  border: 1px solid $main-color;
 }
