@@ -6,7 +6,8 @@
         .portfolio-website-content {
             border: 2px solid $main-color;
             border-radius: 9px;
-
+            aspect-ratio: 1/1;
+            // height: 650px;
             img {
                 width: 100%;
                 object-fit: contain;
