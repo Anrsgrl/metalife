@@ -29,11 +29,7 @@ export async function uploadProfilePhoto(file, currentUser) {
         await uploadBytes(fileRef, file);
         const photoURL = await getDownloadURL(fileRef);
 
-        // Update the user profile with the new photoURL
         await updateProfile(auth.currentUser, { photoURL });
-
-        // Check if the currentUser.photoURL exists (not null or empty)
-        // If it exists, delete the old profile photo
 
         return photoURL;
     } catch (error) {
