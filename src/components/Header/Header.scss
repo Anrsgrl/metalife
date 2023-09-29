@@ -87,14 +87,14 @@ header {
 
 
                 .sign-up {
-                    border: 1px solid black;
+                    border: 1px solid  #d4d4d4;
                     border-radius: 6px;
-
-                    &:hover {
-                        background-color: $main-color;
-                        border: 1px solid transparent;
-                        color: white;
-                    }
+                    transition: all 500ms ease;
+                    // &:hover {
+                    //     background-color: $main-color;
+                    //     border: 1px solid transparent;
+                    //     color: white;
+                    // }
                 }
             }
         }
@@ -124,7 +124,6 @@ header {
                 box-shadow: -2px 1px 20px -8px rgba(0, 0, 0, .75);
                 padding: 30px;
                 @include flex;
-
                 .aside-content {
                     @include flex(center, column, flex-start);
                     gap: 5px;
@@ -132,7 +131,7 @@ header {
                     select {
                         @include cleanButton;
                         color: black;
-                        border-bottom: 1px solid #bebebe;
+                        border-bottom: 1px solid  #d4d4d4;
                         padding-bottom: 5px;
 
                         option {
@@ -170,9 +169,10 @@ header {
                         @include flex(center, column, flex-start);
                         gap: 5px;
                         padding-left: 0.5rem;
-                        border-left: 1px solid #bebebe;
+                        border-left: 1px solid  #d4d4d4;
                         height: 0;
                         overflow: hidden;
+                        transition: all 500ms ease;
                     }
 
                     .open {
@@ -187,3 +187,17 @@ header {
         }
     }
 }
+@keyframes circle-in-bottom-right {
+    from {
+      clip-path: circle(0%);
+    }
+    to {
+      clip-path: circle(150% at bottom right);
+    }
+  }
+  
+  [transition-style="in:circle:bottom-right"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-bottom-right both;
+  }
+
+

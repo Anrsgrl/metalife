@@ -21,10 +21,22 @@ import Search from "./pages/Search/Search";
 import Code from "./pages/Code/Code";
 import { useRef } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import Loading from "./components/Loading/Loading";
+import { useEffect } from "react";
 function App() {
+  const [loading, setLoading] = useState(true);
   const main = useRef();
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      setLoading(false);
+      document.body.style.overflow = "unset";
+    }, 2000);
+  }, []);
   return (
     <>
+      {loading && <Loading />}
       <Header />
       <main ref={main}>
         <DragButton main={main} />

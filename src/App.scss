@@ -5,7 +5,6 @@
 
 * {
   box-sizing: border-box;
-  transition: all 500ms ease;
   font-family: $main-font !important;
     /* Firefox */
     scrollbar-width: thin;
@@ -243,4 +242,43 @@ code {
 input::file-selector-button {
   @include btn($main-color, white);
   border: 1px solid $main-color;
+}
+
+.hover-animation{
+  position: relative;
+  overflow: hidden;
+  &:before,
+  &:after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+    background: $main-color;
+    z-index: -1;
+    transition: all .35s;
+  }
+  
+  &:before{
+    opacity: .5;
+  }
+  
+  &:after{
+    transition-delay: .2s;
+  }
+  
+  &:hover{
+    color: #fff;
+  }
+  
+  &:hover:before,
+  &:hover:after{
+    top: 0;
+  }
+}
+
+::selection{
+  background-color: $main-color;
+  color: white;
 }

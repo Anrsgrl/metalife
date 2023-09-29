@@ -3,7 +3,7 @@
 
 .code-header {
     @include flex(space-between);
-    border-bottom: 1px solid #bebebe;
+    border-bottom: 1px solid  #d4d4d4;
 
     .active {
         background-color: $main-color !important;
@@ -20,6 +20,7 @@
         @include flex;
 
         a {
+            transition: all 0.5s ease;
             &:hover {
                 background-color: $main-color !important;
                 color: white !important;
@@ -37,7 +38,7 @@
     }
 
     @media(min-width: 992px) {
-        border-right: 1px solid #bebebe;
+        border-right: 1px solid  #d4d4d4;
         height: 80vh;
     }
 
@@ -90,7 +91,7 @@
     a {
         text-decoration: none;
         color: black;
-
+        transition: all 0.5s ease;
         &:hover {
             background-color: $main-color;
             color: white !important;

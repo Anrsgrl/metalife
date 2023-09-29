@@ -21,24 +21,32 @@
 
     .lesson {
         text-align: center;
-        border: 1px solid $main-color;
+        border: 1px solid #4A4AB530;
         border-radius: 9px;
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        border-radius: 4px;
+        border-radius: 6px;
         text-align: center;
         overflow: hidden;
         @include flex(space-between, column, center);
         height: 500px;
         background-color: white;
-
+        transition: all 500ms ease;
+        &:hover{
+            border-color: #4A4AB580;
+            transform: translateY(5px);
+        }
+        &:hover button>svg{
+            transform: translateX(10px);
+        }
         img {
             width: 328px;
             height: 328px;
+            padding: 0.625rem;
         }
 
         .lesson-footer {
-            background-color: #eee;
+            background-color: #d4d4d430;
             cursor: pointer;
             width: 100%;
 
@@ -47,6 +55,9 @@
                 width: 100%;
                 gap: 5px;
                 @include flex;
+                svg{
+                    transition: transform 0.3s ease; /* Transform için geçiş süresi ayarlanır */
+                }
             }
         }
     }
@@ -76,3 +87,12 @@
         left: 0;
     }
 }
+
+@keyframes arrow-animation {
+    from{
+      transform: translateX(0px); /* Sağa kaydırma miktarını ayarla */
+    }
+    to {
+      transform: translateX(10px); /* Sağa kaydırma miktarını ayarla */
+    }
+  }
