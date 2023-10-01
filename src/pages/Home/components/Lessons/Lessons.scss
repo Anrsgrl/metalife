@@ -44,7 +44,21 @@
             height: 328px;
             padding: 0.625rem;
         }
-
+        .lesson-text{
+            @include flex(center, column, center);
+            p{
+                font-size: 16px;
+            line-height: 21px;
+            min-height: 42px;
+            width: 200px;
+            height: 63px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            }
+        }
         .lesson-footer {
             background-color: #d4d4d430;
             cursor: pointer;
