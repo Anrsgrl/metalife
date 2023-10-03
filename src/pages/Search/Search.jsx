@@ -50,8 +50,10 @@ const Search = () => {
       {searchItemValue ? (
         <>
           <h3 className="py-4 text-center">
-            <span style={{ color: "#4A4AB5" }}>"{searchItemValue}"</span> üzrə
-            axtarış
+            <span style={{ color: "#4A4AB5" }}>
+              "{searchParams.get("searchItem")}"
+            </span>{" "}
+            üzrə axtarış
           </h3>
           <div className="lesson-videos">
             <div className="demo-videos-field py-2">

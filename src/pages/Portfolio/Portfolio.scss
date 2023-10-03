@@ -2,6 +2,17 @@
 @import "../../vendors/variables";
 
 .portfolio {
+    .live-link{
+        @include flex(center);
+        gap: 6px;
+        color: $main-color;
+        padding: 9px 13px;
+        border: 1px solid $main-color;
+        border-radius: 6px;
+        &:hover{
+            color: white;
+        }
+    }
     .portfolio-website {
         .portfolio-website-content {
             border: 2px solid $main-color;
