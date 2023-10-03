@@ -9,7 +9,6 @@
 .single-blog {
     overflow: hidden;
     @include flex;
-    height: 260px;
     .blog-content {
         @include flex(space-between, column, stretch);
         border: 1px solid $main-color;
@@ -17,25 +16,35 @@
         background-color: white;
         color: black;
         overflow: hidden;
-        height: 100%;
         width: 100%;
 
-        .blog-top {
-            height: 100%;
-            .skeleton{
-                height: 160px;
-            }
+        .skeleton{
+            width: 100%;
+            aspect-ratio: 16/9
         }
 
         img {
             @include imageCover;
-            max-height: 160px;
+            aspect-ratio: 16/9;
         }
 
         .hashtags {
-            @include flex;
-            flex-wrap: wrap;
-            gap: 4px;
+            text-align: center;
+            height: 20px;
+            width: 100%;
+            padding-bottom: 5px;
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            margin: 0 5px 0 5px;
+            text-align: center;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #000;
+            a{
+                padding-right: 5px;
+            }
         }
     }
 }

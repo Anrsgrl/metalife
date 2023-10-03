@@ -24,27 +24,28 @@ const SingleBlog = (props) => {
     >
       <div className={`blog-content ${imageLoaded ? "image-loaded" : ""}`}>
         <div className="blog-top">
-          {!imageLoaded && <div className="skeleton"></div>}
+          {!imageLoaded && <div className="skeleton h-100"></div>}
           <img
             src={image}
             alt="blog"
             style={{ display: imageLoaded ? "block" : "none" }}
             onLoad={handleImageLoad}
           />
-          <h6 className={`p-2 pb-1 ${!imageLoaded && "skeleton"}`}>
+          <h6 className={!imageLoaded ? "skeleton m-0 pb-5" : "p-2 pb-2"}>
             {imageLoaded && title}
           </h6>
         </div>
         <div
-          className={`hashtags pb-1 px-2 mb-1 ${
-            imageLoaded ? "visible" : "hidden"
+          className={`hashtags ${
+            !imageLoaded ? "skeleton m-0 pb-2" : "pb-2 px-4 mb-1 "
           }`}
         >
-          {hashtags?.slice(0, 3).map((item) => (
-            <Link key={item} to={`/blog/${item}`}>
-              #{item}
-            </Link>
-          ))}
+          {imageLoaded &&
+            hashtags?.slice(0, 3).map((item) => (
+              <Link key={item} to={`/blog/${item}`}>
+                #{item}
+              </Link>
+            ))}
         </div>
       </div>
     </button>
