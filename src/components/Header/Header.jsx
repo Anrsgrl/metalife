@@ -77,198 +77,201 @@ const Header = () => {
             <div className="hamburger-nav">
               <AnimatePresence>
                 {hamburger && (
-                  <motion.aside
-                    key={hamburger}
-                    style={{ left: 0 }}
-                    initial={{ left: -200, opacity: 0 }}
-                    animate={{ left: 0, opacity: 1 }}
-                    exit={{ left: -200, opacity: 0 }}
-                    transition={{
-                      duration: 0.3,
-                      opacity: { ease: "linear" },
-                    }}
-                  >
-                    <button
-                      className="close-button clean-button"
-                      onClick={() => closeHamburger()}
+                  <>
+                    <div className="aside-background"></div>
+                    <motion.aside
+                      key={hamburger}
+                      style={{ left: 0 }}
+                      initial={{ left: -200, opacity: 0 }}
+                      animate={{ left: 0, opacity: 1 }}
+                      exit={{ left: -200, opacity: 0 }}
+                      transition={{
+                        duration: 0.3,
+                        opacity: { ease: "linear" },
+                      }}
                     >
-                      <AiOutlineCloseCircle />
-                    </button>
-                    <div className="aside-content">
-                      {/* <select name="sort-list" id="sort-list">
-                                                <option value="aze">AZE</option>
-                                                <option value="en">EN</option>
-                                                <option value="ru">RU</option>
-                                            </select> */}
-                      <ul className="aside-ul pt-2">
-                        <li>
-                          <NavLink to="/" onClick={() => closeHamburger()}>
-                            Ana səhifə
-                          </NavLink>
-                        </li>
-                        <li>
-                          <button
-                            onClick={() =>
-                              openDropdown(false, false, !dropdownCode)
-                            }
-                            className="pb-1 clean-button open-dropdown p-0"
-                          >
-                            Dərslər{" "}
-                            <span
-                              className={dropdownCode ? "rotate-arrow" : ""}
+                      <button
+                        className="close-button clean-button"
+                        onClick={() => closeHamburger()}
+                      >
+                        <AiOutlineCloseCircle />
+                      </button>
+                      <div className="aside-content">
+                        <ul className="aside-ul pt-2">
+                          <li>
+                            <NavLink to="/" onClick={() => closeHamburger()}>
+                              Ana səhifə
+                            </NavLink>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() =>
+                                openDropdown(false, false, !dropdownCode)
+                              }
+                              className="pb-1 clean-button open-dropdown p-0"
                             >
-                              <MdKeyboardArrowDown />
-                            </span>
-                          </button>
-                          <ul
-                            className={
-                              dropdownCode
-                                ? "aside-dropdown open"
-                                : "aside-dropdown"
-                            }
-                          >
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons"
+                              Dərslər{" "}
+                              <span
+                                className={dropdownCode ? "rotate-arrow" : ""}
                               >
-                                Bütün dərslər
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/code/html"
-                              >
-                                Kodları öyrən
-                              </NavLink>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <button
-                            onClick={() =>
-                              openDropdown(!dropdown, false, false)
-                            }
-                            className="pb-1 clean-button open-dropdown p-0"
-                          >
-                            Sayt Sifarişi{" "}
-                            <span className={dropdown ? "rotate-arrow" : ""}>
-                              <MdKeyboardArrowDown />
-                            </span>
-                          </button>
-                          <ul
-                            className={
-                              dropdown
-                                ? "aside-dropdown open"
-                                : "aside-dropdown"
-                            }
-                          >
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/order"
-                              >
-                                Sifariş et
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/portfolio"
-                              >
-                                İşlərimiz
-                              </NavLink>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <button
-                            onClick={() =>
-                              openDropdown(false, !dropdownLessons, false)
-                            }
-                            className="pb-1 clean-button open-dropdown p-0"
-                          >
-                            Pulsuz Dərslər{" "}
-                            <span
-                              className={dropdownLessons ? "rotate-arrow" : ""}
+                                <MdKeyboardArrowDown />
+                              </span>
+                            </button>
+                            <ul
+                              className={
+                                dropdownCode
+                                  ? "aside-dropdown open"
+                                  : "aside-dropdown"
+                              }
                             >
-                              <MdKeyboardArrowDown />
-                            </span>
-                          </button>
-                          <ul
-                            className={
-                              dropdownLessons
-                                ? "aside-dropdown open2"
-                                : "aside-dropdown"
-                            }
-                          >
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons/fullstack/videos"
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons"
+                                >
+                                  Bütün dərslər
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/code/html"
+                                >
+                                  Kodları öyrən
+                                </NavLink>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() =>
+                                openDropdown(!dropdown, false, false)
+                              }
+                              className="pb-1 clean-button open-dropdown p-0"
+                            >
+                              Sayt Sifarişi{" "}
+                              <span className={dropdown ? "rotate-arrow" : ""}>
+                                <MdKeyboardArrowDown />
+                              </span>
+                            </button>
+                            <ul
+                              className={
+                                dropdown
+                                  ? "aside-dropdown open"
+                                  : "aside-dropdown"
+                              }
+                            >
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/order"
+                                >
+                                  Sifariş et
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/portfolio"
+                                >
+                                  İşlərimiz
+                                </NavLink>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() =>
+                                openDropdown(false, !dropdownLessons, false)
+                              }
+                              className="pb-1 clean-button open-dropdown p-0"
+                            >
+                              Pulsuz Dərslər{" "}
+                              <span
+                                className={
+                                  dropdownLessons ? "rotate-arrow" : ""
+                                }
                               >
-                                Fullstack
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons/frontend/videos"
-                              >
-                                Frontend
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons/backend/videos"
-                              >
-                                Backend
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons/ui-designer/videos"
-                              >
-                                UI/UX
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons/interior-designer/videos"
-                              >
-                                İnteryer
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                onClick={() => closeHamburger()}
-                                to="/lessons/3d-modelling/videos"
-                              >
-                                3D Modelləmə
-                              </NavLink>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <NavLink to="/blogs" onClick={() => closeHamburger()}>
-                            Bloq
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="/contact"
-                            onClick={() => closeHamburger()}
-                          >
-                            Əlaqə
-                          </NavLink>
-                        </li>
-                      </ul>
-                    </div>
-                  </motion.aside>
+                                <MdKeyboardArrowDown />
+                              </span>
+                            </button>
+                            <ul
+                              className={
+                                dropdownLessons
+                                  ? "aside-dropdown open2"
+                                  : "aside-dropdown"
+                              }
+                            >
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons/fullstack/videos"
+                                >
+                                  Fullstack
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons/frontend/videos"
+                                >
+                                  Frontend
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons/backend/videos"
+                                >
+                                  Backend
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons/ui-designer/videos"
+                                >
+                                  UI/UX
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons/interior-designer/videos"
+                                >
+                                  İnteryer
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  onClick={() => closeHamburger()}
+                                  to="/lessons/3d-modelling/videos"
+                                >
+                                  3D Modelləmə
+                                </NavLink>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/blogs"
+                              onClick={() => closeHamburger()}
+                            >
+                              Bloq
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/contact"
+                              onClick={() => closeHamburger()}
+                            >
+                              Əlaqə
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </div>
+                    </motion.aside>
+                  </>
                 )}
               </AnimatePresence>
             </div>
@@ -351,11 +354,6 @@ const Header = () => {
               userSignOut={userSignOut}
             />
             <div className="desktop-buttons desktop profile-part">
-              {/* <select name="sort-list" id="sort-list">
-                                <option value="aze">AZE</option>
-                                <option value="en">EN</option>
-                                <option value="ru">RU</option>
-                            </select> */}
               {currentUser === null ? (
                 <>
                   <button
