@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import UserAside from "./components/UserAside/UserAside";
 import { useNavigate, useParams } from "react-router-dom";
 import UserProducts from "./components/UserProducts/UserProducts";
-import FadeLoader from "react-spinners/FadeLoader";
 import Admin from "./components/Admin/Admin";
 import { useUsersList } from "../../firebase/getFunctions";
 import Loading from "../../components/Loading/Loading";
