@@ -254,7 +254,7 @@ const Header = () => {
                           </li>
                           <li>
                             <NavLink
-                              to="/blogs/1/1"
+                              to="/blogs/1"
                               onClick={() => closeHamburger()}
                             >
                               Bloq
