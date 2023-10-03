@@ -30,6 +30,20 @@
     }
 }
 
+.pagination-controls{
+    @include flex(center, row, center);
+    gap: 5px;
+    span{
+        color: $main-color;
+        padding: 12px;
+    }
+    button{
+        padding: 7px 21px;
+    }
+}
+.cursor-not-allowed{
+    cursor: not-allowed;
+}
 .blog-left{
     img{
         aspect-ratio: 16/9;

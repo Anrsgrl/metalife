@@ -254,7 +254,7 @@ const Header = () => {
                           </li>
                           <li>
                             <NavLink
-                              to="/blogs"
+                              to="/blogs/1/1"
                               onClick={() => closeHamburger()}
                             >
                               Bloq
@@ -330,7 +330,7 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="/blogs">Bloq</NavLink>
+              <NavLink to="/blogs/1">Bloq</NavLink>
             </li>
             <li>
               <NavLink to="/contact">Əlaqə</NavLink>
