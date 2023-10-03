@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./BlogDetail.scss";
 import { useParams } from "react-router";
-import FadeLoader from "react-spinners/FadeLoader";
 import { MdDateRange } from "react-icons/md";
 import { Link } from "react-router-dom";
 import SingleBlog from "../../../../components/SingleBlog/SingleBlog";
-import { useAuth } from "../../../../firebase";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -18,24 +16,22 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "react-share";
+import Loading from "../../../../components/Loading/Loading";
+import { useBlogsList } from "../../../../firebase/getFunctions";
 
 const BlogDetail = () => {
-  const { blogs } = useAuth();
+  const blogs = useBlogsList();
   const { blogUrl } = useParams();
   const [loading, setLoading] = useState(true);
   const decodedBlogUrl = decodeURIComponent(blogUrl);
+
   const blog = blogs?.find(
     (blog) =>
       blog?.title.replace("?", "").toLowerCase().split(" ").join("-") ===
       decodedBlogUrl
   );
-
   if (!blog || blog?.length === 0) {
-    return (
-      <div className="container py-5">
-        <FadeLoader color="#4A4AB5" />
-      </div>
-    );
+    return <Loading />;
   }
 
   const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(
@@ -45,7 +41,9 @@ const BlogDetail = () => {
 
   const { content, blog_image, title, author, author_image, time, hashtags } =
     blog;
-  const formattedTime = time.toDate().toLocaleString();
+
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const formattedTime = time.toDate().toLocaleDateString("tr-TR", options);
 
   return (
     <div className="blog-detail container py-5">
@@ -54,7 +52,7 @@ const BlogDetail = () => {
           {loading && <div className="skeleton" />}
           <img
             src={blog_image}
-            className={`w-100 py-2 ${loading ? "loading" : ""}`}
+            className={`w-100 my-2 ${loading ? "loading" : ""}`}
             alt="blog"
             onLoad={() => setLoading(false)}
           />

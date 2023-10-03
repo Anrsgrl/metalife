@@ -24,6 +24,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import Loading from "./components/Loading/Loading";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 function App() {
   const [loading, setLoading] = useState(true);
   const main = useRef();
@@ -39,6 +40,7 @@ function App() {
       {loading && <Loading />}
       <Header />
       <main ref={main}>
+        <Toaster />
         <DragButton main={main} />
         <Routes>
           <Route path="/" element={<Home />} />

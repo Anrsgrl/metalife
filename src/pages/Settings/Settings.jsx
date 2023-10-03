@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { auth, uploadProfilePhoto } from "../../firebase";
+import { auth, uploadProfilePhoto } from "../../firebase/config";
 import { MdManageAccounts } from "react-icons/md";
-import { updateProfile, sendEmailVerification } from "@firebase/auth";
+import { updateProfile } from "@firebase/auth";
 import "./UserSettings.scss";
 import boy from "../../assets/images/boy.png";
-import { Link } from "react-router-dom";
+import { sendVerification } from "../../firebase/controllers";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { TiArrowBack } from "react-icons/ti";
 
 const Settings = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [profileUrl, setProfileUrl] = useState();
-  const [emailMsg, setEmailMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -32,7 +36,10 @@ const Settings = () => {
           auth.currentUser
         );
         setProfileUrl(downloadURL);
+        toast.success("Profil şəkli uğurla yükləndi!");
+        navigate(-1);
       } catch (error) {
+        toast.error("Profil şəkli yükləmə xətası");
         console.log("Profil şəkli yükləmə xətası:", error);
       }
     }
@@ -48,29 +55,23 @@ const Settings = () => {
     }
   }, [profileUrl]);
 
-  const sendVerification = () => {
-    if (auth.currentUser) {
-      sendEmailVerification(auth.currentUser)
-        .then(() => {
-          setEmailMsg("success");
-        })
-        .catch((error) => {
-          setEmailMsg("failed");
-          console.log("E-poçt göndərmə xətası:", error);
-        });
-    }
-  };
-
   return (
     <div className="settings container py-5">
-      <h1 className="py-3 section-heading">Ayarlar</h1>
+      <h1 className="py-3 section-heading">Parametrlər</h1>
+      <button
+        onClick={() => navigate(-1)}
+        type="button"
+        className="clean-button back"
+      >
+        <TiArrowBack />
+      </button>
       <div className="row py-2">
         <div className="setting-names col-lg-3">
           <ul className="names-content p-0">
             <li>
               <button type="button" className="clean-button btn-blue p-3">
                 <MdManageAccounts />
-                Profil ayarları
+                Profil parametrləri
               </button>
             </li>
           </ul>
@@ -87,7 +88,9 @@ const Settings = () => {
                   onChange={handleFileChange}
                 />
                 <button
-                  className={selectedFile ? "btn-blue" : "btn-disabled"}
+                  className={
+                    selectedFile ? "btn-blue h-100" : "btn-disabled h-100"
+                  }
                   onClick={handleUpload}
                   disabled={!selectedFile}
                 >
@@ -122,15 +125,6 @@ const Settings = () => {
                   >
                     E-poçtu təstiqlə
                   </button>
-                  {emailMsg === "success" && (
-                    <p className="text-success py-2">E-poçt göndərildi</p>
-                  )}
-                  {emailMsg === "failed" && (
-                    <p className="text-danger py-2">
-                      E-poçt göndəriləmmədi. Zəhmət olmasa{" "}
-                      <Link to="/contact">bizimlə əlaqə saxlayın</Link>
-                    </p>
-                  )}
                 </div>
               )}
             </div>

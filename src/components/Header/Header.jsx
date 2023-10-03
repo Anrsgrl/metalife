@@ -10,11 +10,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Nav from "../Nav/Nav";
 import AccountAside from "../AccountAside/AccountAside";
-import { auth, useAuth } from "../../firebase";
+import { auth } from "../../firebase/config";
 import { signOut } from "@firebase/auth";
+import { useUsersList } from "../../firebase/getFunctions";
 
 const Header = () => {
-  const { currentUser, loggedUser } = useAuth();
+  const { currentUser, loggedUser } = useUsersList();
   const navigate = useNavigate();
   const [hamburger, setHamburger] = useState(false);
   const [dropdown, setDropdown] = useState(false);
