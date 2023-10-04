@@ -1,19 +1,25 @@
 import React from "react";
 import SingleBlog from "../../components/SingleBlog/SingleBlog";
 import { useBlogsList } from "../../firebase/getFunctions";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { MdOutlineFirstPage, MdOutlineLastPage } from "react-icons/md";
 
 const Blogs = () => {
   const blogs = useBlogsList();
   const navigate = useNavigate();
   const itemsPerPage = 6;
-  const pageNumber = parseInt(useParams().pageNumber || 1);
+  const location = useLocation();
+
+  // URL'den query parametrelerini al
+  const searchParams = new URLSearchParams(location.search);
+  const pageNumber = parseInt(searchParams.get("page")) || 1;
 
   //* Displayed Blogs
   const startIndex = (pageNumber - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedBlogs = blogs.slice(startIndex, endIndex);
+
+  console.log(blogs);
 
   return (
     <div className="blogs container py-5">
@@ -40,7 +46,7 @@ const Blogs = () => {
       </div>
       <div className="pagination-controls mt-4">
         <button
-          onClick={() => navigate(`/blogs/${pageNumber - 1}`)}
+          onClick={() => navigate(`/blogs?page=${pageNumber - 1}`)}
           disabled={pageNumber === 1}
           className={`${
             pageNumber === 1 ? "opacity-50 cursor-not-allowed" : "opacity-100"
@@ -50,7 +56,7 @@ const Blogs = () => {
         </button>
         <span>{pageNumber}</span>
         <button
-          onClick={() => navigate(`/blogs/${pageNumber + 1}`)}
+          onClick={() => navigate(`/blogs?page=${pageNumber + 1}`)}
           disabled={endIndex >= blogs.length}
           className={`${
             endIndex >= blogs.length

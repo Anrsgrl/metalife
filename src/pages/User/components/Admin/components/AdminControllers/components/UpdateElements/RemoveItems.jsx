@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { collection } from "firebase/firestore";
 import { db } from "../../../../../../../../firebase/config";
 import {
@@ -12,10 +12,10 @@ const RemoveItems = () => {
   const [selectedItemId, setSelectedItemId] = useState("");
   const blogs = useBlogsList();
   const videos = useVideosList();
-  const userData = useUsersList();
-  const blogsCollectionRef = useRef(collection(db, "blogs"));
-  const videosCollectionRef = useRef(collection(db, "videos"));
-  const usersCollectionRef = useRef(collection(db, "users"));
+  const { userData } = useUsersList();
+  const blogsCollectionRef = collection(db, "blogs");
+  const videosCollectionRef = collection(db, "videos");
+  const usersCollectionRef = collection(db, "users");
 
   return (
     <div className="remove-items-field py-5">

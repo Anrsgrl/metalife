@@ -12,12 +12,18 @@ import {
 } from "../../../../../../firebase/getFunctions";
 
 const AdminControllers = (props) => {
-  const userData = useUsersList();
+  const { userData, loggedUser } = useUsersList();
   const videos = useVideosList();
+
+  if (!Array.isArray(userData)) {
+    return <p>Loading...</p>;
+  }
 
   const { user, teacher, video, blog, trash, code } = props;
   const filteredData = userData?.filter(
-    (e) => e.userKey !== process.env.REACT_APP_ADMIN_KEY
+    (e) =>
+      e.userKey !== process.env.REACT_APP_ADMIN_KEY &&
+      e.email === loggedUser.email
   );
 
   return (

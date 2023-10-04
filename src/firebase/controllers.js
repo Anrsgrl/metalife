@@ -23,13 +23,13 @@ export const removeItem = async (collectionRef, docId) => {
     const itemRef = doc(collectionRef, docId);
 
     await deleteDoc(itemRef);
-    toast.success("Succesfully Deleted.");
+    toast.success("Successfully Deleted.");
     setTimeout(() => {
       window.location.reload();
-    }, 2000);
+    }, 1000);
   } catch (error) {
-    toast.error("Error: " + error.message); // Hata mesajını düzgün bir şekilde görüntülemek için "+" kullanmalısınız.
-    console.error("Error: " + error.message); // Hata mesajını konsola da yazdırın.
+    toast.error("Error: " + error.message);
+    console.error("Error: " + error.message);
   }
 };
 
