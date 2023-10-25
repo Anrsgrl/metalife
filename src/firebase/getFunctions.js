@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { auth, db } from "./config";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -8,7 +8,7 @@ export const useUsersList = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState([]);
 
-  const usersCollectionRef = collection(db, "users");
+  const usersCollectionRef = useMemo(() => collection(db, "users"), []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,7 +37,7 @@ export const useUsersList = () => {
 //* Get list of Blog elements
 export const useBlogsList = () => {
   const [blogs, setBlogs] = useState([]);
-  const blogsCollectionRef = collection(db, "blogs");
+  const blogsCollectionRef = useMemo(() => collection(db, "blogs"), []);
 
   useEffect(() => {
     const getBlogs = async () => {
@@ -53,7 +53,7 @@ export const useBlogsList = () => {
 //* Get list of Video elements
 export const useVideosList = () => {
   const [videosList, setVideosList] = useState([]);
-  const videosCollectionRef = collection(db, "videos");
+  const videosCollectionRef = useMemo(() => collection(db, "videos"), []);
 
   useEffect(() => {
     const getVideos = async () => {
@@ -69,7 +69,7 @@ export const useVideosList = () => {
 //* Get list of Video elements
 export const useCodeList = () => {
   const [codesList, setCodesList] = useState([]);
-  const codesCollectionRef = collection(db, "codes");
+  const codesCollectionRef = useMemo(() => collection(db, "codes"), []);
 
   useEffect(() => {
     const getVideos = async () => {

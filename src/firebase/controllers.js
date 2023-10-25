@@ -62,7 +62,6 @@ export const handleSignUp = async (
   e.preventDefault();
   const userssCollectionRef = collection(db, "users");
   const usernameAvailable = await checkUsernameAvailability(username);
-
   if (!usernameAvailable) {
     toast.error("Bu istifadəçi adı artıq mövcuddur.");
     return;
