@@ -81,7 +81,6 @@ export const handleSignUp = async (
     updateProfile(auth.currentUser, {
       displayName: username,
     });
-    window.location.href("/");
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
       toast.error("Bu emaildən istifadə olunmuşdur.");

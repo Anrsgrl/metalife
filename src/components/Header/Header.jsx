@@ -15,7 +15,7 @@ import { signOut } from "@firebase/auth";
 import { useUsersList } from "../../firebase/getFunctions";
 
 const Header = () => {
-  const { currentUser, loggedUser } = useUsersList();
+  const { currentUser, loggedUser, loading } = useUsersList();
   const navigate = useNavigate();
   const [hamburger, setHamburger] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -354,7 +354,9 @@ const Header = () => {
               userSignOut={userSignOut}
             />
             <div className="desktop-buttons desktop profile-part">
-              {currentUser === null ? (
+              {loading ? (
+                <p>Yüklənir...</p>
+              ) : currentUser === null ? (
                 <>
                   <button
                     onClick={() => navigate("/sign-in")}
@@ -371,16 +373,22 @@ const Header = () => {
                 </>
               ) : (
                 <div className="username-part">
-                  <Link to={`/user/${loggedUser?.username}`} className="px-2">
-                    {loggedUser?.username}
-                  </Link>
-                  <button
-                    onClick={() => userSignOut()}
-                    className="clean-button"
-                  >
-                    {" "}
-                    <FiLogOut />
-                  </button>
+                  {loggedUser && (
+                    <>
+                      <Link
+                        to={`/user/${loggedUser?.username}`}
+                        className="px-2"
+                      >
+                        {loggedUser?.username}
+                      </Link>
+                      <button
+                        onClick={() => userSignOut()}
+                        className="clean-button"
+                      >
+                        <FiLogOut />
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>

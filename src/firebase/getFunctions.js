@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 export const useUsersList = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const usersCollectionRef = useMemo(() => collection(db, "users"), []);
 
@@ -20,18 +21,25 @@ export const useUsersList = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUserData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      try {
+        const data = await getDocs(usersCollectionRef);
+        setUserData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching users: ", error);
+      }
     };
 
-    getUsers();
-  }, [usersCollectionRef]);
+    if (currentUser) {
+      getUsers();
+    }
+  }, [usersCollectionRef, currentUser]);
 
   const loggedUser = currentUser
     ? userData.find((user) => user.email === currentUser.email)
     : null;
 
-  return { currentUser, userData, loggedUser };
+  return { currentUser, userData, loggedUser, loading };
 };
 
 //* Get list of Blog elements
