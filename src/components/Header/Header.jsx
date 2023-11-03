@@ -354,7 +354,7 @@ const Header = () => {
               userSignOut={userSignOut}
             />
             <div className="desktop-buttons desktop profile-part">
-              {loading ? (
+              {currentUser && loading ? (
                 <p>Yüklənir...</p>
               ) : currentUser === null ? (
                 <>

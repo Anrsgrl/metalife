@@ -2,6 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useMemo, useState } from "react";
 import { auth, db } from "./config";
 import { onAuthStateChanged } from "firebase/auth";
+import toast from "react-hot-toast";
 
 //* Get list of User elements
 export const useUsersList = () => {
@@ -27,6 +28,7 @@ export const useUsersList = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching users: ", error);
+        toast.error(error.message);
       }
     };
 
