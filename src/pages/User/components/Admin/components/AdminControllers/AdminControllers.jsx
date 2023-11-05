@@ -1,7 +1,7 @@
 import React from "react";
 import "./AdminControllers.scss";
 import UpdateUserLessons from "./components/UpdateElements/UpdateUserLessons";
-import UpdateTeachers from "./components/UpdateElements/UpdateTeachers";
+import UpdateRank from "./components/UpdateElements/UpdateRank";
 import UpdateVideos from "./components/UpdateElements/UpdateVideos";
 import UpdateBlog from "./components/UpdateElements/UpdateBlog";
 import RemoveItems from "./components/UpdateElements/RemoveItems";
@@ -23,18 +23,18 @@ const AdminControllers = (props) => {
   const filteredData = userData?.filter(
     (e) =>
       e.userKey !== process.env.REACT_APP_ADMIN_KEY &&
-      e.email === loggedUser.email
+      e.email !== loggedUser.email
   );
 
   return (
     <div className="admin-controllers py-3">
-      {teacher && <UpdateTeachers filteredData={filteredData} />}
+      {teacher && <UpdateRank filteredData={filteredData} />}
       {user && (
         <UpdateUserLessons videos={videos} filteredData={filteredData} />
       )}
       {video && <UpdateVideos />}
       {blog && <UpdateBlog />}
-      {trash && <RemoveItems />}
+      {trash && <RemoveItems filteredData={filteredData} />}
       {code && <UpdateCodes />}
     </div>
   );

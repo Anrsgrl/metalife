@@ -2,19 +2,31 @@
 @import "../../../../../../vendors/variables";
 
 .panel-buttons {
-    align-items: center;
-    justify-content: center;
+    @include flex(center, row, center);
     gap: 5px;
+    flex-wrap: wrap;
+    svg{
+        width: 25px;
+        height: 25px
+    }
+    button{
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 2px;
+        @include flex(center, row, center);
+        gap: 5px
+    }
 }
 
-.admin-panel {
-    ul {
-        list-style: circle !important;
+.admin-panel{
+    ul{
+        list-style: circle;
     }
 }
 
 .hashtags-controllers {
     @include flex;
+    flex-wrap: wrap;
     gap: 5px
 }
 
@@ -47,6 +59,11 @@
         margin-right: 8px;
     }
 
+    .blog-form{
+        .preview{
+            @include flex(center, column);
+        }
+    }
     .blog-write {
         .blog-tools {
             @include flex;

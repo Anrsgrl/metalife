@@ -153,21 +153,19 @@ const UpdateVideos = () => {
             {hashtags?.map((tag) => `#${tag}`).join(", ")}
           </p>
         )}
-        <div className="hashtags-controllers col-12 row m-0">
-          <button className="btn-blue col-12 col-md-4" type="submit">
+        <div className="hashtags-controllers col-12 m-0">
+          <button className="btn-blue" type="submit">
             Əlavə et
           </button>
           <button
-            className="btn-blue col-12 col-md-4"
+            className="btn-blue"
             type="button"
             onClick={() => setHashtags([])}
           >
             Hamısını sil
           </button>
           <button
-            className={`${
-              showHelperHash ? "btn-white" : "btn-blue"
-            } col-12 col-md-4`}
+            className={`${showHelperHash ? "btn-white" : "btn-blue"}`}
             type="button"
             onClick={() => setShowHelperHash(!showHelperHash)}
           >

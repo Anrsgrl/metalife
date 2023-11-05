@@ -17,14 +17,13 @@
         @include flex(space-between);
         font-style: italic;
         font-size: 12px;
-
+        gap: 15px;
         @media(max-width: 572px) {
             justify-content: center;
             flex-wrap: wrap;
         }
 
         a {
-            padding-left: 15px;
             text-decoration: none;
         }
     }

@@ -21,7 +21,7 @@ const UpdateTeachers = ({ filteredData }) => {
 
   return (
     <form onSubmit={addTeacher}>
-      <h3 className="py-2">Müəllim əlavə et</h3>
+      <h3 className="py-2">Rütbə əlavə et</h3>
       <div className="row">
         <select
           defaultValue={"default"}

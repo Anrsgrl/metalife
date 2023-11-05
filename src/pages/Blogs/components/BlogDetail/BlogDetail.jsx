@@ -77,7 +77,7 @@ const BlogDetail = () => {
           <h1 className="section-heading py-2">{title}</h1>
           <div
             style={{ wordWrap: "break-word" }}
-            className="py-5 blog-content"
+            className="py-3 blog-content"
             dangerouslySetInnerHTML={{ __html: content }}
           />
           <div className="blog-footer pt-5">

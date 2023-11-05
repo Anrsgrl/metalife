@@ -17,6 +17,9 @@ import {
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useUsersList } from "../../../../../../../../firebase/getFunctions";
 import { db } from "../../../../../../../../firebase/config";
+import { MdDateRange } from "react-icons/md";
+import { Link } from "react-router-dom";
+import girl from "../../../../../../../../assets/images/girl.png";
 
 const UpdateBlog = () => {
   const { currentUser, loggedUser } = useUsersList();
@@ -133,21 +136,19 @@ const UpdateBlog = () => {
             {hashtags?.map((tag) => `#${tag}`).join(", ")}
           </p>
         )}
-        <div className="hashtags-controllers col-12 row m-0">
-          <button className="btn-blue col-12 col-md-4" type="submit">
+        <div className="hashtags-controllers col-12 m-0">
+          <button className="btn-blue " type="submit">
             Əlavə et
           </button>
           <button
-            className="btn-blue col-12 col-md-4"
+            className="btn-blue "
             type="button"
             onClick={() => setHashtags([])}
           >
             Hamısını sil
           </button>
           <button
-            className={`${
-              showHelperHash ? "btn-white" : "btn-blue"
-            } col-12 col-md-4`}
+            className={`${showHelperHash ? "btn-white" : "btn-blue"} `}
             type="button"
             onClick={() => setShowHelperHash(!showHelperHash)}
           >
@@ -203,16 +204,16 @@ const UpdateBlog = () => {
           </div>
         )}
       </form>
-      <form className="col-12 py-4" onSubmit={handleSubmit}>
-        <h3>Blog barədə məlumatlar</h3>
-        <label htmlFor="blogImg">Blog şəkli -- </label>
+      <form className="col-12 py-4 blog-form" onSubmit={handleSubmit}>
         <input
           type="file"
           accept=".PNG, .JPEG, .JPG"
-          id="blogImg"
-          onChange={handleImageUpload}
+          id="imgInp"
+          onChange={(e) => {
+            handleImageUpload(e);
+          }}
           required
-          className="py-2"
+          className=""
         />
         {errorMsg && (
           <p className="text-danger">
@@ -308,11 +309,47 @@ const UpdateBlog = () => {
             </button>
           </h2>
           {preview && (
-            <div
-              style={{ wordWrap: "break-word" }}
-              className="py-5 blog-content"
-              dangerouslySetInnerHTML={{ __html: blogData.content }}
-            />
+            <div className="blog-detail container py-2 animated">
+              <div className="row">
+                <div className="blog-left col-12 col-lg-9">
+                  <img src={blog_image} className={`w-100 my-2`} alt="blog" />
+                  <div className="blog-info">
+                    <ul className="px-0 pt-1 m-0 hashtags">
+                      {hashtags?.slice(0, 3).map((hashtag) => (
+                        <li key={hashtag}>
+                          <Link className="text-muted" to="#">
+                            #{hashtag}
+                          </Link>
+                        </li>
+                      ))}
+                      {hashtags?.length === 0 && <li>#hashtags</li>}
+                    </ul>
+                    <div className="blog-time">
+                      <MdDateRange />
+                      XX.XX.XXXX
+                    </div>
+                  </div>
+                  <h1 className="section-heading py-2">{title}</h1>
+                  <div
+                    style={{ wordWrap: "break-word" }}
+                    className="py-3 blog-content"
+                    dangerouslySetInnerHTML={{ __html: blogData.content }}
+                  />
+                  <div className="blog-footer pt-5">
+                    <div className="author-side">
+                      <img src={currentUser?.photoURL || girl} alt="" />
+                      <div className="blog-footer-texts ps-2">
+                        <h6>{loggedUser.name + " " + loggedUser.surname}</h6>
+                        {loggedUser.name + loggedUser.surname ===
+                          "NazirNadirov" && (
+                          <p className="text-muted m-0">Qurucu, CEO</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </form>

@@ -1,29 +1,137 @@
-import React, { useState } from 'react';
-import AdminControllers from '../AdminControllers/AdminControllers';
-import { BsFillTrashFill } from "react-icons/bs";
+import React, { useState } from "react";
+import AdminControllers from "../AdminControllers/AdminControllers";
+import {
+  BsFillFileEarmarkCodeFill,
+  BsFillFileEarmarkExcelFill,
+  BsFillFileEarmarkLock2Fill,
+  BsFillFileEarmarkMedicalFill,
+  BsFillFileEarmarkPersonFill,
+  BsFillFileEarmarkPlayFill,
+} from "react-icons/bs";
 
 const AdminPanel = ({ isAdmin }) => {
-    const [panel, setPanel] = useState("blog")
-    return (
-        <div className="admin-panel">
-            <div className="panel-buttons row">
-                <button type="button" className={`${panel === "blog" ? "btn-blue" : "btn-white"} col-12 col-md-5 col-lg-2`} onClick={() => setPanel("blog")}>Blog</button>
-                {isAdmin && <button type="button" className={`${panel === "teacher" ? "btn-blue" : "btn-white"} col-12 col-md-5 col-lg-2`} onClick={() => setPanel("teacher")}>Teacher</button>}
-                <button type="button" className={`${panel === "user" ? "btn-blue" : "btn-white"} col-12 col-md-5 col-lg-2`} onClick={() => setPanel("user")}>User</button>
-                <button type="button" className={`${panel === "videos" ? "btn-blue" : "btn-white"} col-12 col-md-5 col-lg-2`} onClick={() => setPanel("videos")}>Videos</button>
-                <button type="button" className={`${panel === "code" ? "btn-blue" : "btn-white"} col-12 col-md-5 col-lg-2`} onClick={() => setPanel("code")}>Kod</button>
-                <button type="button" style={{ height: "44px" }} className={`${panel === "trash" ? "btn btn-danger" : "btn-white text-danger"} col-12 col-md-5 col-lg-2`} onClick={() => setPanel("trash")}><BsFillTrashFill /></button>
-            </div>
-            <div className="panel-items">
-                {panel === "blog" && <AdminControllers user={false} teacher={false} video={false} blog={true} trash={false} code={false} />}
-                {panel === "user" && <AdminControllers user={true} teacher={false} video={false} blog={false} trash={false} code={false} />}
-                {panel === "teacher" && <AdminControllers user={false} teacher={true} video={false} blog={false} trash={false} code={false} />}
-                {panel === "videos" && <AdminControllers user={false} teacher={false} video={true} blog={false} trash={false} code={false} />}
-                {panel === "trash" && <AdminControllers user={false} teacher={false} video={false} blog={false} trash={true} code={false} />}
-                {panel === "code" && <AdminControllers user={false} teacher={false} video={false} blog={false} trash={false} code={true} />}
-            </div>
-        </div>
-    )
-}
+  const [panel, setPanel] = useState("blog");
+
+  const adminPages = [
+    {
+      panelName: "blog",
+      name: "bloq",
+      icon: <BsFillFileEarmarkMedicalFill />,
+      isAdmin: true,
+    },
+    {
+      panelName: "rank",
+      name: "rütbə",
+      icon: <BsFillFileEarmarkLock2Fill />,
+      isAdmin: isAdmin,
+    },
+    {
+      panelName: "user",
+      name: "profil",
+      icon: <BsFillFileEarmarkPersonFill />,
+      isAdmin: true,
+    },
+    {
+      panelName: "video",
+      name: "video",
+      icon: <BsFillFileEarmarkPlayFill />,
+      isAdmin: true,
+    },
+    {
+      panelName: "code",
+      name: "kod",
+      icon: <BsFillFileEarmarkCodeFill />,
+      isAdmin: true,
+    },
+    {
+      panelName: "trash",
+      name: "sil",
+      icon: <BsFillFileEarmarkExcelFill />,
+      isAdmin: true,
+    },
+  ];
+
+  return (
+    <div className="admin-panel">
+      <div className="panel-buttons">
+        {adminPages.map((item) => (
+          <button
+            type="button"
+            disabled={!item.isAdmin}
+            className={`${
+              panel === item.panelName ? "btn-blue" : "btn-white opacity-50"
+            } ${!item.isAdmin && "d-none"}`}
+            onClick={() => setPanel(item.panelName)}
+          >
+            {item.icon}
+            {panel === item.panelName && item.name}
+          </button>
+        ))}
+      </div>
+      <div className="panel-items">
+        {panel === "blog" && (
+          <AdminControllers
+            user={false}
+            teacher={false}
+            video={false}
+            blog={true}
+            trash={false}
+            code={false}
+          />
+        )}
+        {panel === "user" && (
+          <AdminControllers
+            user={true}
+            teacher={false}
+            video={false}
+            blog={false}
+            trash={false}
+            code={false}
+          />
+        )}
+        {panel === "rank" && (
+          <AdminControllers
+            user={false}
+            teacher={true}
+            video={false}
+            blog={false}
+            trash={false}
+            code={false}
+          />
+        )}
+        {panel === "video" && (
+          <AdminControllers
+            user={false}
+            teacher={false}
+            video={true}
+            blog={false}
+            trash={false}
+            code={false}
+          />
+        )}
+        {panel === "trash" && (
+          <AdminControllers
+            user={false}
+            teacher={false}
+            video={false}
+            blog={false}
+            trash={true}
+            code={false}
+          />
+        )}
+        {panel === "code" && (
+          <AdminControllers
+            user={false}
+            teacher={false}
+            video={false}
+            blog={false}
+            trash={false}
+            code={true}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default AdminPanel;
