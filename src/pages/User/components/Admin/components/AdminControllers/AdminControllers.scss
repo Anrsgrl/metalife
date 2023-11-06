@@ -2,7 +2,7 @@
 @import "../../../../../../vendors/variables";
 
 .panel-buttons {
-    @include flex(center, row, center);
+    @include flex(flex-start, row, center);
     gap: 5px;
     overflow-x: scroll;
     svg{
