@@ -82,7 +82,7 @@ const Settings = () => {
             <div className="change-profile">
               <div className="change-inputs">
                 <input
-                  className="ps-4 ps-lg-0"
+                  className=""
                   type="file"
                   accept=".png, .jpeg, .jpg"
                   onChange={handleFileChange}
