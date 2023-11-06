@@ -305,7 +305,11 @@ const UpdateBlog = () => {
               className="clean-button"
               onClick={() => setPreview(!preview)}
             >
-              {preview ? <AiFillEye /> : <AiFillEyeInvisible />}
+              {preview ? (
+                <AiFillEye className="animated" />
+              ) : (
+                <AiFillEyeInvisible className="animated" />
+              )}
             </button>
           </h2>
           {preview && (
