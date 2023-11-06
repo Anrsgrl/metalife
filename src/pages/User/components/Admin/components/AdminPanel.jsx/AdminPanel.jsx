@@ -53,7 +53,7 @@ const AdminPanel = ({ isAdmin }) => {
 
   return (
     <div className="admin-panel">
-      <div className="panel-buttons">
+      <div className="panel-buttons pb-1">
         {adminPages.map((item) => (
           <button
             type="button"

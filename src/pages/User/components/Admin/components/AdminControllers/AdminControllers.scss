@@ -4,7 +4,7 @@
 .panel-buttons {
     @include flex(center, row, center);
     gap: 5px;
-    flex-wrap: wrap;
+    overflow-x: scroll;
     svg{
         width: 25px;
         height: 25px
@@ -15,6 +15,9 @@
         letter-spacing: 2px;
         @include flex(center, row, center);
         gap: 5px
+    }
+    @media(max-width: 768px){
+        justify-content: flex-start;
     }
 }
 
