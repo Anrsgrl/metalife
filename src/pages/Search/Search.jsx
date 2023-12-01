@@ -19,10 +19,14 @@ const Search = () => {
   const currentUser = useUsersList();
   const [videoDuration, setVideoDuration] = useState(null);
   const filteredVideos = videos.filter(
-    (e) => e.demo === "true" && e.hashtags?.includes(searchItemValue)
+    (e) =>
+      (e.demo === "true" && e.hashtags?.includes(searchItemValue)) ||
+      e.title?.toLowerCase().includes(searchItemValue.toLowerCase())
   );
-  const filteredBlogs = blogs.filter((e) =>
-    e.hashtags?.includes(searchItemValue)
+  const filteredBlogs = blogs.filter(
+    (e) =>
+      e.hashtags?.includes(searchItemValue) ||
+      e.title?.toLowerCase().includes(searchItemValue.toLowerCase())
   );
 
   const onPlayerReady = (event) => {

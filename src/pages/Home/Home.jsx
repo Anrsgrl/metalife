@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Hero from "../Home/components/Hero/Hero";
 import Lessons from "./components/Lessons/Lessons";
 import Application from "./components/Application/Application";
-import Stuff from "./components/Stuff/Stuff";
+// import Stuff from "./components/Stuff/Stuff";
 import Partner from "./components/Partner/Partner";
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
     <>
       <Hero />
       <Lessons show={true} />
-      <Stuff />
+      {/* <Stuff /> */}
       <Partner />
       <Application />
     </>
