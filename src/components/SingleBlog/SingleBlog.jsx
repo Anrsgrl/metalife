@@ -31,7 +31,11 @@ const SingleBlog = (props) => {
             style={{ display: imageLoaded ? "block" : "none" }}
             onLoad={handleImageLoad}
           />
-          <h6 className={!imageLoaded ? "skeleton m-0 pb-5" : "pt-2 px-3"}>
+          <h6
+            className={
+              !imageLoaded ? "skeleton m-0 pt-3 px-3 pb-4" : "pt-2 px-3"
+            }
+          >
             {imageLoaded && title}
           </h6>
         </div>

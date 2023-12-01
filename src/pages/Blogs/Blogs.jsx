@@ -19,8 +19,6 @@ const Blogs = () => {
   const endIndex = startIndex + itemsPerPage;
   const displayedBlogs = blogs.slice(startIndex, endIndex);
 
-  console.log(blogs);
-
   return (
     <div className="blogs container py-5">
       <div className="row pt-3">
