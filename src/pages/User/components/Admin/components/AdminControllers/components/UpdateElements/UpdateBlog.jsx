@@ -266,6 +266,18 @@ const UpdateBlog = () => {
           >
             Paragraf əlavə et
           </button>
+          <button
+            type="button"
+            className="btn-white"
+            onClick={() =>
+              setBlogData({
+                ...blogData,
+                content: blogData.content + "<strong></strong>",
+              })
+            }
+          >
+            Tünd yazı əlavə et
+          </button>
         </div>
         <div className="pb-2 check-enter">
           <p className="m-0">Enter basıldıqda paragraf əlavə etmə:</p>
