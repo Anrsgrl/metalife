@@ -68,6 +68,11 @@
     p {
         color: #555555;
     }
+
+    strong{
+        color: $main-color;
+        font-weight: 600
+    }
 }
 
 .blog-right {
