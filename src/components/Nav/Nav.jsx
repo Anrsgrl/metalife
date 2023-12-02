@@ -37,15 +37,15 @@ const Nav = () => {
         />
         <button
           type="submit"
-          className={!searchTerm && "cursor-not-allowed"}
+          className={!searchTerm ? "cursor-not-allowed" : ""}
           disabled={!searchTerm}
         >
           <BiSearchAlt />
         </button>
       </form>
       <ul className="px-0 pt-1 m-0 hashtags">
-        {hashtags.map((hashtag) => (
-          <li key={hashtag}>
+        {hashtags.map((hashtag, i) => (
+          <li key={i}>
             <Link className="text-muted" to={`/search?searchItem=${hashtag}`}>
               #{hashtag}
             </Link>

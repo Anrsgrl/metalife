@@ -23,12 +23,12 @@ export const removeItem = async (collectionRef, docId) => {
     const itemRef = doc(collectionRef, docId);
 
     await deleteDoc(itemRef);
-    toast.success("Successfully Deleted.");
+    toast.success("Uğurla silindi.");
     setTimeout(() => {
       window.location.reload();
     }, 1000);
   } catch (error) {
-    toast.error("Error: " + error.message);
+    toast.error("Xəta baş verdi!");
     console.error("Error: " + error.message);
   }
 };
@@ -91,6 +91,7 @@ export const handleSignUp = async (
     } else if (error.code === "auth/weak-password") {
       toast.error("Şifrəniz çox zəifdir.");
     } else {
+      toast.error("Xəta baş verdi!");
       console.log("An error occurred:", error);
     }
   }
@@ -112,7 +113,7 @@ export const handleSignIn = async (e, email, password) => {
     if (error.code === "auth/user-not-found") {
       toast.error("İstifadəçi tapılmadı.");
     } else if (error.code === "auth/invalid-email") {
-      alert("Yanlış e-poçt ünvanı.");
+      toast.error("Yanlış e-poçt ünvanı.");
     } else if (error.code === "auth/wrong-password") {
       toast.error("Şifrəniz yanlışdır.");
     } else if (error.code === "auth/too-many-requests") {
@@ -120,6 +121,7 @@ export const handleSignIn = async (e, email, password) => {
         "Çox yanlış kod girdiyiniz üçün, profiliniz keçici olaraq bloklanmışdır."
       );
     } else {
+      toast.error("Xəta baş verdi!");
       console.log("An error occurred:", error);
     }
   }
@@ -137,6 +139,7 @@ export const handlePasswordReset = async (e, resetEmail) => {
     } else if (error.code === "auth/user-not-found") {
       toast.error("İstifadəçi emaili tapılmadı.");
     } else {
+      toast.error("Xəta baş verdi!");
       console.log("Şifrə sıfırlama xətası:", error);
     }
   }
@@ -150,7 +153,7 @@ export const sendVerification = () => {
         toast.success("E-poçt göndərildi.");
       })
       .catch((error) => {
-        toast.erro("E-poçt göndəriləmmədi.");
+        toast.error("E-poçt göndəriləmmədi.");
         console.log("E-poçt göndərmə xətası:", error);
       });
   }

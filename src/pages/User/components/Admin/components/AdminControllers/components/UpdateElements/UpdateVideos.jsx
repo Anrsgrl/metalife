@@ -1,24 +1,16 @@
 import { addDoc, collection } from "firebase/firestore";
 import React, { useRef, useState } from "react";
-
-import {
-  backendHashtags,
-  frontendHashtags,
-  fullstackHashtags,
-  interiorDesignHashtags,
-  threeDHashtags,
-  uidesignHashtags,
-} from "../../../../../../../../data/updateHashtags";
 import { db } from "../../../../../../../../firebase/config";
+import UpdateHashtags from "./UpdateHashtags";
+import toast from "react-hot-toast";
 
 const UpdateVideos = () => {
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState("");
   const [hashtags, setHashtags] = useState([]);
-  const [newHashtag, setNewHashtag] = useState();
-  const [group, setGroup] = useState();
+  const [newHashtag, setNewHashtag] = useState("");
+  const [group, setGroup] = useState("");
   const [demo, setDemo] = useState("");
-  const [url, setUrl] = useState();
-  const [showHelperHash, setShowHelperHash] = useState(false);
+  const [url, setUrl] = useState("");
 
   const parseVideoIdFromLink = (link) => {
     const url = new URL(link);
@@ -28,17 +20,8 @@ const UpdateVideos = () => {
   const disabledIf =
     title?.length === 0 ||
     hashtags?.length === 0 ||
-    group?.length === 0 ||
     url?.length === 0 ||
     demo === "";
-
-  const handleHashtagsSubmit = (e) => {
-    e.preventDefault();
-    if (newHashtag !== "") {
-      setHashtags([...hashtags, newHashtag]);
-    }
-    setNewHashtag("");
-  };
 
   const videosCollectionRef = useRef(collection(db, "videos"));
 
@@ -54,7 +37,7 @@ const UpdateVideos = () => {
           url: videoId,
           demo,
         });
-        alert(`Yeni video bu ID ilə əlavə edildi: ${newBlogRef.id}`);
+        toast.success(`Yeni video bu ID ilə əlavə edildi: ${newBlogRef.id}`);
       } else {
         const newVideoRef = await addDoc(videosCollectionRef.current, {
           title,
@@ -63,7 +46,7 @@ const UpdateVideos = () => {
           demo,
           group,
         });
-        alert(`Yeni video bu ID ilə əlavə edildi: ${newVideoRef.id}`);
+        toast.success(`Yeni video bu ID ilə əlavə edildi: ${newVideoRef.id}`);
       }
       setDemo("");
       setTitle("");
@@ -72,7 +55,8 @@ const UpdateVideos = () => {
       setDemo("");
       setUrl("");
     } catch (error) {
-      alert("Error adding video: ", error.message);
+      console.error("Error adding video: ", error);
+      toast.error("Xəta baş verdi!");
     }
   };
 
@@ -116,7 +100,7 @@ const UpdateVideos = () => {
             />
           </div>
           <div className="form-element col-12 col-md-6">
-            {demo !== "true" && (
+            {demo !== "true" ? (
               <input
                 value={group}
                 type="text"
@@ -126,6 +110,8 @@ const UpdateVideos = () => {
                 onChange={(e) => setGroup(e.target.value)}
                 required
               />
+            ) : (
+              ""
             )}
           </div>
           <button
@@ -137,91 +123,17 @@ const UpdateVideos = () => {
           </button>
         </div>
       </form>
-      <form className="py-3 col-12" onSubmit={(e) => handleHashtagsSubmit(e)}>
-        <h3 className="py-2">Hashtag əlavə etmə</h3>
-        <input
-          onChange={(e) => setNewHashtag(e.target.value.toLocaleLowerCase())}
-          type="text"
-          placeholder="hashtags"
-          name="hashtags"
-          className="sign-inputs m-0"
-          value={newHashtag}
-          required
-        />
-        {hashtags && (
-          <p className="text-muted">
-            {hashtags?.map((tag) => `#${tag}`).join(", ")}
-          </p>
-        )}
-        <div className="hashtags-controllers col-12 m-0">
-          <button className="btn-blue" type="submit">
-            Əlavə et
-          </button>
-          <button
-            className="btn-blue"
-            type="button"
-            onClick={() => setHashtags([])}
-          >
-            Hamısını sil
-          </button>
-          <button
-            className={`${showHelperHash ? "btn-white" : "btn-blue"}`}
-            type="button"
-            onClick={() => setShowHelperHash(!showHelperHash)}
-          >
-            {showHelperHash
-              ? "Köməkçi tagları gizlət"
-              : "Köməkçi tagları göstər"}
-          </button>
-        </div>
-        {showHelperHash && (
-          <div className="helper-hashtags col-12 py-2">
-            <button
-              type="button"
-              className="btn-white"
-              onClick={() => setHashtags(frontendHashtags)}
-            >
-              Frontend hashtags
-            </button>
-            <button
-              type="button"
-              className="btn-white"
-              onClick={() => setHashtags(backendHashtags)}
-            >
-              Backend hashtags
-            </button>
-            <button
-              type="button"
-              className="btn-white"
-              onClick={() => setHashtags(fullstackHashtags)}
-            >
-              Fullstack hashtags
-            </button>
-            <button
-              type="button"
-              className="btn-white"
-              onClick={() => setHashtags(uidesignHashtags)}
-            >
-              UI/UIX hashtags
-            </button>
-            <button
-              type="button"
-              className="btn-white"
-              onClick={() => setHashtags(interiorDesignHashtags)}
-            >
-              Interior hashtags
-            </button>
-            <button
-              type="button"
-              className="btn-white"
-              onClick={() => setHashtags(threeDHashtags)}
-            >
-              3D Modelling hashtags
-            </button>
-          </div>
-        )}
-      </form>
-      {disabledIf && <p className="text-danger">Bütün hissələri doldurun.</p>}
+      <UpdateHashtags
+        state={newHashtag}
+        setState={setNewHashtag}
+        generalState={hashtags}
+        setGeneralState={setHashtags}
+      />
+      {disabledIf ? (
+        <p className="text-danger">Bütün hissələri doldurun.</p>
+      ) : (
+        ""
+      )}
     </>
   );
 };

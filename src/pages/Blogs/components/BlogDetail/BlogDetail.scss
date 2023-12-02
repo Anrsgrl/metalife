@@ -84,11 +84,6 @@
     }
 }
 
-.blog-tools {
-    @include flex;
-    gap: 5px;
-}
-
 .blog-footer {
     @include flex(space-between);
     gap: 5px;

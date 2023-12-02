@@ -56,6 +56,7 @@ const AdminPanel = ({ isAdmin }) => {
       <div className="panel-buttons pb-1">
         {adminPages.map((item) => (
           <button
+            key={item.name}
             type="button"
             disabled={!item.isAdmin}
             className={`${

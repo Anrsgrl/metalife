@@ -2,10 +2,10 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import React, { useRef, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { db } from "../../../../../../../../firebase/config";
+import { editItems } from "../../../../../../../../data/editItems";
+import toast from "react-hot-toast";
 
 const UpdateCodes = () => {
-  const [errorMsg, setErrorMsg] = useState(false);
-  const [checkEnt, setCheckEnt] = useState(false);
   const [preview, setPreview] = useState(false);
   const [lang, setLang] = useState("");
   const textareaRef = useRef(null);
@@ -27,10 +27,6 @@ const UpdateCodes = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !content || !lang) {
-      setErrorMsg(true);
-      return;
-    }
     try {
       const codesRef = await addDoc(codesCollectionRef.current, {
         time: serverTimestamp(),
@@ -39,7 +35,7 @@ const UpdateCodes = () => {
         content,
       });
 
-      alert(`Yeni kod bu ID ilə əlavə edildi: ${codesRef.id}`);
+      toast.success(`Yeni kod bu ID ilə əlavə edildi: ${codesRef.id}`);
 
       setCodeData({
         codeName: "",
@@ -48,12 +44,7 @@ const UpdateCodes = () => {
       });
     } catch (error) {
       console.error("Xəta: ", error);
-    }
-  };
-
-  const checkEnter = (event) => {
-    if (event.key === "Enter" && checkEnt) {
-      setCodeData({ ...codeData, content: event.target.value + "<p></p>" });
+      toast.error("Xəta baş verdi!");
     }
   };
 
@@ -119,114 +110,70 @@ const UpdateCodes = () => {
           value={title}
           required
         />
-        <div className="blog-tools py-3">
+        <div className="updateContent">
+          <h3 className="py-2">Kontent əlavə etmə</h3>
+          <div className="blog-tools py-3">
+            {editItems.map((item) => (
+              <button
+                key={item.tag}
+                type="button"
+                onClick={() => addTagAndContent(item.tag, item.class)}
+              >
+                {item.icon}
+                <span className="description">{item.text}</span>
+              </button>
+            ))}
+          </div>
+          <textarea
+            onChange={handleChange}
+            ref={textareaRef}
+            placeholder="Kontent"
+            name="content"
+            className="sign-text-area"
+            value={content}
+            required
+            style={{ resize: "vertical" }}
+          ></textarea>
           <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("h3", "py-2")}
+            className={disabledIf ? "btn-disabled" : "btn-blue"}
+            type="submit"
+            disabled={disabledIf}
           >
-            Başlıq əlavə et
+            Təsdiqlə
           </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("h5", "py-2")}
-          >
-            Altbaşlıq əlavə et
-          </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("p")}
-          >
-            Abzas əlavə et
-          </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("code")}
-          >
-            Kod əlavə et
-          </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("pre")}
-          >
-            Kod arxaplanı əlavə et
-          </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("ul")}
-          >
-            Ul əlavə et
-          </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("li")}
-          >
-            Li əlavə et
-          </button>
-          <button
-            type="button"
-            className="btn-white"
-            onClick={() => addTagAndContent("strong")}
-          >
-            Tünd yazı əlavə et
-          </button>
-        </div>
-        <div className="pb-2 check-enter">
-          <p className="m-0">Enter basıldıqda paragraf əlavə etmə:</p>
-          <button
-            type="button"
-            className="clean-button"
-            onClick={() => setCheckEnt(!checkEnt)}
-          >
-            {checkEnt ? "Açıq" : "Bağlı"}
-          </button>
-        </div>
-        <textarea
-          ref={textareaRef}
-          onChange={handleChange}
-          placeholder="Kontent"
-          name="content"
-          className="sign-text-area"
-          value={content}
-          required
-          style={{ resize: "vertical" }}
-          onKeyDown={checkEnter}
-        ></textarea>
-        <button
-          className={disabledIf ? "btn-disabled" : "btn-blue"}
-          type="submit"
-          disabled={disabledIf}
-        >
-          Təsdiqlə
-        </button>
-        {errorMsg && (
-          <p className="text-danger py-2">Bütün hissələri doldurun.</p>
-        )}
-
-        <div className="preview">
-          <h2 className="py-2">
-            Önizləmə:{" "}
-            <button
-              type="button"
-              className="clean-button"
-              onClick={() => setPreview(!preview)}
-            >
-              {preview ? <AiFillEye /> : <AiFillEyeInvisible />}
-            </button>
-          </h2>
-          {preview && (
-            <div
-              style={{ wordWrap: "break-word" }}
-              className="py-5 blog-content"
-              dangerouslySetInnerHTML={{ __html: codeData.content }}
-            />
+          {disabledIf && (
+            <p className="text-danger py-2">Bütün hissələri doldurun.</p>
           )}
+          <div className="preview">
+            <h2 className="py-2">
+              Önizləmə:{" "}
+              <button
+                type="button"
+                className="clean-button"
+                onClick={() => setPreview(!preview)}
+              >
+                {preview ? (
+                  <AiFillEye className="animated" />
+                ) : (
+                  <AiFillEyeInvisible className="animated" />
+                )}
+              </button>
+            </h2>
+            {preview && (
+              <div className="blog-detail container py-2 animated">
+                <div className="row">
+                  <div className="blog-left col-12 col-lg-9">
+                    <h1 className="section-heading py-2">{title}</h1>
+                    <div
+                      style={{ wordWrap: "break-word" }}
+                      className="py-3 blog-content"
+                      dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </form>
     </div>

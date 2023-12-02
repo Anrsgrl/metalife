@@ -71,8 +71,11 @@ const Search = () => {
                       </h5>
                     )}
                     {filteredVideos &&
-                      filteredVideos?.map((e) => (
-                        <div className="single-video-part col-12 col-md-9 col-lg-6">
+                      filteredVideos?.map((e, i) => (
+                        <div
+                          key={i}
+                          className="single-video-part col-12 col-md-9 col-lg-6"
+                        >
                           <YouTube
                             videoId={e.url}
                             className={"w-100 h-100"}

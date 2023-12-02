@@ -1,10 +1,10 @@
 import { doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { db } from "../../../../../../../../firebase/config";
+import toast from "react-hot-toast";
 
 const UpdateTeachers = ({ filteredData }) => {
   const [selectedUser, setSelectedUser] = useState("");
-  const [error, setError] = useState("");
 
   const addTeacher = async (e) => {
     e.preventDefault();
@@ -13,9 +13,9 @@ const UpdateTeachers = ({ filteredData }) => {
       await updateDoc(singleUserRef, {
         userKey: process.env.REACT_APP_ADMIN_KEY,
       });
-      setError("Əlavə olundu!");
+      toast.success("Əlavə olundu!");
     } catch (error) {
-      setError(error.message);
+      toast.error("Xəta baş verdi!");
     }
   };
 
@@ -48,15 +48,6 @@ const UpdateTeachers = ({ filteredData }) => {
           {" "}
           Təsdiqlə{" "}
         </button>
-        {error && (
-          <p
-            className={
-              error === "Əlavə olundu!" ? "text-success" : "text-danger"
-            }
-          >
-            {error}
-          </p>
-        )}
       </div>
     </form>
   );

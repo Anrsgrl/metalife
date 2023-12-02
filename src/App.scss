@@ -356,3 +356,21 @@ input[type="file"]::file-selector-button:hover {
 input[type="file"]::file-selector-button:active {
   background-color: white;
 }
+
+//* Truncate
+
+.text-overflow-clamp{
+  width: 100%;
+  overflow: hidden;
+ -webkit-box-orient: vertical;
+display: -webkit-box;
+}
+.clamp-2{
+  -webkit-line-clamp: 2;
+}
+.clamp-3{
+  -webkit-line-clamp: 3;
+}
+.clamp-4{
+  -webkit-line-clamp: 4;
+}
