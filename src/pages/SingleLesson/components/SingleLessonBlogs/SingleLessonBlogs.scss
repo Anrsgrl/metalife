@@ -1,8 +1,8 @@
 @import "../../../../vendors/mixins";
 @import "../../../../vendors/variables";
 
-.single-lesson-blogs {
-    .lesson-blogs {
+.single-lesson-blogs, .single-lesson-videos {
+    .lesson-blogs, .lesson-videos {
         display: -webkit-box;
         gap: 15px;
         overflow-x: auto;
@@ -16,7 +16,7 @@
 
 
 /* width */
-.lesson-blogs::-webkit-scrollbar {
+.lesson-blogs::-webkit-scrollbar, .lesson-videos::-webkit-scrollbar {
     height: 5px;
 
     @media(max-width: 576px) {
@@ -25,16 +25,16 @@
 }
 
 /* Track */
-.lesson-blogs::-webkit-scrollbar-track {
+.lesson-blogs::-webkit-scrollbar-track, .lesson-videos::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
 /* Handle */
-.lesson-blogs::-webkit-scrollbar-thumb {
+.lesson-blogs::-webkit-scrollbar-thumb, .lesson-videos::-webkit-scrollbar-thumb {
     background: #4a4ab547;
 }
 
 /* Handle on hover */
-.lesson-blogs::-webkit-scrollbar-thumb:hover {
+.lesson-blogs::-webkit-scrollbar-thumb:hover, .lesson-videos::-webkit-scrollbar-thumb:hover {
     background: #4a4ab579;
 }

@@ -60,9 +60,9 @@ const Search = () => {
             üzrə axtarış
           </h3>
           <div className="lesson-videos">
-            <div className="demo-videos-field py-2">
+            <div className="single-lesson-videos py-2">
               <h3 className="pb-2">Axtarışa uyğun videolar</h3>
-              <div className="demo-videos py-3 h-100 w-100">
+              <div className="lesson-videos py-3 h-100 w-100">
                 {currentUser ? (
                   <>
                     {filteredVideos.length === 0 && (
@@ -83,7 +83,9 @@ const Search = () => {
                             onReady={onPlayerReady}
                           />
                           <div className="video-info px-3 py-2">
-                            <h6>{e.title}</h6>
+                            <h6 className="text-overflow-clamp clamp-1">
+                              {e.title}
+                            </h6>
                             {filteredVideos !== null && (
                               <p className="video-time">
                                 <BiTime /> {formatTime(videoDuration)}

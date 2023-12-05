@@ -33,7 +33,7 @@ const Nav = () => {
           placeholder="Axtarış..."
           name=""
           id=""
-          className="ps-2 pe-4"
+          className="ps-2 pe-5"
         />
         <button
           type="submit"

@@ -365,6 +365,9 @@ input[type="file"]::file-selector-button:active {
  -webkit-box-orient: vertical;
 display: -webkit-box;
 }
+.clamp-1{
+  -webkit-line-clamp: 1;
+}
 .clamp-2{
   -webkit-line-clamp: 2;
 }
