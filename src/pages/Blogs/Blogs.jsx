@@ -17,8 +17,9 @@ const Blogs = () => {
   //* Displayed Blogs
   const startIndex = (pageNumber - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const displayedBlogs = blogs.slice(startIndex, endIndex);
-
+  const displayedBlogs = blogs
+    .sort((a, b) => b.time - a.time)
+    .slice(startIndex, endIndex);
   return (
     <div className="blogs container py-5">
       <div className="row pt-3">
