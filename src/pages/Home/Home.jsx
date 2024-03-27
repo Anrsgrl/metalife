@@ -4,6 +4,7 @@ import Lessons from "./components/Lessons/Lessons";
 import Application from "./components/Application/Application";
 // import Stuff from "./components/Stuff/Stuff";
 import Partner from "./components/Partner/Partner";
+import SingleLessonBlogs from "../SingleLesson/components/SingleLessonBlogs/SingleLessonBlogs";
 
 const Home = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const Home = () => {
       <Lessons show={true} />
       {/* <Stuff /> */}
       <Partner />
+      <SingleLessonBlogs last={true} title="Son bloqlarımız" />
       <Application />
     </>
   );
