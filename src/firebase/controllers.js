@@ -19,6 +19,11 @@ import {
 
 //* Remove item
 export const removeItem = async (collectionRef, docId) => {
+  const isConfirmed = window.confirm("Əminsən?");
+
+  if (!isConfirmed) {
+    return;
+  }
   try {
     const itemRef = doc(collectionRef, docId);
 

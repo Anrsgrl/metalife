@@ -27,6 +27,23 @@
     }
 }
 
+.teachers{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    .list{
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-wrap: wrap;
+        button{
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+}
+
 
 .admin-controllers {
     @media(max-width:767px) {

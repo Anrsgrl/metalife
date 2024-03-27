@@ -49,9 +49,9 @@ const UpdateUserLessons = ({ filteredData, videos }) => {
           <option value="default" disabled hidden>
             İstifadəçini seçin
           </option>
-          {filteredData?.map((item) => (
-            <option key={item?.name} value={item?.id}>
-              {item?.username}
+          {filteredData?.map((e) => (
+            <option key={e?.name} value={e?.id}>
+              {e.name + e.surname} | {e.username}
             </option>
           ))}
         </select>

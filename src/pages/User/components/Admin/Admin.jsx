@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AdminPanel from "./components/AdminPanel.jsx/AdminPanel";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-const Admin = ({ level, setLevel }) => {
+const Admin = ({ level, setLevel, user }) => {
   const [password, setPassword] = useState();
   const [error, setError] = useState(false);
   const [showPass, setShowPass] = useState(false);
@@ -23,7 +23,10 @@ const Admin = ({ level, setLevel }) => {
       className={`admin-panel py-5 px-5 col-12 ${level === "" && "col-lg-8"}`}
     >
       {level === "admin" ? (
-        <AdminPanel isAdmin={true} />
+        <AdminPanel
+          isAdmin={true}
+          admin={user.adminKey === process.env.REACT_APP_PRIVATE_KEY}
+        />
       ) : level === "teacher" ? (
         <AdminPanel isAdmin={false} />
       ) : (

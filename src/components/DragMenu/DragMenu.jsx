@@ -45,9 +45,9 @@ const DragMenu = ({ dragMenu, closeDragMenu, openDragMenu }) => {
     (event) => {
       if (event.key === "Escape") {
         closeDragMenu();
-      } else if (event.ctrlKey && !dragMenu) {
+      } else if (event.ctrlKey && event.key === "b" && !dragMenu) {
         openDragMenu();
-      } else if (event.ctrlKey && dragMenu) {
+      } else if (event.ctrlKey && event.key === "b" && dragMenu) {
         closeDragMenu();
       }
     },
@@ -67,7 +67,8 @@ const DragMenu = ({ dragMenu, closeDragMenu, openDragMenu }) => {
       <div className="drag-menu-content container">
         <h5>
           Sürətli axtarış!{" "}
-          <kbd className="kbc-button kbc-button-xxs kbc-button-dark">Ctrl</kbd>
+          <kbd className="kbc-button kbc-button-xxs kbc-button-dark">Ctrl</kbd>{" "}
+          +<kbd className="kbc-button kbc-button-xxs kbc-button-dark">B</kbd>
         </h5>
         <button
           type="button"

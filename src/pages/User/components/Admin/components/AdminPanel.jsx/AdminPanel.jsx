@@ -9,7 +9,7 @@ import {
   BsFillFileEarmarkPlayFill,
 } from "react-icons/bs";
 
-const AdminPanel = ({ isAdmin }) => {
+const AdminPanel = ({ isAdmin, admin }) => {
   const [panel, setPanel] = useState("blog");
 
   const adminPages = [
@@ -21,7 +21,7 @@ const AdminPanel = ({ isAdmin }) => {
     },
     {
       panelName: "rank",
-      name: "rütbə",
+      name: "Müəllim",
       icon: <BsFillFileEarmarkLock2Fill />,
       isAdmin: isAdmin,
     },
@@ -82,6 +82,7 @@ const AdminPanel = ({ isAdmin }) => {
         )}
         {panel === "user" && (
           <AdminControllers
+            admin={admin}
             user={true}
             teacher={false}
             video={false}
@@ -92,6 +93,7 @@ const AdminPanel = ({ isAdmin }) => {
         )}
         {panel === "rank" && (
           <AdminControllers
+            admin={admin}
             user={false}
             teacher={true}
             video={false}
@@ -112,6 +114,7 @@ const AdminPanel = ({ isAdmin }) => {
         )}
         {panel === "trash" && (
           <AdminControllers
+            admin={admin}
             user={false}
             teacher={false}
             video={false}

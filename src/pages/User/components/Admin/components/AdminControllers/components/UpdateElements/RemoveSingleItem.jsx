@@ -16,7 +16,9 @@ const RemoveSingleItem = (props) => {
         </option>
         {array?.map((e) => (
           <option key={e?.id} value={e?.id}>
-            {name === "istifadəçi" ? e?.username : e?.title}
+            {name === "istifadəçi"
+              ? e?.name + " " + e?.surname + " | " + e?.username
+              : e?.title}
           </option>
         ))}
       </select>
