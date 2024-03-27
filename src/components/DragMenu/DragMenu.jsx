@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { hashtags } from "../../data/Hashtags";
 import { Link, useNavigate } from "react-router-dom";
 
-const DragMenu = ({ dragMenu, closeDragMenu }) => {
+const DragMenu = ({ dragMenu, closeDragMenu, openDragMenu }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const dragMenuRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (dragMenu && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [dragMenu]);
 
   const handleInputChange = (e) => {
-    setSearchTerm(e);
+    setSearchTerm(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -18,9 +26,49 @@ const DragMenu = ({ dragMenu, closeDragMenu }) => {
     setSearchTerm("");
     navigate(`/search?searchItem=${searchTerm}`);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dragMenuRef.current && dragMenuRef.current.contains(event.target)) {
+        closeDragMenu();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [closeDragMenu]);
+
+  const handleKeyPress = useCallback(
+    (event) => {
+      if (event.key === "Escape") {
+        closeDragMenu();
+      } else if (event.ctrlKey && !dragMenu) {
+        openDragMenu();
+      } else if (event.ctrlKey && dragMenu) {
+        closeDragMenu();
+      }
+    },
+    [closeDragMenu, dragMenu, openDragMenu]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleKeyPress]);
+
   return (
     <div className={dragMenu ? "open-drag-menu" : "drag-menu"}>
-      <div className="drag-menu-content container p-5">
+      <div ref={dragMenuRef} className="dark-background"></div>
+      <div className="drag-menu-content container">
+        <h5>
+          Sürətli axtarış!{" "}
+          <kbd className="kbc-button kbc-button-xxs kbc-button-dark">Ctrl</kbd>
+        </h5>
         <button
           type="button"
           className="mb-4 p-1 close-button"
@@ -30,10 +78,9 @@ const DragMenu = ({ dragMenu, closeDragMenu }) => {
         </button>
         <form onSubmit={(e) => handleSubmit(e)} className="search-bar">
           <input
+            ref={inputRef}
             value={searchTerm}
-            onChange={(e) =>
-              handleInputChange(e.target.value.toLocaleLowerCase())
-            }
+            onChange={handleInputChange}
             type="text"
             placeholder="Axtarış..."
             name="search"
@@ -47,7 +94,7 @@ const DragMenu = ({ dragMenu, closeDragMenu }) => {
             <BiSearchAlt />
           </button>
         </form>
-        <ul className="p-0 mt-2">
+        <ul className="p-0 mt-2 mb-0">
           {hashtags.map((hashtag) => (
             <li key={hashtag} className="pt-2">
               <Link

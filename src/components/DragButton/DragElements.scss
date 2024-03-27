@@ -9,12 +9,13 @@
 .drag-button {
     display: block;
     position: fixed;
-    z-index: 9999;
+    z-index: 200;
     border: 0;
     border-radius: 50%;
     background-color: $main-color;
     color: white;
     padding: 10px;
+    outline: none;
     @include flex;
 }
 
@@ -23,10 +24,30 @@
     background-color: rgba(0, 0, 0, 0.774);
     position: fixed;
     top: 0;
-    z-index: 99999;
+    z-index: 201;
     width: 100%;
     height: 100vh;
-
+    .drag-menu-content{
+        z-index: 202;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+        border: 1px solid $main-color;
+        background-color: rgb(74, 74, 181);
+        border-radius: 6px;
+        padding: 1rem;
+        width: 80%;
+        h5{
+            text-align: center;
+            color: #d4d4d4;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+    }
     a {
         font-style: italic;
         text-decoration: none;
@@ -36,7 +57,25 @@
             color: white;
         }
     }
-
+    .search-bar{
+        input{
+            background-color: transparent !important;
+            color: #d4d4d4;
+            &::placeholder{
+                color: #d4d4d4;
+            }
+            &::selection{
+                color: $main-color;
+                background-color: #d4d4d4;
+            }
+        }
+        svg{
+            fill: #d4d4d4;
+        }
+    }
+    ul{
+        user-select: none;
+    }
     .close-button {
         border-radius: 50%;
         @include flex;
@@ -44,6 +83,15 @@
         color: white;
         background-color: transparent;
         margin-left: auto;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        font-size: 10px;
+        opacity: 0.8;
+        transition: all 200ms ease-in-out;
+        &:hover{
+            opacity: 1;
+        }
     }
 }
 

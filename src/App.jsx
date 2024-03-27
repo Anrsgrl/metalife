@@ -27,7 +27,8 @@ import "./App.scss";
 import "bootstrap/dist/css/bootstrap.css";
 function App() {
   const [loading, setLoading] = useState(true);
-  const main = useRef();
+  const [dragMenu, setDragMenu] = useState(false);
+  const dragRef = useRef();
   useEffect(() => {
     document.body.style.overflow = "hidden";
     setTimeout(() => {
@@ -39,9 +40,14 @@ function App() {
     <>
       {loading && <Loading />}
       <Header />
-      <main ref={main}>
+      <main>
         <Toaster />
-        <DragButton main={main} />
+        <DragButton
+          dragRef={dragRef}
+          dragMenu={dragMenu}
+          setDragMenu={setDragMenu}
+        />
+        <div ref={dragRef} className="drag-field"></div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<LessonsPage />} />

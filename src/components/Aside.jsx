@@ -38,7 +38,7 @@ export const Aside = ({ isOpen, closeAside, children, pos }) => {
       <AnimatePresence>
         {isOpen && (
           <>
-            <div ref={backgroundRef} className="aside-background"></div>
+            <div ref={backgroundRef} className="dark-background"></div>
             <motion.aside
               key={isOpen}
               initial="hidden"
