@@ -1,6 +1,4 @@
 import React, { useMemo, useState } from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { AnimatePresence, motion } from "framer-motion";
 import { auth } from "../../firebase/config";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
@@ -9,10 +7,11 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { VscAccount } from "react-icons/vsc";
 import { signOut } from "@firebase/auth";
 import { useUsersList } from "../../firebase/getFunctions";
-import AccountAside from "../AccountAside/AccountAside";
+import AccountAside from "../AsideMenu/AccountAside";
 import Nav from "../Nav/Nav";
 import logo from "../../assets/images/logo.webp";
 import "./Header.scss";
+import { Aside } from "../Aside";
 
 const Header = () => {
   const { currentUser, loggedUser, loading } = useUsersList();
@@ -35,6 +34,7 @@ const Header = () => {
     setHamburger(false);
     setDropdown(false);
     setDropdownLesson(false);
+    setProfileMenu(false);
     document.body.style.overflow = "unset";
   };
 
@@ -96,160 +96,122 @@ const Header = () => {
             >
               <img src={logo} alt="logo" />
             </button>
-            <div className="hamburger-nav">
-              <AnimatePresence>
-                {hamburger && (
-                  <>
-                    <div className="aside-background"></div>
-                    <motion.aside
-                      key={hamburger}
-                      style={{ left: 0 }}
-                      initial={{ left: -200, opacity: 0 }}
-                      animate={{ left: 0, opacity: 1 }}
-                      exit={{ left: -200, opacity: 0 }}
-                      transition={{
-                        duration: 0.3,
-                        opacity: { ease: "linear" },
-                      }}
+            <Aside
+              isOpen={hamburger}
+              closeAside={() => closeHamburger()}
+              pos="left"
+            >
+              <div className="aside-content">
+                <ul className="aside-ul pt-2">
+                  <li>
+                    <NavLink to="/" onClick={() => closeHamburger()}>
+                      Ana səhifə
+                    </NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => openDropdown(false, false, !dropdownCode)}
+                      className="pb-1 clean-button open-dropdown p-0"
                     >
-                      <button
-                        className="close-button clean-button"
-                        onClick={() => closeHamburger()}
-                      >
-                        <AiOutlineCloseCircle />
-                      </button>
-                      <div className="aside-content">
-                        <ul className="aside-ul pt-2">
-                          <li>
-                            <NavLink to="/" onClick={() => closeHamburger()}>
-                              Ana səhifə
-                            </NavLink>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() =>
-                                openDropdown(false, false, !dropdownCode)
-                              }
-                              className="pb-1 clean-button open-dropdown p-0"
-                            >
-                              Dərslər{" "}
-                              <span
-                                className={dropdownCode ? "rotate-arrow" : ""}
-                              >
-                                <MdKeyboardArrowDown />
-                              </span>
-                            </button>
-                            <ul
-                              className={
-                                dropdownCode
-                                  ? "aside-dropdown open"
-                                  : "aside-dropdown"
-                              }
-                            >
-                              {lessonsDropdown?.map((lesson, index) => (
-                                <li>
-                                  <NavLink
-                                    key={index}
-                                    onClick={() => closeHamburger()}
-                                    to={lesson.url}
-                                  >
-                                    {lesson.label}
-                                  </NavLink>
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() =>
-                                openDropdown(!dropdown, false, false)
-                              }
-                              className="pb-1 clean-button open-dropdown p-0"
-                            >
-                              Sayt Sifarişi{" "}
-                              <span className={dropdown ? "rotate-arrow" : ""}>
-                                <MdKeyboardArrowDown />
-                              </span>
-                            </button>
-                            <ul
-                              className={
-                                dropdown
-                                  ? "aside-dropdown open"
-                                  : "aside-dropdown"
-                              }
-                            >
-                              {orderDropdown?.map((lesson, index) => (
-                                <li>
-                                  <NavLink
-                                    key={index}
-                                    onClick={() => closeHamburger()}
-                                    to={lesson.url}
-                                  >
-                                    {lesson.label}
-                                  </NavLink>
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() =>
-                                openDropdown(false, !dropdownLessons, false)
-                              }
-                              className="pb-1 clean-button open-dropdown p-0"
-                            >
-                              Pulsuz Dərslər{" "}
-                              <span
-                                className={
-                                  dropdownLessons ? "rotate-arrow" : ""
-                                }
-                              >
-                                <MdKeyboardArrowDown />
-                              </span>
-                            </button>
-                            <ul
-                              className={
-                                dropdownLessons
-                                  ? "aside-dropdown open2"
-                                  : "aside-dropdown"
-                              }
-                            >
-                              {freeLessonsDropdown?.map((lesson, index) => (
-                                <li>
-                                  <NavLink
-                                    key={index}
-                                    onClick={() => closeHamburger()}
-                                    to={lesson.url}
-                                  >
-                                    {lesson.label}
-                                  </NavLink>
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/blogs?page=1"
-                              onClick={() => closeHamburger()}
-                            >
-                              Bloq
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink
-                              to="/contact"
-                              onClick={() => closeHamburger()}
-                            >
-                              Əlaqə
-                            </NavLink>
-                          </li>
-                        </ul>
-                      </div>
-                    </motion.aside>
-                  </>
-                )}
-              </AnimatePresence>
-            </div>
+                      Dərslər{" "}
+                      <span className={dropdownCode ? "rotate-arrow" : ""}>
+                        <MdKeyboardArrowDown />
+                      </span>
+                    </button>
+                    <ul
+                      className={
+                        dropdownCode ? "aside-dropdown open" : "aside-dropdown"
+                      }
+                    >
+                      {lessonsDropdown?.map((lesson, index) => (
+                        <li>
+                          <NavLink
+                            key={index}
+                            onClick={() => closeHamburger()}
+                            to={lesson.url}
+                          >
+                            {lesson.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => openDropdown(!dropdown, false, false)}
+                      className="pb-1 clean-button open-dropdown p-0"
+                    >
+                      Sayt Sifarişi{" "}
+                      <span className={dropdown ? "rotate-arrow" : ""}>
+                        <MdKeyboardArrowDown />
+                      </span>
+                    </button>
+                    <ul
+                      className={
+                        dropdown ? "aside-dropdown open" : "aside-dropdown"
+                      }
+                    >
+                      {orderDropdown?.map((lesson, index) => (
+                        <li>
+                          <NavLink
+                            key={index}
+                            onClick={() => closeHamburger()}
+                            to={lesson.url}
+                          >
+                            {lesson.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() =>
+                        openDropdown(false, !dropdownLessons, false)
+                      }
+                      className="pb-1 clean-button open-dropdown p-0"
+                    >
+                      Pulsuz Dərslər{" "}
+                      <span className={dropdownLessons ? "rotate-arrow" : ""}>
+                        <MdKeyboardArrowDown />
+                      </span>
+                    </button>
+                    <ul
+                      className={
+                        dropdownLessons
+                          ? "aside-dropdown open2"
+                          : "aside-dropdown"
+                      }
+                    >
+                      {freeLessonsDropdown?.map((lesson, index) => (
+                        <li>
+                          <NavLink
+                            key={index}
+                            onClick={() => closeHamburger()}
+                            to={lesson.url}
+                          >
+                            {lesson.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/blogs?page=1"
+                      onClick={() => closeHamburger()}
+                    >
+                      Bloq
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/contact" onClick={() => closeHamburger()}>
+                      Əlaqə
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </Aside>
           </div>
           <ul className="header-menu desktop m-0 ps-4">
             <li>
@@ -323,8 +285,8 @@ const Header = () => {
             </button>
             <AccountAside
               loggedUser={loggedUser}
-              profileMenu={profileMenu}
-              setProfileMenu={setProfileMenu}
+              isOpen={profileMenu}
+              closeAside={closeHamburger}
               userSignOut={userSignOut}
             />
             <div className="desktop-buttons desktop profile-part">

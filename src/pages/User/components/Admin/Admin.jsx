@@ -35,7 +35,7 @@ const Admin = ({ level, setLevel }) => {
               type={showPass ? "text" : "password"}
               placeholder="Şifrə"
               name="password"
-              className="col-6 sign-inputs pe-5"
+              className="col-6 col-md-12 sign-inputs pe-5"
               required
             />
             <button

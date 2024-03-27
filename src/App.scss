@@ -5,8 +5,8 @@
 * {
   box-sizing: border-box;
   font-family: $main-font !important;
-    scrollbar-width: thin;
-    scrollbar-color: $main-color #ffffff;
+  scrollbar-width: thin;
+  scrollbar-color: $main-color #ffffff;
 }
 
 body {
@@ -19,8 +19,12 @@ body {
   background-repeat: no-repeat;
 }
 
-#root {
+#root, html {
   overflow-x: hidden !important;
+}
+
+img, button{
+  user-select: none !important;
 }
 
 main{
