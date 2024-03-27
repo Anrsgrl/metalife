@@ -7,19 +7,17 @@ import { NavLink } from "react-router-dom";
 const AccountAside = ({ isOpen, closeAside, loggedUser, userSignOut }) => {
   return (
     <Aside isOpen={isOpen} closeAside={() => closeAside()} pos="right">
-      {auth?.currentUser?.photoURL ? (
-        <img
-          className="w-50 h-50 border rounded-circle"
-          style={{ aspectRatio: "1/1" }}
-          src={auth?.currentUser?.photoURL}
-          alt="logo"
-        />
-      ) : (
-        <VscAccount
-          className="main-color"
-          style={{ width: "100%", height: "100%" }}
-        />
-      )}
+      <div className="user-image">
+        {auth?.currentUser?.photoURL ? (
+          <img
+            className="border rounded-circle"
+            src={auth?.currentUser?.photoURL}
+            alt="logo"
+          />
+        ) : (
+          <VscAccount className="main-color" />
+        )}
+      </div>
       <ul className="aside-ul pt-2 align-items-center">
         {auth?.currentUser ? (
           <>
