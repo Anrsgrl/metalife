@@ -18,8 +18,8 @@ const Home = () => {
       <Hero />
       <Lessons show={true} />
       {/* <Stuff /> */}
-      <Partner />
       <SingleLessonBlogs last={true} title="Son bloqlarımız" />
+      <Partner />
       <Application />
     </>
   );

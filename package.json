@@ -21,6 +21,7 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "react-indiana-drag-scroll": "^2.2.0",
     "react-input-mask": "^2.0.4",
     "react-modal-image": "^2.6.0",
     "react-router-dom": "^6.16.0",

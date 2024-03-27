@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { TiArrowBack } from "react-icons/ti";
 import SingleLessonVideo from "./SingleLessonVideo";
 import { useUsersList, useVideosList } from "../../firebase/getFunctions";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 const LessonVideo = () => {
   const params = useParams();
@@ -43,7 +44,7 @@ const LessonVideo = () => {
       {groupVideos.length !== 0 && currentUser && (
         <div className="videos-field">
           <h3 className="pb-2">{loggedUser?.lessons[0]}</h3>
-          <div className="videos-list py-3">
+          <ScrollContainer className="videos-list py-3">
             <>
               {groupVideos.length === 0 && (
                 <h5 className="py-2">Yaxın zamanda əlavə olunacaq...</h5>
@@ -53,13 +54,13 @@ const LessonVideo = () => {
                   <SingleLessonVideo url={e?.url} title={e?.title} />
                 ))}
             </>
-          </div>
+          </ScrollContainer>
         </div>
       )}
       <div className="videos-field">
         <h3 className="pb-2">Pulsuz videolar</h3>
         {currentUser ? (
-          <div className="videos-list">
+          <ScrollContainer className="videos-list">
             {demoVideos.length === 0 && (
               <p className="py-2">Yaxın zamanda əlavə olunacaq...</p>
             )}
@@ -67,7 +68,7 @@ const LessonVideo = () => {
               demoVideos?.map((e) => (
                 <SingleLessonVideo url={e?.url} title={e?.title} />
               ))}
-          </div>
+          </ScrollContainer>
         ) : (
           <p className="py-2">
             Pulsuz videoları izləmək üçün <Link to="/sign-in">giriş</Link>{" "}
@@ -97,9 +98,9 @@ const LessonVideo = () => {
         )}
         {paidVideos &&
           paidVideos.map((e) => (
-            <div className="videos-list">
+            <ScrollContainer className="videos-list">
               <SingleLessonVideo url={e?.url} title={e?.title} />
-            </div>
+            </ScrollContainer>
           ))}
       </div>
     </div>

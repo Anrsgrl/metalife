@@ -33,14 +33,13 @@
 
 .navv {
 
-    ul {
+    div {
         @include flex(space-between);
         overflow-x: scroll;
         font-style: italic;
         font-size: 12px;
-
+        gap: 15px;
         a {
-            padding-left: 15px;
             text-decoration: none;
         }
     }

@@ -3,6 +3,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import "./Nav.scss";
 import { hashtags } from "../../data/Hashtags";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 const Nav = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,15 +44,15 @@ const Nav = () => {
           <BiSearchAlt />
         </button>
       </form>
-      <ul className="px-0 pt-1 m-0 hashtags">
+      <ScrollContainer className="px-0 pt-1 m-0 hashtags">
         {hashtags.map((hashtag, i) => (
-          <li key={i}>
+          <span key={i}>
             <Link className="text-muted" to={`/search?searchItem=${hashtag}`}>
               #{hashtag}
             </Link>
-          </li>
+          </span>
         ))}
-      </ul>
+      </ScrollContainer>
     </div>
   );
 };

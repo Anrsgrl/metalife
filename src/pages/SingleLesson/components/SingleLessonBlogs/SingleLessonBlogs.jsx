@@ -4,6 +4,7 @@ import SingleBlog from "../../../../components/SingleBlog/SingleBlog";
 import { FadeLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
 import { useBlogsList } from "../../../../firebase/getFunctions";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 const SingleLessonBlogs = (props) => {
   const { last, title } = props;
@@ -28,7 +29,7 @@ const SingleLessonBlogs = (props) => {
           {title}
         </h2>
       )}
-      <div className="lesson-blogs py-1">
+      <ScrollContainer className="lesson-blogs py-1">
         {!blogs || blogs.length === 0 ? (
           <FadeLoader color="#4A4AB5" />
         ) : finalResult.length === 0 ? (
@@ -44,7 +45,7 @@ const SingleLessonBlogs = (props) => {
             />
           ))
         )}
-      </div>
+      </ScrollContainer>
     </div>
   );
 };

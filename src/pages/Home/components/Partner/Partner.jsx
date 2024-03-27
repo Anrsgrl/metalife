@@ -8,7 +8,7 @@ import partner3 from "../../../../assets/images/partner-mogan.webp";
 
 const Partner = () => {
   return (
-    <div className="container partners pb-3 pt-5">
+    <div className="container partners pb-3 pt-3">
       <h2 data-aos="fade-up" className="section-heading py-2">
         Partnyorlar
       </h2>
