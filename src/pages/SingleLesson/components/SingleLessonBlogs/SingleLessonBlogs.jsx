@@ -14,7 +14,7 @@ const SingleLessonBlogs = (props) => {
 
   const lastBlogs = blogs
     ?.sort((a, b) => b.time.toDate() - a.time.toDate())
-    .slice(0, 4);
+    .slice(0, 5);
 
   const finalResult = last ? lastBlogs : filteredBlogs;
 
