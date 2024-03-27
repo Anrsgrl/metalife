@@ -1,5 +1,5 @@
-// import boy from "../assets/images/boy.png";
-import girl from "../assets/images/girl.png";
+// import boy from "../assets/images/boy.webp";
+import girl from "../assets/images/girl.webp";
 import Nazir from "../assets/images/NazirN.jpg";
 import Anar from "../assets/images/Anar.jpg";
 

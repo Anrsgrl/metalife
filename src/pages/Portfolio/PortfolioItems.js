@@ -1,17 +1,17 @@
 // Logo
-import logo1 from "../../assets/images/logo-azpellet.png";
-import logo2 from "../../assets/images/logo-mamedyarov.png";
-import logo3 from "../../assets/images/logo-nafta.png";
+import logo1 from "../../assets/images/logo-azpellet.webp";
+import logo2 from "../../assets/images/logo-mamedyarov.webp";
+import logo3 from "../../assets/images/logo-nafta.webp";
 
 // Desktop
-import desktop1 from "../../assets/images/website-azpellet.png";
-import desktop2 from "../../assets/images/website-shakhriyar.png";
-import desktop3 from "../../assets/images/website-nafta.png";
+import desktop1 from "../../assets/images/website-azpellet.webp";
+import desktop2 from "../../assets/images/website-shakhriyar.webp";
+import desktop3 from "../../assets/images/website-nafta.webp";
 
 // Mobile
-import mobile1 from "../../assets/images/mobile-azpellet.png";
-import mobile2 from "../../assets/images/mobile-mamedyarov.png";
-import mobile3 from "../../assets/images/mobile-nafta.png";
+import mobile1 from "../../assets/images/mobile-azpellet.webp";
+import mobile2 from "../../assets/images/mobile-mamedyarov.webp";
+import mobile3 from "../../assets/images/mobile-nafta.webp";
 
 export const PortfolioItems = [
   {

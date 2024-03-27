@@ -1,21 +1,24 @@
-import React, { useState } from "react";
-import "./Header.scss";
-import logo from "../../assets/images/logo3.png";
-import { BiMenuAltLeft } from "react-icons/bi";
+import React, { useMemo, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { VscAccount } from "react-icons/vsc";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { AnimatePresence, motion } from "framer-motion";
+import { auth } from "../../firebase/config";
+import { BiMenuAltLeft } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import Nav from "../Nav/Nav";
-import AccountAside from "../AccountAside/AccountAside";
-import { auth } from "../../firebase/config";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { VscAccount } from "react-icons/vsc";
 import { signOut } from "@firebase/auth";
 import { useUsersList } from "../../firebase/getFunctions";
+import AccountAside from "../AccountAside/AccountAside";
+import Nav from "../Nav/Nav";
+import logo from "../../assets/images/logo.webp";
+import "./Header.scss";
 
 const Header = () => {
   const { currentUser, loggedUser, loading } = useUsersList();
+  const memoizedValues = useMemo(() => {
+    return { currentUser, loggedUser, loading };
+  }, [currentUser, loggedUser, loading]);
   const navigate = useNavigate();
   const [hamburger, setHamburger] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -55,6 +58,25 @@ const Header = () => {
     setDropdownLesson(b);
     setDropdownCode(c);
   };
+
+  const lessonsDropdown = [
+    { label: "Bütün dərslər", url: "/lessons" },
+    { label: "Kodları öyrən", url: "/code/html" },
+  ];
+
+  const orderDropdown = [
+    { label: "Sifariş et", url: "/order" },
+    { label: "İşlərimiz", url: "/portfolio" },
+  ];
+
+  const freeLessonsDropdown = [
+    { label: "Fullstack", url: "/lessons/fullstack/videos" },
+    { label: "Frontend", url: "/lessons/frontend/videos" },
+    { label: "Backend", url: "/lessons/backend/videos" },
+    { label: "UI/UX", url: "/lessons/ui-designer/videos" },
+    { label: "İnteryer", url: "/lessons/interior-designer/videos" },
+    { label: "3D Modelləmə", url: "/lessons/3d-modelling/videos" },
+  ];
 
   return (
     <header className="px-2">
@@ -124,22 +146,17 @@ const Header = () => {
                                   : "aside-dropdown"
                               }
                             >
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons"
-                                >
-                                  Bütün dərslər
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/code/html"
-                                >
-                                  Kodları öyrən
-                                </NavLink>
-                              </li>
+                              {lessonsDropdown?.map((lesson, index) => (
+                                <li>
+                                  <NavLink
+                                    key={index}
+                                    onClick={() => closeHamburger()}
+                                    to={lesson.url}
+                                  >
+                                    {lesson.label}
+                                  </NavLink>
+                                </li>
+                              ))}
                             </ul>
                           </li>
                           <li>
@@ -161,22 +178,17 @@ const Header = () => {
                                   : "aside-dropdown"
                               }
                             >
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/order"
-                                >
-                                  Sifariş et
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/portfolio"
-                                >
-                                  İşlərimiz
-                                </NavLink>
-                              </li>
+                              {orderDropdown?.map((lesson, index) => (
+                                <li>
+                                  <NavLink
+                                    key={index}
+                                    onClick={() => closeHamburger()}
+                                    to={lesson.url}
+                                  >
+                                    {lesson.label}
+                                  </NavLink>
+                                </li>
+                              ))}
                             </ul>
                           </li>
                           <li>
@@ -202,54 +214,17 @@ const Header = () => {
                                   : "aside-dropdown"
                               }
                             >
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons/fullstack/videos"
-                                >
-                                  Fullstack
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons/frontend/videos"
-                                >
-                                  Frontend
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons/backend/videos"
-                                >
-                                  Backend
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons/ui-designer/videos"
-                                >
-                                  UI/UX
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons/interior-designer/videos"
-                                >
-                                  İnteryer
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  onClick={() => closeHamburger()}
-                                  to="/lessons/3d-modelling/videos"
-                                >
-                                  3D Modelləmə
-                                </NavLink>
-                              </li>
+                              {freeLessonsDropdown?.map((lesson, index) => (
+                                <li>
+                                  <NavLink
+                                    key={index}
+                                    onClick={() => closeHamburger()}
+                                    to={lesson.url}
+                                  >
+                                    {lesson.label}
+                                  </NavLink>
+                                </li>
+                              ))}
                             </ul>
                           </li>
                           <li>
@@ -283,50 +258,49 @@ const Header = () => {
             <li className="dropdownn">
               Dərslər
               <ul className="dropdown-menuu">
-                <li>
-                  <NavLink to="/lessons">Bütün dərslər</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/code/html">Kodları öyrən</NavLink>
-                </li>
+                {lessonsDropdown?.map((lesson, index) => (
+                  <li>
+                    <NavLink
+                      key={index}
+                      onClick={() => closeHamburger()}
+                      to={lesson.url}
+                    >
+                      {lesson.label}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </li>
             <li className="dropdownn">
               Sayt Sifarişi
               <ul className="dropdown-menuu">
-                <li>
-                  <NavLink to="order">Sifariş et</NavLink>
-                </li>
-                <li>
-                  <NavLink to="portfolio">İşlərimiz</NavLink>
-                </li>
+                {orderDropdown?.map((lesson, index) => (
+                  <li>
+                    <NavLink
+                      key={index}
+                      onClick={() => closeHamburger()}
+                      to={lesson.url}
+                    >
+                      {lesson.label}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </li>
             <li className="dropdownn">
               Pulsuz Dərslər
               <ul className="dropdown-menuu">
-                <li>
-                  <NavLink to="/lessons/fullstack/videos">Fullstack</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/lessons/frontend/videos">Frontend</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/lessons/backend/videos">Backend</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/lessons/ui-designer/videos">UI/UX</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/lessons/interior-designer/videos">
-                    İnteryer
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/lessons/3d-modelling/videos">
-                    3D Modelləmə
-                  </NavLink>
-                </li>
+                {freeLessonsDropdown?.map((lesson, index) => (
+                  <li>
+                    <NavLink
+                      key={index}
+                      onClick={() => closeHamburger()}
+                      to={lesson.url}
+                    >
+                      {lesson.label}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </li>
             <li>
@@ -354,9 +328,9 @@ const Header = () => {
               userSignOut={userSignOut}
             />
             <div className="desktop-buttons desktop profile-part">
-              {currentUser && loading ? (
+              {memoizedValues.currentUser && memoizedValues.loading ? (
                 <p>Yüklənir...</p>
-              ) : currentUser === null ? (
+              ) : memoizedValues.currentUser === null ? (
                 <>
                   <button
                     onClick={() => navigate("/sign-in")}

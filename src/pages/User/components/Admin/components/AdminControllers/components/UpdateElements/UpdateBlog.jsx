@@ -11,7 +11,7 @@ import { useUsersList } from "../../../../../../../../firebase/getFunctions";
 import { db } from "../../../../../../../../firebase/config";
 import { MdDateRange, MdInfoOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
-import girl from "../../../../../../../../assets/images/girl.png";
+import girl from "../../../../../../../../assets/images/girl.webp";
 import UpdateHashtags from "./UpdateHashtags";
 import { editItems } from "../../../../../../../../data/editItems";
 import toast from "react-hot-toast";
@@ -149,7 +149,7 @@ const UpdateBlog = () => {
       <form className="col-12 py-2 blog-form" onSubmit={handleSubmit}>
         <input
           type="file"
-          accept=".PNG, .JPEG, .JPG"
+          accept=".webp, .JPEG, .JPG"
           id="imgInp"
           onChange={(e) => {
             handleImageUpload(e);

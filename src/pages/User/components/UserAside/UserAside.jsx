@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./UserAside.scss";
-import boy from "../../../../assets/images/boy.png";
+import boy from "../../../../assets/images/boy.webp";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../../firebase/config";
 

@@ -1,12 +1,10 @@
-//vendors
-@import "./vendors/mixins";
-@import "./vendors/variables";
+@import "./vendors/mixins.scss";
+@import "./vendors/variables.scss";
 
 
 * {
   box-sizing: border-box;
   font-family: $main-font !important;
-    /* Firefox */
     scrollbar-width: thin;
     scrollbar-color: $main-color #ffffff;
 }
@@ -333,8 +331,6 @@ input[type="file"]::after {
   content: "Şəkli yüklə";
 }
 
-/* ------- From Step 1 ------- */
-
 /* file upload button */
 input[type="file"]::file-selector-button {
   border-radius: 4px;
@@ -356,8 +352,6 @@ input[type="file"]::file-selector-button:hover {
 input[type="file"]::file-selector-button:active {
   background-color: white;
 }
-
-//* Truncate
 
 .text-overflow-clamp{
   width: 100%;

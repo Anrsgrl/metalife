@@ -33,7 +33,7 @@ export async function uploadProfilePhoto(file, currentUser) {
     }
     const fileRef = storageRef(
       storage,
-      `profile-images/${currentUser.uid}.png`
+      `profile-images/${currentUser.uid}.webp`
     );
     await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);

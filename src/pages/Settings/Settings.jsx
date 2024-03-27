@@ -3,7 +3,7 @@ import { auth, uploadProfilePhoto } from "../../firebase/config";
 import { MdManageAccounts } from "react-icons/md";
 import { updateProfile } from "@firebase/auth";
 import "./UserSettings.scss";
-import boy from "../../assets/images/boy.png";
+import boy from "../../assets/images/boy.webp";
 import { sendVerification } from "../../firebase/controllers";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -84,7 +84,7 @@ const Settings = () => {
                 <input
                   className=""
                   type="file"
-                  accept=".png, .jpeg, .jpg"
+                  accept=".webp, .jpeg, .jpg"
                   onChange={handleFileChange}
                 />
                 <button
