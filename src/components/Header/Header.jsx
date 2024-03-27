@@ -27,7 +27,7 @@ const Header = () => {
 
   const openHamburger = () => {
     setHamburger(true);
-    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
   };
 
   const closeHamburger = () => {
@@ -35,12 +35,12 @@ const Header = () => {
     setDropdown(false);
     setDropdownLesson(false);
     setProfileMenu(false);
-    document.body.style.overflow = "unset";
+    document.documentElement.style.overflow = "unset";
   };
 
   const openProfile = () => {
     setProfileMenu(true);
-    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
   };
 
   const userSignOut = () => {
