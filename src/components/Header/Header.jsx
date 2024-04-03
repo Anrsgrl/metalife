@@ -83,6 +83,8 @@ const Header = () => {
       <div className="container px-0 py-2">
         <div className="header-content">
           <button
+            title="Hamburger"
+            aria-label="Hamburger"
             type="button"
             onClick={() => openHamburger()}
             className="hamburger mobile clean-button p-0"
@@ -91,6 +93,8 @@ const Header = () => {
           </button>
           <div className="header-left p-0">
             <button
+              title="Logo"
+              aria-label="Logo"
               onClick={() => navigate("/")}
               className="logo-button p-0 clean-button"
             >
@@ -110,6 +114,8 @@ const Header = () => {
                   </li>
                   <li>
                     <button
+                      title="Dropdown Menu"
+                      aria-label="Dropdown Menu"
                       onClick={() => openDropdown(false, false, !dropdownCode)}
                       className="pb-1 clean-button open-dropdown p-0"
                     >
@@ -124,9 +130,8 @@ const Header = () => {
                       }
                     >
                       {lessonsDropdown?.map((lesson, index) => (
-                        <li>
+                        <li key={index}>
                           <NavLink
-                            key={index}
                             onClick={() => closeHamburger()}
                             to={lesson.url}
                           >
@@ -138,6 +143,8 @@ const Header = () => {
                   </li>
                   <li>
                     <button
+                      title="Dropdown"
+                      aria-label="Dropdown"
                       onClick={() => openDropdown(!dropdown, false, false)}
                       className="pb-1 clean-button open-dropdown p-0"
                     >
@@ -152,9 +159,8 @@ const Header = () => {
                       }
                     >
                       {orderDropdown?.map((lesson, index) => (
-                        <li>
+                        <li key={index}>
                           <NavLink
-                            key={index}
                             onClick={() => closeHamburger()}
                             to={lesson.url}
                           >
@@ -166,6 +172,8 @@ const Header = () => {
                   </li>
                   <li>
                     <button
+                      title=""
+                      aria-label=""
                       onClick={() =>
                         openDropdown(false, !dropdownLessons, false)
                       }
@@ -184,9 +192,8 @@ const Header = () => {
                       }
                     >
                       {freeLessonsDropdown?.map((lesson, index) => (
-                        <li>
+                        <li key={index}>
                           <NavLink
-                            key={index}
                             onClick={() => closeHamburger()}
                             to={lesson.url}
                           >
@@ -221,12 +228,8 @@ const Header = () => {
               Dərslər
               <ul className="dropdown-menuu">
                 {lessonsDropdown?.map((lesson, index) => (
-                  <li>
-                    <NavLink
-                      key={index}
-                      onClick={() => closeHamburger()}
-                      to={lesson.url}
-                    >
+                  <li key={index}>
+                    <NavLink onClick={() => closeHamburger()} to={lesson.url}>
                       {lesson.label}
                     </NavLink>
                   </li>
@@ -237,12 +240,8 @@ const Header = () => {
               Sayt Sifarişi
               <ul className="dropdown-menuu">
                 {orderDropdown?.map((lesson, index) => (
-                  <li>
-                    <NavLink
-                      key={index}
-                      onClick={() => closeHamburger()}
-                      to={lesson.url}
-                    >
+                  <li key={index}>
+                    <NavLink onClick={() => closeHamburger()} to={lesson.url}>
                       {lesson.label}
                     </NavLink>
                   </li>
@@ -253,12 +252,8 @@ const Header = () => {
               Pulsuz Dərslər
               <ul className="dropdown-menuu">
                 {freeLessonsDropdown?.map((lesson, index) => (
-                  <li>
-                    <NavLink
-                      key={index}
-                      onClick={() => closeHamburger()}
-                      to={lesson.url}
-                    >
+                  <li key={index}>
+                    <NavLink onClick={() => closeHamburger()} to={lesson.url}>
                       {lesson.label}
                     </NavLink>
                   </li>
@@ -274,6 +269,8 @@ const Header = () => {
           </ul>
           <div className="header-profile">
             <button
+              title=""
+              aria-label=""
               onClick={() => openProfile()}
               className="account mobile clean-button p-0"
             >
@@ -295,12 +292,16 @@ const Header = () => {
               ) : memoizedValues.currentUser === null ? (
                 <>
                   <button
+                    title="Sign in"
+                    aria-label="Sign in"
                     onClick={() => navigate("/sign-in")}
                     className="sign-in px-3 clean-button"
                   >
                     Giriş
                   </button>
                   <button
+                    title="Sign up"
+                    aria-label="Sign up"
                     onClick={() => navigate("/sign-up")}
                     className="clean-button sign-up hover-animation p-2"
                   >
@@ -318,6 +319,8 @@ const Header = () => {
                         {loggedUser?.username}
                       </Link>
                       <button
+                        title=""
+                        aria-label=""
                         onClick={() => userSignOut()}
                         className="clean-button"
                       >

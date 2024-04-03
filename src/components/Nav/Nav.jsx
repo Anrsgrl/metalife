@@ -32,11 +32,14 @@ const Nav = () => {
           value={searchTerm}
           type="text"
           placeholder="Axtarış..."
-          name=""
-          id=""
+          name="search"
+          title="search..."
+          aria-label="search..."
           className="ps-2 pe-5"
         />
         <button
+          title="Submit"
+          aria-label="Submit"
           type="submit"
           className={!searchTerm ? "cursor-not-allowed" : ""}
           disabled={!searchTerm}

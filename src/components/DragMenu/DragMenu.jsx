@@ -10,12 +10,6 @@ const DragMenu = ({ dragMenu, closeDragMenu, openDragMenu }) => {
   const dragMenuRef = useRef(null);
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    if (dragMenu && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [dragMenu]);
-
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };

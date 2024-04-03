@@ -31,13 +31,13 @@ const SingleBlog = (props) => {
             style={{ display: imageLoaded ? "block" : "none" }}
             onLoad={handleImageLoad}
           />
-          <h6
+          <span
             className={
               !imageLoaded ? "skeleton m-0 pt-3 px-3 pb-4" : "pt-2 px-3"
             }
           >
             {imageLoaded && title}
-          </h6>
+          </span>
         </div>
         <div
           className={`hashtags ${

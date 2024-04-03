@@ -19,7 +19,7 @@ const SingleLessonBlogs = (props) => {
   const finalResult = last ? lastBlogs : filteredBlogs;
 
   return (
-    <div className="single-lesson-blogs py-5 container">
+    <div data-aos="fade-up" className="single-lesson-blogs py-5 container">
       {!last ? (
         <h3 data-aos="fade-up" className="py-1">
           Bu mövzu barədə bəzi bloglar
