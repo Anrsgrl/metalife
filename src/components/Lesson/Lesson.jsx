@@ -7,17 +7,26 @@ const Lesson = (props) => {
   const navigate = useNavigate();
   return (
     <div
+      title={title}
+      aria-label={title}
       onClick={() => navigate(`/lessons/${path}`)}
       data-aos="fade-up"
       className="col-9 col-md-5 col-xl-3 me-0 me-md-4 mb-4 p-0 lesson"
     >
-      <img src={image} alt="design" />
+      <img src={image} alt="design" loading="lazy" />
       <div className="lesson-text px-2">
-        <h3>{title}</h3>
-        <p>{p}</p>
+        <h3 title={title} aria-label={title}>
+          {title}
+        </h3>
+        <p aria-label={p}>{p}</p>
       </div>
       <div className="lesson-footer">
-        <button type="button" className="clean-button p-3">
+        <button
+          aria-label="Daha çox"
+          title="Daha çox"
+          type="button"
+          className="clean-button p-3"
+        >
           Daha çox <AiOutlineRight />
         </button>
       </div>

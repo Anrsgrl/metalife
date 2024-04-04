@@ -26,6 +26,7 @@ const SingleBlog = (props) => {
         <div className="blog-top">
           {!imageLoaded && <div className="skeleton h-100"></div>}
           <img
+            loading="lazy"
             src={image}
             alt="blog"
             style={{ display: imageLoaded ? "block" : "none" }}

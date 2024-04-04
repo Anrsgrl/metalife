@@ -9,9 +9,16 @@ const Hero = () => {
     <div className="hero container py-5">
       <div className="hero-content">
         <div className="hero-text">
-          <h1>Metalife</h1>
-          <p>Xəyalların ən yaxşısını arzu edə bilərsənmi?</p>
+          <h1 title="Metalife" aria-label="Metalife">
+            Metalife
+          </h1>
+          <p aria-label="Xəyalların ən yaxşısını arzu edə bilərsənmi?">
+            Xəyalların ən yaxşısını arzu edə bilərsənmi?
+          </p>
           <button
+            type="button"
+            title="Öyrənməyə başla"
+            aria-label="Öyrənməyə başla"
             onClick={() => navigate("/lessons")}
             className="btn-blue mt-3 hover-animation-white"
           >
@@ -19,7 +26,7 @@ const Hero = () => {
           </button>
         </div>
         <div className="hero-vector skeleton-loading">
-          <img className="w-100" src={vector} alt="vector" />
+          <img className="w-100" src={vector} alt="vector" loading="lazy" />
         </div>
       </div>
     </div>

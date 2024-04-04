@@ -12,6 +12,11 @@ import Nav from "../Nav/Nav";
 import logo from "../../assets/images/logo.webp";
 import "./Header.scss";
 import { Aside } from "../Aside";
+import {
+  freeLessonsDropdown,
+  lessonsDropdown,
+  orderDropdown,
+} from "../../data/headerDropdowns";
 
 const Header = () => {
   const { currentUser, loggedUser, loading } = useUsersList();
@@ -58,25 +63,6 @@ const Header = () => {
     setDropdownLesson(b);
     setDropdownCode(c);
   };
-
-  const lessonsDropdown = [
-    { label: "Bütün dərslər", url: "/lessons" },
-    { label: "Kodları öyrən", url: "/code/html" },
-  ];
-
-  const orderDropdown = [
-    { label: "Sifariş et", url: "/order" },
-    { label: "İşlərimiz", url: "/portfolio" },
-  ];
-
-  const freeLessonsDropdown = [
-    { label: "Fullstack", url: "/lessons/fullstack/videos" },
-    { label: "Frontend", url: "/lessons/frontend/videos" },
-    { label: "Backend", url: "/lessons/backend/videos" },
-    { label: "UI/UX", url: "/lessons/ui-designer/videos" },
-    { label: "İnteryer", url: "/lessons/interior-designer/videos" },
-    { label: "3D Modelləmə", url: "/lessons/3d-modelling/videos" },
-  ];
 
   return (
     <header className="px-2">

@@ -58,81 +58,31 @@ const AdminPanel = ({ isAdmin, admin }) => {
           <button
             key={item.name}
             type="button"
-            disabled={!item.isAdmin}
             className={`${
-              panel === item.panelName ? "btn-blue" : "btn-white opacity-50"
-            } ${!item.isAdmin && "d-none"}`}
+              panel === item.panelName ? "btn-blue" : "btn-white"
+            } ${!item.isAdmin && "disabled"}`}
             onClick={() => setPanel(item.panelName)}
+            disabled={!item.isAdmin}
           >
             {item.icon}
-            {panel === item.panelName && item.name}
+            {item.name}
           </button>
         ))}
       </div>
       <div className="panel-items">
-        {panel === "blog" && (
-          <AdminControllers
-            user={false}
-            teacher={false}
-            video={false}
-            blog={true}
-            trash={false}
-            code={false}
-          />
-        )}
-        {panel === "user" && (
-          <AdminControllers
-            admin={admin}
-            user={true}
-            teacher={false}
-            video={false}
-            blog={false}
-            trash={false}
-            code={false}
-          />
-        )}
-        {panel === "rank" && (
-          <AdminControllers
-            admin={admin}
-            user={false}
-            teacher={true}
-            video={false}
-            blog={false}
-            trash={false}
-            code={false}
-          />
-        )}
-        {panel === "video" && (
-          <AdminControllers
-            user={false}
-            teacher={false}
-            video={true}
-            blog={false}
-            trash={false}
-            code={false}
-          />
-        )}
-        {panel === "trash" && (
-          <AdminControllers
-            admin={admin}
-            user={false}
-            teacher={false}
-            video={false}
-            blog={false}
-            trash={true}
-            code={false}
-          />
-        )}
-        {panel === "code" && (
-          <AdminControllers
-            user={false}
-            teacher={false}
-            video={false}
-            blog={false}
-            trash={false}
-            code={true}
-          />
-        )}
+        <AdminControllers
+          admin={
+            panel === "user" || panel === "rank" || panel === "trash"
+              ? admin
+              : false
+          }
+          user={panel === "user"}
+          teacher={panel === "rank"}
+          video={panel === "video"}
+          blog={panel === "blog"}
+          trash={panel === "trash"}
+          code={panel === "code"}
+        />
       </div>
     </div>
   );

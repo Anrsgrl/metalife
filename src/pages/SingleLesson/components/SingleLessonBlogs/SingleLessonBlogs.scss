@@ -2,6 +2,7 @@
 @import "../../../../vendors/variables.scss";
 
 .single-lesson-blogs, .single-lesson-videos {
+    scroll-behavior: smooth;
     .lesson-blogs, .lesson-videos {
         display: -webkit-box;
         gap: 15px;

@@ -4,7 +4,6 @@
 .user {
     .user-aside {
         text-align: center;
-
         .user-content {
             align-items: center;
             justify-content: center;
@@ -28,6 +27,11 @@
                     object-fit: cover;
                 }
             }
+        }
+    }
+    .admin-panel{
+        form input{
+            width: 100%;
         }
     }
 }
