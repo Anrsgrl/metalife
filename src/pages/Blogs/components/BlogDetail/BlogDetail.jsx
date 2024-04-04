@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BlogDetail.scss";
 import { useParams } from "react-router";
 import { MdDateRange } from "react-icons/md";
@@ -23,7 +23,25 @@ const BlogDetail = () => {
   const blogs = useBlogsList();
   const { blogUrl } = useParams();
   const [loading, setLoading] = useState(true);
+  const [randomizedBlogs, setRandomizedBlogs] = useState([]);
   const decodedBlogUrl = decodeURIComponent(blogUrl);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+
+    if (blogs && blogs.length > 0) {
+      const shuffledBlogs = [...blogs]
+        .filter(
+          (blog) =>
+            blog?.title.replace("?", "").toLowerCase().split(" ").join("-") !==
+            decodedBlogUrl
+        )
+        .sort(() => Math.random() - 0.5);
+      setRandomizedBlogs(shuffledBlogs);
+    }
+  }, [blogUrl, blogs, decodedBlogUrl]);
 
   const blog = blogs?.find(
     (blog) =>
@@ -37,29 +55,32 @@ const BlogDetail = () => {
   const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(
     decodedBlogUrl
   )}`;
-  const quoteText = `${blog.title}  Bu və daha çox blog üçün səhifəmizi ziyarət edə bilərsiniz:`;
+  const quoteText = `${blog.title}  Bu ve daha fazla blog için sitemizi ziyaret edebilirsiniz:`;
 
   const { content, blog_image, title, author, author_image, time, hashtags } =
     blog;
 
-  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const formattedTime = time.toDate().toLocaleDateString("tr-TR", options);
+  const formattedTime = time.toDate().toLocaleDateString("tr-TR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 
   return (
     <div className="blog-detail container py-5">
       <div className="row">
         <div className="blog-left col-12 col-lg-9">
-          {loading && <div className="skeleton" />}
+          {loading && <Loading />}
           <img
             src={blog_image}
-            className={`w-100 my-2 ${loading ? "loading" : ""}`}
+            className={` my-2 ${loading ? "loading" : "w-100"}`}
             alt="blog"
             onLoad={() => setLoading(false)}
           />
           <div className="blog-info">
             <ul className="px-0 pt-1 m-0 hashtags">
-              {hashtags?.slice(0, 3).map((hashtag) => (
-                <li key={hashtag}>
+              {hashtags?.slice(0, 3).map((hashtag, index) => (
+                <li key={index}>
                   <Link
                     className="text-muted"
                     to={`/search?searchItem=${hashtag}`}
@@ -74,7 +95,7 @@ const BlogDetail = () => {
               {formattedTime}
             </div>
           </div>
-          <h1 className="section-heading py-2">{title}</h1>
+          <h1 className="blog-title">{title}</h1>
           <div
             style={{ wordWrap: "break-word" }}
             className="py-3 blog-content"
@@ -93,59 +114,47 @@ const BlogDetail = () => {
             <div className="share-side">
               <h6>Paylaş:</h6>
               <div className="share-buttons">
-                <TwitterShareButton
-                  hashtags={blog.hashtags.slice(0, 3)}
-                  url={blogLink}
-                  title={quoteText}
-                  className="share-button"
-                >
-                  <TwitterIcon size={40} />
-                </TwitterShareButton>
-                <FacebookShareButton
-                  hashtags={blog.hashtags.slice(0, 3)}
-                  url={blogLink}
-                  title={quoteText}
-                  className="share-button"
-                >
-                  <FacebookIcon size={40} />
-                </FacebookShareButton>
-                <TelegramShareButton
-                  hashtags={blog.hashtags.slice(0, 3)}
-                  url={blogLink}
-                  title={quoteText}
-                  className="share-button"
-                >
-                  <TelegramIcon size={40} />
-                </TelegramShareButton>
-                <LinkedinShareButton
-                  hashtags={blog.hashtags.slice(0, 3)}
-                  url={blogLink}
-                  title={quoteText}
-                  className="share-button"
-                >
-                  <LinkedinIcon size={40} />
-                </LinkedinShareButton>
-                <WhatsappShareButton
-                  hashtags={blog.hashtags.slice(0, 3)}
-                  url={blogLink}
-                  title={quoteText}
-                  className="share-button"
-                >
-                  <WhatsappIcon size={40} />
-                </WhatsappShareButton>
+                {[
+                  TwitterShareButton,
+                  FacebookShareButton,
+                  TelegramShareButton,
+                  LinkedinShareButton,
+                  WhatsappShareButton,
+                ].map((ShareButton, index) => (
+                  <ShareButton
+                    key={index}
+                    hashtags={hashtags?.slice(0, 3)}
+                    url={blogLink}
+                    title={quoteText}
+                    className="share-button"
+                  >
+                    {index === 0 ? (
+                      <TwitterIcon size={40} />
+                    ) : index === 1 ? (
+                      <FacebookIcon size={40} />
+                    ) : index === 2 ? (
+                      <TelegramIcon size={40} />
+                    ) : index === 3 ? (
+                      <LinkedinIcon size={40} />
+                    ) : (
+                      <WhatsappIcon size={40} />
+                    )}
+                  </ShareButton>
+                ))}
               </div>
             </div>
           </div>
         </div>
         <div className="blog-right col-3">
-          <h3 className="text-center">Digər bloglar</h3>
-          {blogs?.slice(0, 4).map((blog) => (
+          <h2 className="text-center">Digər bloqlar</h2>
+          {randomizedBlogs?.slice(0, 5).map((blog, index) => (
             <SingleBlog
-              key={blog.id}
+              key={index}
               title={blog?.title}
               image={blog?.blog_image}
               hashtags={blog?.hashtags}
               size={true}
+              other={true}
             />
           ))}
         </div>

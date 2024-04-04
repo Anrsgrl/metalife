@@ -29,6 +29,15 @@
     }
 }
 
+.blog-time{
+    @include flex(center, row, center);
+    gap: 4px;
+    svg{
+        width: 15px;
+        height: 15px;
+    }
+}
+
 .pagination-controls{
     @include flex(center, row, center);
     gap: 5px;
@@ -48,6 +57,7 @@
         aspect-ratio: 16/9;
         object-fit: cover;
         border-radius: 0.25rem;
+        z-index: 1;
     }
     .skeleton{
         height: 500px;
@@ -58,6 +68,11 @@
             height: 250px;
         }
     }
+}
+
+.blog-title{
+    text-align: center;
+    margin: 8px auto;
 }
 
 .blog-content {
@@ -74,6 +89,9 @@
         font-weight: 600
     }
 }
+.blog-detail{
+    position: relative;
+}
 
 .blog-right {
     @include flex(flex-start, column);
@@ -81,6 +99,9 @@
 
     @media(max-width: 992px) {
         display: none;
+    }
+    button{
+        max-height: max-content
     }
 }
 

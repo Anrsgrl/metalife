@@ -3,7 +3,7 @@ import "./SingleBlog.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const SingleBlog = (props) => {
-  const { image, title, size, hashtags } = props;
+  const { image, title, size, hashtags, other } = props;
   const blogUrl = title?.toLowerCase().split(" ").join("-");
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const SingleBlog = (props) => {
       type="button"
       disabled={!imageLoaded}
       onClick={() => navigate(`/blogs/${blogUrl}`)}
-      className={`clean-button single-blog ${
+      className={`clean-button single-blog ${other && "other"} ${
         size ? "sm-size" : "col-12 col-md-6 col-lg-4 py-2"
       }`}
     >
@@ -26,7 +26,6 @@ const SingleBlog = (props) => {
         <div className="blog-top">
           {!imageLoaded && <div className="skeleton h-100"></div>}
           <img
-            loading="lazy"
             src={image}
             alt="blog"
             style={{ display: imageLoaded ? "block" : "none" }}

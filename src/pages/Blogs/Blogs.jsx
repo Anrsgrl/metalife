@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SingleBlog from "../../components/SingleBlog/SingleBlog";
 import { useBlogsList } from "../../firebase/getFunctions";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -18,14 +18,15 @@ const Blogs = () => {
   const displayedBlogs = blogs
     .sort((a, b) => b.time - a.time)
     .slice(startIndex, endIndex);
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, []);
   return (
     <div className="blogs container py-5">
       <div className="row pt-3">
-        {displayedBlogs.length === 0 &&
-          Array.from({ length: 6 }).map((_, index) => (
-            <SingleBlog key={index} />
-          ))}
         {displayedBlogs.map((blog) => (
           <SingleBlog
             key={blog.id}
@@ -38,6 +39,7 @@ const Blogs = () => {
       </div>
       <div className="pagination-controls mt-4">
         <button
+          type="button"
           onClick={() => navigate(`/blogs?page=${pageNumber - 1}`)}
           disabled={pageNumber === 1}
           className={`${
