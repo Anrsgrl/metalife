@@ -10,30 +10,23 @@ const Blogs = () => {
   const itemsPerPage = 6;
   const location = useLocation();
 
-  // URL'den query parametrelerini al
   const searchParams = new URLSearchParams(location.search);
   const pageNumber = parseInt(searchParams.get("page")) || 1;
 
-  //* Displayed Blogs
   const startIndex = (pageNumber - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedBlogs = blogs
     .sort((a, b) => b.time - a.time)
     .slice(startIndex, endIndex);
+
   return (
     <div className="blogs container py-5">
       <div className="row pt-3">
-        {displayedBlogs?.length === 0 && (
-          <>
-            <SingleBlog />
-            <SingleBlog />
-            <SingleBlog />
-            <SingleBlog />
-            <SingleBlog />
-            <SingleBlog />
-          </>
-        )}
-        {displayedBlogs?.map((blog) => (
+        {displayedBlogs.length === 0 &&
+          Array.from({ length: 6 }).map((_, index) => (
+            <SingleBlog key={index} />
+          ))}
+        {displayedBlogs.map((blog) => (
           <SingleBlog
             key={blog.id}
             title={blog?.title}
@@ -53,7 +46,10 @@ const Blogs = () => {
         >
           <MdOutlineFirstPage className="w-5 h-5" />
         </button>
-        <span>{pageNumber}</span>
+        <span>{`${pageNumber} / ${Math.ceil(
+          blogs.length / itemsPerPage
+        )}`}</span>
+
         <button
           onClick={() => navigate(`/blogs?page=${pageNumber + 1}`)}
           disabled={endIndex >= blogs.length}
