@@ -158,8 +158,8 @@ const Header = () => {
                   </li>
                   <li>
                     <button
-                      title=""
-                      aria-label=""
+                      title="Pulsuz Dərslər"
+                      aria-label="Pulsuz Dərslər"
                       onClick={() =>
                         openDropdown(false, !dropdownLessons, false)
                       }
@@ -255,8 +255,8 @@ const Header = () => {
           </ul>
           <div className="header-profile">
             <button
-              title=""
-              aria-label=""
+              title="Profil"
+              aria-label="Profil"
               onClick={() => openProfile()}
               className="account mobile clean-button p-0"
             >
@@ -305,8 +305,8 @@ const Header = () => {
                         {loggedUser?.username}
                       </Link>
                       <button
-                        title=""
-                        aria-label=""
+                        title="Çıxış"
+                        aria-label="Çıxış"
                         onClick={() => userSignOut()}
                         className="clean-button"
                       >
