@@ -18,6 +18,7 @@ import {
 } from "react-share";
 import Loading from "../../../../components/Loading/Loading";
 import { useBlogsList } from "../../../../firebase/getFunctions";
+import { Helmet } from "react-helmet";
 
 const BlogDetail = () => {
   const blogs = useBlogsList();
@@ -55,7 +56,7 @@ const BlogDetail = () => {
   const blogLink = `https://metalifegroup.com/blogs/${encodeURIComponent(
     decodedBlogUrl
   )}`;
-  const quoteText = `${blog.title}  Bu ve daha fazla blog için sitemizi ziyaret edebilirsiniz:`;
+  const quoteText = `${blog.title}`;
 
   const { content, blog_image, title, author, author_image, time, hashtags } =
     blog;
@@ -68,6 +69,10 @@ const BlogDetail = () => {
 
   return (
     <div className="blog-detail container py-5">
+      <Helmet>
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:image" content={blog_image} />
+      </Helmet>
       <div className="row">
         <div className="blog-left col-12 col-lg-9">
           {loading && <Loading />}
