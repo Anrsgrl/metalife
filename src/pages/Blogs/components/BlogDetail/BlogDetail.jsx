@@ -72,6 +72,7 @@ const BlogDetail = () => {
       <Helmet>
         <meta property="og:title" content={blog.title} />
         <meta property="og:image" content={blog_image} />
+        <meta property="og:url" content={window.location.href} />
       </Helmet>
       <div className="row">
         <div className="blog-left col-12 col-lg-9">
