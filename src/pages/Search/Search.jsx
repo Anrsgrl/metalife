@@ -12,6 +12,7 @@ import {
 
 const Search = () => {
   const location = useLocation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const searchParams = new URLSearchParams(location.search);
 
   const searchItemValue = searchParams?.get("searchItem")?.replace(/\s/g, "");
