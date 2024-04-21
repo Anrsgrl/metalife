@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Code.scss";
 import DragMenu from "../../components/DragMenu/DragMenu";
 import { useState } from "react";
@@ -10,6 +10,13 @@ import CodeContent from "./components/CodeContent/CodeContent";
 const Code = () => {
   const params = useParams();
   const codes = useCodeList();
+  useEffect(() => {
+    document.title = "Kodlar | Metalife";
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, []);
   const filteredData = codes?.filter((e) => e.codeName === params.codeName);
   const filteredContent = codes?.find(
     (code) =>

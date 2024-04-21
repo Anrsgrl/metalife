@@ -14,11 +14,19 @@ const SingleLesson = () => {
   const navigate = useNavigate();
   const [more, setMore] = useState(false);
   useEffect(() => {
+    if (lessonPath) {
+      const formattedTitle = lessonPath
+        .toLowerCase()
+        .replace(/^\w/, (c) => c.toUpperCase())
+        .replace(/-/g, " ");
+
+      document.title = `${formattedTitle} | Metalife`;
+    }
     window.scrollTo({
       top: 0,
       behavior: "auto",
     });
-  }, []);
+  }, [lessonPath]);
   const isDesiredLesson = ["frontend", "backend", "fullstack"].includes(
     lessonPath
   );

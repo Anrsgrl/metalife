@@ -17,6 +17,9 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = !forgot
+      ? "Giriş | Metalife"
+      : "Şifrəmi unuttum | Metalife";
     window.scrollTo({
       top: 0,
       behavior: "auto",
@@ -24,7 +27,7 @@ const SignIn = () => {
     if (loggedUser) {
       navigate("/");
     }
-  }, [loggedUser, navigate]);
+  }, [forgot, loggedUser, navigate]);
 
   return (
     <div className="sign-field py-4 container">

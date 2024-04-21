@@ -19,6 +19,7 @@ const Blogs = () => {
     .sort((a, b) => b.time - a.time)
     .slice(startIndex, endIndex);
   useEffect(() => {
+    document.title = `Bloqlar | Metalife`;
     window.scrollTo({
       top: 0,
       behavior: "auto",

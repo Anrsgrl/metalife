@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LessonVideo.scss";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { TiArrowBack } from "react-icons/ti";
@@ -31,6 +31,18 @@ const LessonVideo = () => {
         e?.group === loggedUser?.lessons[0]
     );
   }
+
+  useEffect(() => {
+    if (params.lessonPath) {
+      const formattedTitle =
+        params.lessonPath
+          .toLowerCase()
+          .replace(/^\w/, (c) => c.toUpperCase())
+          .replace(/-/g, " ") + " videoları";
+
+      document.title = `${formattedTitle} | Metalife`;
+    }
+  }, [params.lessonPath]);
 
   return (
     <div className="lesson-videos container py-3">

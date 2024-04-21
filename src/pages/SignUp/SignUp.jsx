@@ -29,6 +29,7 @@ const SignUp = () => {
   };
 
   useEffect(() => {
+    document.title = `Qeydiyyat | Metalife`;
     window.scrollTo({
       top: 0,
       behavior: "auto",

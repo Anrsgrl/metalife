@@ -7,6 +7,7 @@ import SingleLessonBlogs from "../SingleLesson/components/SingleLessonBlogs/Sing
 
 const Home = () => {
   useEffect(() => {
+    document.title = "Metalife";
     window.scrollTo({
       top: 0,
       behavior: "auto",

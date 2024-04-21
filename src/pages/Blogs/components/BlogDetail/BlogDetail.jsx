@@ -27,11 +27,16 @@ const BlogDetail = () => {
   const [randomizedBlogs, setRandomizedBlogs] = useState([]);
   const decodedBlogUrl = decodeURIComponent(blogUrl);
   useEffect(() => {
+    if (blog?.title) {
+      document.title = `${blog.title} | Metalife`;
+    }
     window.scrollTo({
       top: 0,
       behavior: "auto",
     });
+  });
 
+  useEffect(() => {
     if (blogs && blogs.length > 0) {
       const shuffledBlogs = [...blogs]
         .filter(
