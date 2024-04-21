@@ -15,6 +15,16 @@ const User = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (loggedUser) {
+      document.title = `${loggedUser?.username} | Metalife`;
+    }
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [loggedUser]);
+
+  useEffect(() => {
     if (loggedUser?.userKey === process.env.REACT_APP_ADMIN_KEY) {
       setAdmin(true);
     } else {

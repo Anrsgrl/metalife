@@ -13,7 +13,8 @@ import {
 const Search = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const searchItemValue = searchParams.get("searchItem").replace(/\s/g, "");
+
+  const searchItemValue = searchParams?.get("searchItem")?.replace(/\s/g, "");
   const videos = useVideosList();
   const blogs = useBlogsList();
   const currentUser = useUsersList();
@@ -21,12 +22,12 @@ const Search = () => {
   const filteredVideos = videos.filter(
     (e) =>
       (e.demo === "true" && e.hashtags?.includes(searchItemValue)) ||
-      e.title?.toLowerCase().includes(searchItemValue.toLowerCase())
+      e.title?.toLowerCase().includes(searchItemValue?.toLowerCase())
   );
   const filteredBlogs = blogs.filter(
     (e) =>
       e.hashtags?.includes(searchItemValue) ||
-      e.title?.toLowerCase().includes(searchItemValue.toLowerCase())
+      e.title?.toLowerCase().includes(searchItemValue?.toLowerCase())
   );
 
   const onPlayerReady = (event) => {
@@ -44,11 +45,20 @@ const Search = () => {
       .padStart(2, "0")}`;
   };
   useEffect(() => {
+    document.title = `${searchParams.get(
+      "searchItem"
+    )} üzrə axtarış | Metalife`;
     window.scrollTo({
       top: 0,
       behavior: "auto",
     });
-  }, []);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (!searchParams.get("searchItem")) {
+      window.location.href = "/";
+    }
+  }, [searchParams]);
   return (
     <div className="search container py-5">
       {searchItemValue ? (

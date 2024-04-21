@@ -16,6 +16,14 @@ const Settings = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "Profil parametrləri | Metalife";
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, []);
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && file.size <= 512000) {
