@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { auth, uploadProfilePhoto } from "../../firebase/config";
+import { auth } from "../../firebase/config";
 import { MdManageAccounts } from "react-icons/md";
 import { updateProfile } from "@firebase/auth";
 import "./UserSettings.scss";
 import boy from "../../assets/images/boy.webp";
-import { sendVerification } from "../../firebase/controllers";
+import {
+  sendVerification,
+  uploadProfilePhoto,
+} from "../../firebase/controllers";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { TiArrowBack } from "react-icons/ti";

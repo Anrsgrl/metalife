@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import toast from "react-hot-toast";
-import { auth, db } from "./config";
+import { auth, db, storage } from "./config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -16,6 +16,13 @@ import {
   sendPasswordResetEmail,
   sendEmailVerification,
 } from "firebase/auth";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  ref as storageRef,
+  uploadBytes,
+} from "firebase/storage";
 
 //* Remove item
 export const removeItem = async (collectionRef, docId) => {
@@ -163,3 +170,25 @@ export const sendVerification = () => {
       });
   }
 };
+
+export async function uploadProfilePhoto(file, currentUser) {
+  try {
+    if (currentUser.photoURL) {
+      const oldPhotoRef = ref(storage, currentUser.photoURL);
+      await deleteObject(oldPhotoRef);
+    }
+    const fileRef = storageRef(
+      storage,
+      `profile-images/${currentUser.uid}.webp`
+    );
+    await uploadBytes(fileRef, file);
+    const photoURL = await getDownloadURL(fileRef);
+
+    await updateProfile(auth.currentUser, { photoURL });
+
+    return photoURL;
+  } catch (error) {
+    console.error("Error:", error.message);
+    throw error;
+  }
+}

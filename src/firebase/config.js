@@ -20,44 +20,7 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
 export const auth = getAuth(app);
 export const storage = getStorage(app);
-
-export async function uploadProfilePhoto(file, currentUser) {
-  try {
-    if (currentUser.photoURL) {
-      const oldPhotoRef = ref(storage, currentUser.photoURL);
-      await deleteObject(oldPhotoRef);
-    }
-    const fileRef = storageRef(
-      storage,
-      `profile-images/${currentUser.uid}.webp`
-    );
-    await uploadBytes(fileRef, file);
-    const photoURL = await getDownloadURL(fileRef);
-
-    await updateProfile(auth.currentUser, { photoURL });
-
-    return photoURL;
-  } catch (error) {
-    console.error("Error:", error.message);
-    throw error;
-  }
-}
-
-export async function uploadBlogPhoto(file) {
-  const storage = getStorage(app);
-  const firestore = getFirestore(app);
-
-  const fileRef = storageRef(storage, "blog-images/" + file.name);
-  await uploadBytes(fileRef, file);
-
-  const photoURL = await getDownloadURL(fileRef);
-
-  const blogsCollection = collection(firestore, "blogs");
-  const newBlogRef = await addDoc(blogsCollection, { blog_image: photoURL });
-
-  return newBlogRef.id;
-}

@@ -9,7 +9,7 @@ import React, { useRef, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useUsersList } from "../../../../../../../../firebase/getFunctions";
 import { db } from "../../../../../../../../firebase/config";
-import { MdDateRange, MdInfoOutline } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
 import { Link } from "react-router-dom";
 import girl from "../../../../../../../../assets/images/girl.webp";
 import UpdateHashtags from "./UpdateHashtags";
@@ -22,9 +22,6 @@ const UpdateBlog = () => {
   const [hashtags, setHashtags] = useState([]);
   const [newHashtag, setNewHashtag] = useState("");
   const [preview, setPreview] = useState(false);
-
-  const [info, setInfo] = useState(false);
-
   const textareaRef = useRef(null);
 
   const [blogData, setBlogData] = useState({
@@ -103,7 +100,6 @@ const UpdateBlog = () => {
     const endPos = textarea.selectionEnd;
     const selectedText = textarea.value.substring(startPos, endPos);
 
-    // Special case for pre tag with code inside
     if (tag === "pre") {
       const newContent =
         blogData.content.slice(0, startPos) +
@@ -172,38 +168,6 @@ const UpdateBlog = () => {
         />
         <div className="updateContent pt-2">
           <h3 className="py-2">Kontent əlavə etmə</h3>
-          <div className="info">
-            <div onClick={() => setInfo(!info)} className="info-title">
-              <MdInfoOutline className="me-1" />
-              Kiçik məlumat{!info && "..."}{" "}
-            </div>
-            {info && (
-              <ul>
-                <li>
-                  Kontent içərisində yazılan mətindən istədiyiniz yeri seçib,
-                  yuxarıdaki köməkçi düymələrdən istifadə etdikdə, yazının
-                  əvvəlinə və sonuna avtomatik tagı əlavə edəcək.
-                </li>
-                <li>Video əlavə etmək artıq mümkündür.</li>
-                <li>
-                  Düymələrin üzərinə gəldikdə (telefonda isə üstünə basılı
-                  tutanda) nə işə yaradığını göstərir.
-                </li>
-                <li>
-                  Hashtag hissəsindəkilərdə isə
-                  <ul>
-                    <li>Manual şəkildə tag əlavə etmə</li>
-                    <li>Bütün tagları silməy</li>
-                    <li>Köməkçi tagları əlavə etməy</li>
-                  </ul>
-                </li>
-                <li>
-                  (<code>li</code>)List elementi, <code>ul</code> tagı
-                  içərisində olmalıdır.
-                </li>
-              </ul>
-            )}
-          </div>
           <div className="blog-tools py-3">
             {editItems.map((item) => (
               <button
