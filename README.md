@@ -1,6 +1,6 @@
 ![Metalife Logo](./src/assets/images/banner.webp)
 
-Metalife is a company dedicated to managing freelance projects and teaching programming. Our platform enables users to efficiently handle their projects while providing valuable educational resources.
+Metalife is a company dedicated to managing freelance projects and teaching programming. The platform enables users to efficiently handle their projects while providing valuable educational resources.
 
 ## Table of Contents
 
