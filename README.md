@@ -1,6 +1,6 @@
 # Metalife
 
-![Metalife Logo](./src/assets/images/logo.webp)
+![Metalife Logo](./src/assets/images/banner.webp)
 
 Metalife is a company dedicated to managing freelance projects and teaching programming. Our platform enables users to efficiently handle their projects while providing valuable educational resources.
 
@@ -49,7 +49,7 @@ Metalife is a company dedicated to managing freelance projects and teaching prog
 1.  **Clone the repository:**
 
     ```sh
-    git clone https://github.com/yourusername/metalife.git
+    git clone https://github.com/Anrsgrl/metalife
     ```
 
 2.  **Navigate to the project directory:**
