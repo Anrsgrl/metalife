@@ -18,7 +18,7 @@ import {
 } from "react-share";
 import Loading from "../../../../components/Loading/Loading";
 import { useBlogsList } from "../../../../firebase/getFunctions";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const BlogDetail = () => {
   const blogs = useBlogsList();

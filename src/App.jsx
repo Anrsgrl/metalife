@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import Header from "./components/Header/Header.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import AppRoutes from "./routes/routes.jsx";
+import { HelmetProvider } from "react-helmet-async";
 function App() {
   const [loading, setLoading] = useState(true);
   const [dragMenu, setDragMenu] = useState(false);
@@ -20,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <HelmetProvider>
       {loading && <Loading />}
       <Header />
       <main>
@@ -34,7 +35,7 @@ function App() {
         <AppRoutes />
       </main>
       <Footer />
-    </>
+    </HelmetProvider>
   );
 }
 
