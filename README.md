@@ -66,7 +66,7 @@ Metalife is a company dedicated to managing freelance projects and teaching prog
 
 4.  **Set up Firebase:**
 
-        Create a `.env` file in the root directory and add your Firebase configuration:
+   Create a `.env` file in the root directory and add your Firebase configuration:
 
         ```env
         REACT_APP_FIREBASE_API_KEY=your_api_key
