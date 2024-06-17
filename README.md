@@ -46,23 +46,23 @@ Metalife is a company dedicated to managing freelance projects and teaching prog
 
 1.  **Clone the repository:**
 
-    ```sh
-    git clone https://github.com/Anrsgrl/metalife
-    ```
+```sh
+git clone https://github.com/Anrsgrl/metalife
+```
 
 2.  **Navigate to the project directory:**
 
-    ```sh
-    cd metalife
-    ```
+```sh
+cd metalife
+```
 
 3.  **Install dependencies:**
 
-    ```sh
-    npm install
-    # or
-    yarn install
-    ```
+```sh
+npm install
+# or
+yarn install
+```
 
 4.  **Set up Firebase:**
 
